@@ -81,10 +81,10 @@ public class Customer extends Model{
      @Constraints.Required(message="validation.required")
      public int active;
 
-    @OneToOne(mappedBy = "customer")
-    @Transient
-    @JsonIgnore
-     public CustomerLogin customerLogin;
+//    @OneToOne(mappedBy = "customer")
+//    @Transient
+//    @JsonIgnore
+//     public CustomerLogin customerLogin;
 
     @JsonIgnore
     @Transient
@@ -145,7 +145,7 @@ public class Customer extends Model{
                 ", postcode=" + postcode +
                 ", country='" + country + '\'' +
                 ", active=" + active +
-                ", customerLogin=" + customerLogin +
+                //", customerLogin=" + customerLogin +
                 '}';
     }
 
