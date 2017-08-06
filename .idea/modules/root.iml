@@ -27,6 +27,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SBT: aopalliance:aopalliance:1.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.webjars:jquery:1.11.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.webjars:bootstrap:3.1.1-2:jar" level="project" />
     <orderEntry type="library" name="SBT: mysql:mysql-connector-java:5.1.41:jar" level="project" />
     <orderEntry type="library" name="SBT: com.typesafe.play:play-jdbc_2.12:2.6.2:jar" level="project" />
     <orderEntry type="library" name="SBT: com.typesafe.play:play-jdbc-api_2.12:2.6.2:jar" level="project" />
