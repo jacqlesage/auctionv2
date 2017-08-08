@@ -87,3 +87,13 @@
     play.filters.hosts.AllowedHostsFilter
 
 2017-08-08 21:52:14,078 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-30 - Application started (Dev)
+2017-08-08 21:54:32,536 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-33 - Shutting down connection pool.
+2017-08-08 21:54:32,649 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-33 - Creating Pool for datasource 'default'
+2017-08-08 21:54:32,656 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-33 - Database [default] connected at jdbc:mysql://localhost:3306/playDollar
+2017-08-08 21:54:32,850 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-33 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2017-08-08 21:54:32,861 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-33 - Application started (Dev)
