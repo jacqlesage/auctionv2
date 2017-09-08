@@ -29,27 +29,40 @@
                 <div class="col-sm-4">
                     <div class="panel-group">
                         <div class="panel panel-default">
+                            <form action="@routes.DollarLuxuryHomeController.dollarHomePage()">
                             <div class="panel-heading"><h3>Dollar Luxury</h3></div>
-                            <div class="panel-body"><div><span class="glyphicon glyphicon-usd"></span></div></div>
-                            <div class="panel-footer"> <button type="button" class="btn btn-primary btn-block">Button 1</button> </div>
+                            <div class="panel-body"><p>Dollar icon: <span class="glyphicon glyphicon-envelope"></span></p></div> @*cant get this to work *@
+                            <div class="panel-footer"> <input type="submit" value="Go to Dollar Luxury" button type="button" class="btn btn-primary btn-block"></div>
+                            </form>
                         </div>
 
                     </div>
                 </div>
 
                 <div class="col-sm-4">
-                    <h3>De Trop</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>De Trop</h3></div>
+                            <div class="panel-body"><p>Auction Hammer icon: <span class="glyphicon glyphicon-envelope"></span></p></div> @*cant get this to work *@
+                            <div class="panel-footer"> <button type="button" class="btn btn-primary btn-block">Button 1</button> </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                    <h3>Buddy Buy</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h3>Buddy Buy</h3></div>
+                            <div class="panel-body"><p>Handshake icon: <span class="glyphicon glyphicon-envelope"></span></p></div> @*cant get this to work *@
+                            <div class="panel-footer"> <button type="button" class="btn btn-primary btn-block">Button 1</button> </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
         <script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("javascripts/bootstrap.js")" type="text/javascript"></script>
+
     </body>
 </html>
