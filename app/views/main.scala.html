@@ -12,10 +12,14 @@
         <title>$$$</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-reboot.min.css")">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     </head>
     <body>
+
+
 
         <div class="jumbotron text-center">
             <h1>Welcome to Dollar Luxury Version 1</h1>
@@ -29,9 +33,10 @@
                 <div class="col-sm-4">
                     <div class="panel-group">
                         <div class="panel panel-default">
-                            <form action="@routes.DollarLuxuryHomeController.dollarHomePage()">
+
                             <div class="panel-heading"><h3>Dollar Luxury</h3></div>
-                            <div class="panel-body"><p>Dollar icon: <span class="glyphicon glyphicon-envelope"></span></p></div> @*cant get this to work *@
+                            <form action="@routes.DollarLuxuryHomeController.dollarHomePage()">
+                            <div class="panel-body"><div class="text-center"><span style="font-size: 55px" class="glyphicon glyphicon-usd gl" ></span></div></div> @*cant get this to work *@
                             <div class="panel-footer"> <input type="submit" value="Go to Dollar Luxury" button type="button" class="btn btn-primary btn-block"></div>
                             </form>
                         </div>
@@ -43,7 +48,7 @@
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading"><h3>De Trop</h3></div>
-                            <div class="panel-body"><p>Auction Hammer icon: <span class="glyphicon glyphicon-envelope"></span></p></div> @*cant get this to work *@
+                            <div class="panel-body"> <i class="fa fa-gavel"></i></div> @*cant get this to work *@
                             <div class="panel-footer"> <button type="button" class="btn btn-primary btn-block">Button 1</button> </div>
                         </div>
 
