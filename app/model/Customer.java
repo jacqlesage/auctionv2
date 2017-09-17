@@ -1,5 +1,6 @@
 package model;
-//import org.springframework.ui.Model;
+
+import io.ebean.Model;
 import io.ebean.Finder;
 import io.ebean.*;
 import io.ebean.annotation.JsonIgnore;
