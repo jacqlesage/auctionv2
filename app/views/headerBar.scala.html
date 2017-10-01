@@ -79,7 +79,9 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="fname">First Name:</label>
-                        <input type="text" class="form-control" id="fname">
+                        <input type="text" class="form-control" id="fname"
+                        data-fv-notempty="false"
+                        >
 
                         <label for="lname">Last Name:</label>
                         <input type="text" class="form-control" id="lname">
@@ -91,7 +93,7 @@
                         <input type="password" class="form-control" id="password" name="password">
 
                         <label for="confirm_password">Confirm Password:</label>
-                        <input type="confirm_password" class="form-control" id="confirm_password" name="confirm_password" onkeyup="validatePassword()">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password">
 
                     </div>
                 </div>
@@ -100,7 +102,7 @@
                     <!-- Split the one Modal into two seections, this section is for using facebook to login-->
                 <div class="col-md-6">
                     <div class="modal-body">
-                        <div class="form-group" method="post" action="@routes.FacebookLoginController.collectFacebookData()">
+                        <div class="form-group">
                             <label for="fbook">Or, Signup with Facebook:</label>
                             <br>
                             <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
@@ -112,10 +114,10 @@
 
                 <div class="modal-footer">
                     <div class="col-md-12">
-                        <form method="post" action="@routes.FacebookLoginController.collectFacebookData()">
+                        <form method="post" action="@routes.FacebookLoginController.collectFacebookData()" name="loginForm" id="loginForm">
                         <div class="form-group">
                             @CSRF.formField
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="validatePassword()">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                         </form>
