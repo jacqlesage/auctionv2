@@ -10,7 +10,7 @@ function validatePassword(){
     var password = document.getElementById("password")
         , confirm_password = document.getElementById("confirm_password");
 
-
+    console.log(document.getElementById("password").value);
     if(password.value != confirm_password.value) {
 
        confirm_password.style.borderColor = "red";
@@ -20,38 +20,49 @@ function validatePassword(){
     } else {
 
         //confirm that the email address is not in use by way of ajax call.
-        $('submitBtn').click(function(evt) {
+        //$('submitBtn').click(function(evt) {
+            console.log("Success!11111");
 
-            var obj ={
 
-                firstName: document.getElementById("firstName"),
-                lastName:  document.getElementById("lastName"),
-                email:     document.getElementById("email"),
-                password:  document.getElementById("password"),
+
+
+            var obj = {
+
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
 
             };
-        }
 
-        $.ajax({
-            url: "@routes.Application.upload()",
-            data: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            type: 'POST',
-            success: function(res) {
-                if (res) {
-                    console.log("Success!");
-                } else {
-                    console.log("Failed...");
-                }
-            }
-        });
+        console.log(JSON.stringify(obj));
 
-        document.forms['signupForm'].submit();
-        return true;
+
+        //}
+
+        // $.ajax({
+        //    // url: "@routes.controllers.signup()",
+        //     data: JSON.stringify(obj),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //  },
+        //     type: 'POST',
+        //     success: function(res) {
+        //         if (res) {
+        //             console.log(obj);
+        //
+        //         } else {
+        //             console.log("Failed...");
+        //             alert("fail");
+        //         }
+        //
+        //     }});
+
+        //document.forms['signupForm'].submit();
+        //return true;
     }
-}
 
+
+};
 // password.onchange = validatePassword;
 // confirm_password.onkeyup = validatePassword;
