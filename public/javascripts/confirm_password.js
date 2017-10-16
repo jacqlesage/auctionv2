@@ -38,29 +38,29 @@ function validatePassword(){
         console.log(JSON.stringify(obj));
 
 
-        //}
 
-        // $.ajax({
-        //    // url: "@routes.controllers.signup()",
-        //     data: JSON.stringify(obj),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //  },
-        //     type: 'POST',
-        //     success: function(res) {
-        //         if (res) {
-        //             console.log(obj);
-        //
-        //         } else {
-        //             console.log("Failed...");
-        //             alert("fail");
-        //         }
-        //
-        //     }});
 
+        $.ajax({
+            url: "@routes.SignupController.signup",
+            data: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json'
+         },
+            type: 'POST',
+            success: function(res) {
+                if (res) {
+                    console.log(obj);
+
+                } else {
+                    console.log("Failed...");
+                    alert("fail");
+                }
+
+            }});
+    }
         //document.forms['signupForm'].submit();
         //return true;
-    }
+
 
 
 };

@@ -20,7 +20,7 @@
 
 
 </head>
-<body>
+
 
     <script>
             window.fbAsyncInit = function() {
@@ -71,23 +71,27 @@
                 <!-- Modal content-->
 
             <div class="modal-content">
+
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Sign up</h4>
                 </div>
+
                 <div class="col-md-6">
+
                 <div class="modal-body">
+                    <form method="post"   name="signupForm" id="signupForm">
                     <div class="form-group">
+                        @CSRF.formField
                         <label for="fname">First Name:</label>
-                        <input type="text" class="form-control" id="fname"
-                        data-fv-notempty="false"
-                        >
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                        data-fv-notempty="false">
 
                         <label for="lname">Last Name:</label>
-                        <input type="text" class="form-control" id="lname">
+                        <input type="text" class="form-control" id="lastName" name="lastName">
 
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" name="email">
 
                         <label for="password">Password:</label>
                         <input type="password" class="form-control" id="password" name="password">
@@ -96,6 +100,7 @@
                         <input type="password" class="form-control" id="confirm_password" name="confirm_password">
 
                     </div>
+                    </form>
                 </div>
 
             </div>
@@ -114,21 +119,24 @@
 
                 <div class="modal-footer">
                     <div class="col-md-12">
-                        <form method="post" action="@routes.FacebookLoginController.collectFacebookData()" name="loginForm" id="loginForm">
+
                         <div class="form-group">
-                            @CSRF.formField
-                    <button type="button" class="btn btn-default" onclick="validatePassword()">Submit</button>
+
+                    <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-                        </form>
+
                     </div>
                 </div>
+
             </div>
 
         </div>
+
     </div>
 
     </div>
+
 
 
     @***************************Modal for Login pop up*@

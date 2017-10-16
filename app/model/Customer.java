@@ -67,7 +67,7 @@ public class Customer extends Model{
     //can also use a country selector here to clean up entires into the DB.
     //@Constraints.Required(message="validation.required")
     public String country;
-    
+
     //@JoinColumn(table="cusotmer_login")
     //@Constraints.Required(message="validation.required")
     //@Transient //Defines this field as being transient (not persisted)
@@ -87,7 +87,7 @@ public class Customer extends Model{
 
     //@JsonIgnore
     @Transient
-    public Finder<Integer, Customer> find = new Finder<Integer, Customer>(Customer.class);
+    public static Finder<Integer, Customer> find = new Finder<Integer, Customer>(Customer.class);
 
 
     public Customer(int id, String firstName, String lastName, String phoneNumber, String email, String address1, String address2, String suburb, String city, int postcode, String country, int active) {
@@ -137,7 +137,26 @@ public class Customer extends Model{
 
     }
 
+    /**
+     * Method to find a specific customer via way of email.
+     * @param email email of the customer trying to use sign up
+     * @return boolean - false if the DB found no matching email address else ture (one found)
+     */
+   public boolean findCustomer(String email){
+        boolean result = false;
+       if(Customer.find.query().where().eq("email",email).findUnique() !=null)
+           result = true;
 
+      return result;
+   }
+
+
+
+   public void addCustomer(Customer customer){
+
+
+
+   }
 
     @Override
     public String toString() {
@@ -153,10 +172,8 @@ public class Customer extends Model{
                 ", city='" + city + '\'' +
                 ", postcode=" + postcode +
                 ", country='" + country + '\'' +
+                ", password='" + password + '\'' +
                 ", active=" + active +
-                //", customerLogin=" + customerLogin +
                 '}';
     }
-
-
 }
