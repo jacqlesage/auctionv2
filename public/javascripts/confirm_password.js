@@ -2,7 +2,7 @@
  * Created by james on 27/09/17.
  */
 
-//I will need to look at a more fluid password checker - form validator - proabably out there.
+//I will need to look at a more fluid password checker - form validator - probably out there.
 
 
 function validatePassword(){
@@ -18,12 +18,6 @@ function validatePassword(){
 
 
     } else {
-
-        //confirm that the email address is not in use by way of ajax call.
-        //$('submitBtn').click(function(evt) {
-            console.log("Success!11111");
-
-            var toPostorNot;
 
 
             var obj = {
@@ -44,17 +38,19 @@ function validatePassword(){
             contentType: "application/json; charset=utf-8",
             url  :  "/customer/"+ obj.email,
             success: function(data) {
-               alert("data.reponse = " +data.toString() + " " +" obj.email = " + obj.email.toString() );
-
+               //if the data sent back is not the same as the email going in then, the cusotmer does not have this email with us
+                //highlight the error on the form
                 if(obj.email.toString() != data.toString()){
 
-                    
+                    document.getElementById("email").style.borderColor = "blue";
+                    document.getElementById("email").value = "This email is already registered with us";
+                    document.getElementById("email").setCustomValidity("This email is already registered with us, please use 'forgotton password'");
 
                     alert("email  the same");
 
 
                 }else{
-
+                    //else we want to sign the customer up
                     $.ajax({
                         type :  "POST",
                         dataType: 'json',
@@ -63,60 +59,12 @@ function validatePassword(){
                         url  :  "/jsRoutes"
 
                 });
-
+                //then close the modal and do something else at this point ...
 
                 }}});
-                    // var r = jsRoutes.controllers.SignupController.signup;
-                    // $.ajax(jsRoutes.controllers.SignupController.signup);
-
-                    // $.ajax({
-                    //     type :  "POST",
-                    //     url: "/jsRoutes",
-                    //     data: obj,
-                    //     dataType: "json",
-                    //     contentType: "application/json",
-                    //     success: function (msg) {
-                    //         alert(msg.success)
-                    //     },
-                    //     error: function () {
-                    //         alert("error");
-                    //
-                    //     }
-                    // });
-
-                    // {url: r.url, type: r.type, success: /*...*/, error: /*...*/ }
-                    //
-                    //  $.ajax("routes.SignupController.signup")
-                    //      // .ajaxSuccess(console.log("ajaxsucess"))
-                    //      .done( console.log("failed here1") )
-                    //      .fail( console.log("failed here2"));
 
 
-                    //
-                    // $.ajax({
-                    //     url: "@routes.SignupController.signup",
-                    //     data: JSON.stringify(obj),
-                    //     headers: {
-                    //         'Content-Type': 'application/json'
-                    //  },
-                    //     type: 'POST',
-                    //     success: function(res) {
-                    //         if (res) {
-                    //             console.log(obj);
-                    //             console.log("Failed...");
-                    //
-                    //         } else {
-                    //             console.log("Failed...");
-                    //             alert("fail");
-                    //         }
-                    //
-                    //     }});
-
-                    //document.forms['signupForm'].submit();
-                    //return true;
 
 
                 }
             }
-// password.onchange = validatePassword;
-// confirm_password.onkeyup = validatePassword;
