@@ -46,8 +46,6 @@ function validatePassword(){
                     document.getElementById("email").value = "This email is already registered with us";
                     document.getElementById("email").setCustomValidity("This email is already registered with us, please use 'forgotton password'");
 
-                    alert("email  the same");
-
 
                 }else{
                     //else we want to sign the customer up
@@ -59,7 +57,12 @@ function validatePassword(){
                         url  :  "/jsRoutes"
 
                 });
-                //then close the modal and do something else at this point ...
+                //then close the modal
+                    $("#myModalSignUp .close").click()
+                    //Then take them to the account page as they will have no funds and try and get some more information from them
+                    //want to get the control back into play
+                    //another ajax call - send sign up data and area to collect more data - look to add name to session
+                    //look to split the account page into three - two cols up top and one down bottom for information
 
                 }}});
 
