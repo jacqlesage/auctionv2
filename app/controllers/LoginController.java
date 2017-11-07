@@ -20,14 +20,18 @@ public class LoginController extends Controller {
     public Result login() {
         //Form<Customer> userForm = formFactory.form(Customer.class);
         Customer customer = formFactory.form(Customer.class).bindFromRequest().get();
-        System.out.print("testin login");
+        System.out.print(customer.toString());
 
+        customer = Customer.findCustomerByEmail(customer.email);
+        System.out.print(customer.toString());
         //check the password
 
-
+        session().remove("connected");
 
         //add customer to the session
-        session("connected", Json.toJson(customer).toString());
+        session().put("firstName", customer.firstName);
+        session().put("email", customer.email);
+        session().put("cusNum", Integer.toString(customer.id));
 
         return ok(Json.toJson(customer));
     }
