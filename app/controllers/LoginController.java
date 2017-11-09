@@ -34,6 +34,15 @@ public class LoginController extends Controller {
         session().put("cusNum", Integer.toString(customer.id));
 
         return ok(Json.toJson(customer));
+
+    }
+
+    public Result logout(){
+
+        session().clear();
+
+        return ok(views.html.index.render());
+
     }
 
 }
