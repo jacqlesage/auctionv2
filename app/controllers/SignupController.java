@@ -2,6 +2,7 @@ package controllers;
 
 import model.Customer;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.*;
 import play.data.FormFactory;
 
@@ -27,19 +28,12 @@ public class SignupController extends Controller{
     public Result signup() {
         //Form<Customer> userForm = formFactory.form(Customer.class);
         Customer customer = formFactory.form(Customer.class).bindFromRequest().get();
-        System.out.print("testin signup");
-        if(customer.findCustomer(customer.email)){
-            //then go back to page and advise email in use
-            return redirect("/dollarLuxuryHome");
-
-        }else{
-            //email is not in use proceed with adding customer.
-            customer.save();
-
-
-        }
-
-        //first check that customer has not sigend up
+//        System.out.print("testin signup");
+        customer.save();
+        System.out.println("@@@@@@@@@@@@@@" + customer.firstName);
+        //add customer to the session
+        session().put("firstName", customer.firstName);
+        session("connected", Json.toJson(customer).toString());
 
         return ok();
     }
