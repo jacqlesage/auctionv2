@@ -80,10 +80,11 @@ function validatePassword(){
             }
 
             function reloadScreen(){
+            alert("in reload screen");
                 $("#myModalToAuctionPage .close").click()
 
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "/dollarLuxuryDashboard/"
                 });
 
