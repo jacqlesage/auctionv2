@@ -58,11 +58,13 @@ function validatePassword(){
 
                 });
                 //then close the modal
+                    //add name to button
                     $("#myModalSignUp .close").click()
                     //Then take them to the account page as they will have no funds and try and get some more information from them
                     //want to get the control back into play
                     //another ajax call - send sign up data and area to collect more data - look to add name to session
                     //look to split the account page into three - two cols up top and one down bottom for information
+                    //
 
                 }}});
 
@@ -70,4 +72,20 @@ function validatePassword(){
 
 
                 }
+
+               //open the confirmation modal
+                $('#myModalToAuctionPage').modal('show');
+
+            }
+
+            function reloadScreen(){
+                var email = document.getElementById("hiddenEmail").value;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/loadDollarDashboard"+ email
+                });
+
+                location.reload();
+                $('#myModalToAuctionPage .close').click();
             }
