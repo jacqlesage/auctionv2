@@ -76,16 +76,17 @@ function validatePassword(){
                //open the confirmation modal
                 $('#myModalToAuctionPage').modal('show');
 
+
             }
 
             function reloadScreen(){
-                var email = document.getElementById("hiddenEmail").value;
+                $("#myModalToAuctionPage .close").click()
 
                 $.ajax({
                     type: "POST",
-                    url: "/loadDollarDashboard"+ email
+                    url: "/dollarLuxuryDashboard/"
                 });
 
-                location.reload();
-                $('#myModalToAuctionPage .close').click();
+                //location.reload();
+                //$('#myModalToAuctionPage .close').click();
             }
