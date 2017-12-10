@@ -6,6 +6,13 @@
  *@
 @(content: Html)
 
+@()
+
+@helper.javascriptRouter("jsRoutes")(
+    routes.javascript.SignupController.signup
+    //routes.javascript.Users.get
+)
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

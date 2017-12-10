@@ -9,6 +9,7 @@ GET     /                           controllers.HomeController.index
 GET     /dollarLuxuryHome           controllers.DollarLuxuryHomeController.dollarHomePage
 
 #Get the Dollar Luxury main dashboard page
+
 GET     /dollarLuxuryDashboard          controllers.DollarLuxuryHomeController.dollarDashboard
 
 #Go the Facebook controller class
@@ -22,11 +23,17 @@ POST     /jsRoutes                   controllers.SignupController.signup
 + nocsrf
 POST     /login                   controllers.LoginController.login
 
+#load into dashboard controller
+GET      /loadDollarDashboard/:email      controllers.DollarLuxuryHomeController.loadDollarDashboard(email: String)
+
+#Logout the customer
+GET     /customer/          controllers.LoginController.logout
+
 #find out if a customer is in the DB
 GET     /customer/:email                  model.Customer.findCustomer(email: String)
 
 #find out if a customer is in the DB
-GET     /customer/:loginObject                  model.Customer.loginCustomer(loginObject: Customer)
+GET     /customer/:loginObject                  model.Customer.loginCustomer(loginObject)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
