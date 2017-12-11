@@ -35,6 +35,7 @@ public class SignupController extends Controller{
         //System.out.println("@@@@@@@@@@@@@@" + customer.firstName);
         //add customer to the session
         session().put("firstName", customer.firstName);
+        session().put("lastName", customer.lastName);
         session().put("email", customer.email);
         session().put("customerNumber", Integer.toString(customer.id));
         //session("connected", Json.toJson(customer).toString());
