@@ -55,7 +55,7 @@
                     <li class="active"><a href="#">How Our Auctions Work</a></li>
                 </ul>
                 @*Code to welcome the user*@
-                @if(session().get("firstName") == null || session.isEmpty || session == null) {
+                @if(session().get("customer") == null || session.isEmpty || session == null) {
                     <ul class="nav navbar-nav navbar-right">
 
                         <li><a data-toggle="modal" href="#myModalSignUp"><span class="glyphicon glyphicon-user"></span>
@@ -258,9 +258,9 @@
                         <div class="modal-footer">
                             <div class="col-md-12">
 
-                                <form action="@routes.DollarLuxuryHomeController.dollarDashboard()">
+                                <form method="get" id="auctionForm" action="@routes.DollarLuxuryHomeController.dollarDashboard()">
                                 <div class="form-group">
-                                    <div id="hiddenEmail" name="hiddenEmail" input type="text" value="@session.get("email")"></div>
+
                                     <button type="submit" class="btn btn-default" >
                                         Close</button>
 
