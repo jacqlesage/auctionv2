@@ -3,6 +3,7 @@
 @session()
 
 
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
@@ -55,7 +56,7 @@
                     <li class="active"><a href="#">How Our Auctions Work</a></li>
                 </ul>
                 @*Code to welcome the user*@
-                @if(session().get("customer") == null || session.isEmpty || session == null) {
+                @if(session().get("firstName") == null || session.isEmpty || session == null) {
                     <ul class="nav navbar-nav navbar-right">
 
                         <li><a data-toggle="modal" href="#myModalSignUp"><span class="glyphicon glyphicon-user"></span>
