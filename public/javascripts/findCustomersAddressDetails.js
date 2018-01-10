@@ -13,7 +13,6 @@ $(document).ready(function() {
         url: r.url, type: r.type, dataType: "JSON",
         success: (function (data) {
             alert("success!");
-            alert(data.toString());
             console.log("this is a console log " + data.toString());
         }),
 

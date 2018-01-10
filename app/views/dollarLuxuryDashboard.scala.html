@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 @headerBar{
 
 }
 
+<script type="text/javascript" src="@routes.JsController.javascriptRoutes()"></script>
+<script src="@routes.Assets.versioned("javascripts/findCustomersAddressDetails.js")"></script>
 
 <button>Collapsible</button>
 
@@ -30,7 +34,7 @@ Lorem ipsum dolor text....
                         <div class="form-group col-md-4">
 
                             <label for="firstName">First name:</label>
-                            <input type="text" class="form-control " id="firstName" value="@session.get("firstName")">
+                            <input type="text" class="form-control " id="firstName" name="firstName" value="@session.get("firstName")">
 
 
                             <label for="lastName">Last name:</label>
@@ -40,15 +44,15 @@ Lorem ipsum dolor text....
                             <input type="tel" class="form-control" value="" id="phone">
 
                             <label for="email">Email address:</label>
-                            <input type="email" class="form-control " value="@session.get("email")" id="email">
+                            <input type="email" class="form-control " value="@session.get("email")" id="emailFromDashboard">
 
                             @*Load modal popup for adding address details*@
-                            <li><a data-toggle="modal" href="#myAddressDetails"><span class="glyphicon glyphicon-home"></span>
+                            <li><a data-toggle="modal" href="#myAddressDetails" ><span class="glyphicon glyphicon-home"></span>
                                 My address</a>
 
+                            <p >click here</p>
 
-
-                            <button type="button" class="btn btn-default">Address details</button>
+                            <button type="button" class="" id="details">Address details</button>
 
 
 
@@ -158,4 +162,4 @@ Lorem ipsum dolor text....
 
 
 </body>
-</html>@import model.ReverseCustomer
+</html>

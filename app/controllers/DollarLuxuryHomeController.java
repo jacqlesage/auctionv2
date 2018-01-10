@@ -34,14 +34,14 @@ public class DollarLuxuryHomeController extends Controller{
 
     public Result dollarDashboard() {
 
-        Customer cus = formFactory.form(Customer.class).bindFromRequest().get();
-
-        cus = cus.findCustomerByEmail(cus.email);
-
-        String x = cus.email;
-        System.out.println(x + "%%%%####");
-
-        session().put("customerFull", x);
+//        Customer cus = formFactory.form(Customer.class).bindFromRequest().get();
+//
+//        cus = cus.findCustomerByEmail(cus.email);
+//
+//        String x = cus.email;
+//        System.out.println(x + "%%%%####");
+//
+//        session().put("customerFull", x);
 
         return ok(views.html.dollarLuxuryDashboard.render());
         //return redirect(routes.DollarLuxuryHomeController.dollarDashboard());

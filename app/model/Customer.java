@@ -161,14 +161,21 @@ public class Customer extends Model {
 
     public static Customer findCustomerByEmail(String email) {
 
+
         if (Customer.find.query().where().eq("email", email).findUnique() == null) {
             //then customer is not in DB
 
             return null;
         }
 
-        return Customer.find.query().where().eq("email", email).findUnique();
+
+
+        Customer customer = Customer.find.query().where().eq("email", email).findOne();
+        System.out.println(customer.toString()+ "ookokokokok");
+
+        return customer;
     }
+
 
 
 
