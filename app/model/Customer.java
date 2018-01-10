@@ -131,16 +131,18 @@ public class Customer extends Model {
 
     }
 
-    public String getAllCustomers() {
-
-        //JsonNode jsonNode =null;
-        String jsonString = Ebean.json().toJson(find.all());
-        //jsonNode = Json.toJson(jsonString);
-
-        //return Ebean.json().toJson(find);
-        return jsonString;
-
-    }
+    //I have had to comment this method out as some how it is placing this method into my JS results. Werid stuff.
+    //At this stage I do not need an all customers function.
+//    public String getAllCustomers() {
+//
+//        //JsonNode jsonNode =null;
+//        String jsonString = Ebean.json().toJson(find.all());
+//        //jsonNode = Json.toJson(jsonString);
+//
+//        //return Ebean.json().toJson(find);
+//        return jsonString;
+//
+//    }
 
     /**
      * Method to find a specific customer via way of email.
@@ -170,7 +172,7 @@ public class Customer extends Model {
 
 
 
-        Customer customer = Customer.find.query().where().eq("email", email).findOne();
+        Customer customer = Customer.find.query().where().eq("email", email).findUnique();
         System.out.println(customer.toString()+ "ookokokokok");
 
         return customer;
