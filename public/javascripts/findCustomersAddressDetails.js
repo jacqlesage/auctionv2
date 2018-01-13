@@ -5,7 +5,12 @@
 
 $(document).ready(function() {
     var emailFromDashboard = document.getElementById("emailFromDashboard").value;
-    alert(emailFromDashboard);
+    var addressLine1 = document.getElementById("address1");
+    var addressLine2 = document.getElementById("address2");
+    var city = document.getElementById("city");
+    var country = document.getElementById("country");
+    var postCode = document.getElementById("postCode");
+
     $("#details").click(function(){
 
     var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromDashboard);
@@ -13,7 +18,22 @@ $(document).ready(function() {
         url: r.url, type: r.type, dataType: "JSON",
         success: (function (data) {
             alert("success!");
-            console.log("this is a console log " + data.toString());
+            console.log(data);
+
+            if(data.address1 == null) {
+                addressLine1.value = "Please update";
+                addressLine2.value = "Please update";
+                city.value = "Please update";
+                country.value = "Please update";
+                postCode.value = "Please update";
+
+            }else{
+                addressLine1.value = data.address1;
+                addressLine2.value = data.address2;
+                city.value = data.city;
+                country.value = data.country;
+                postCode.value = data.postCode;
+            }
         }),
 
         error: (function (data) {
