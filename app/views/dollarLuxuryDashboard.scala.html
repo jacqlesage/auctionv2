@@ -31,7 +31,7 @@ Lorem ipsum dolor text....
                     <p>My details</p>
 
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-12">
 
                             <label for="firstName">First name:</label>
                             <input type="text" class="form-control " id="firstName" name="firstName" value="@session.get("firstName")">
@@ -46,20 +46,12 @@ Lorem ipsum dolor text....
                             <label for="email">Email address:</label>
                             <input type="email" class="form-control " value="@session.get("email")" id="emailFromDashboard">
 
-                            @*Load modal popup for adding address details*@
-                            <li><a data-toggle="modal" href="#myAddressDetails" ><span class="glyphicon glyphicon-home"></span>
-                                My address</a>
-
-                            <p >click here</p>
-
-                            <button type="button" class="" id="details">Address details</button>
-
-
-
-
-
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="pwd">
+
+                            @*Load modal popup for adding address details*@
+                            <li><a data-toggle="modal" href="#myAddressDetails" id="details"><span class="glyphicon glyphicon-home"></span>
+                                My address</a>
 
                         <div class="checkbox">
                             <label><input type="checkbox"> Remember me</label>
@@ -126,7 +118,7 @@ Lorem ipsum dolor text....
                             <div class="form-group">
                                 @CSRF.formField
                             <label for="address1">Address line 1:</label>
-                            <input type="text" class="form-control" id="address1">
+                            <input type="text" class="form-control" id="address1" name="address1">
 
                             <label for="address2">Address line 2:</label>
                             <input type="text" class="form-control " id="address2">

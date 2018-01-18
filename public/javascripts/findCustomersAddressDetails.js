@@ -17,7 +17,7 @@ $(document).ready(function() {
     $.ajax({
         url: r.url, type: r.type, dataType: "JSON",
         success: (function (data) {
-            alert("success!");
+
             console.log(data);
 
             if(data.address1 == null) {
