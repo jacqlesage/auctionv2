@@ -12,8 +12,6 @@
 <script type="text/javascript" src="@routes.JsController.javascriptRoutes()"></script>
 <script src="@routes.Assets.versioned("javascripts/findCustomersAddressDetails.js")"></script>
 
-<button>Collapsible</button>
-
 <div id="demo" class="collapse">
 Lorem ipsum dolor text....
 </div>
@@ -49,9 +47,17 @@ Lorem ipsum dolor text....
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="pwd">
 
+                            @*Load modal popup for my personal details*@
+                            <li><a data-toggle="modal" href="#myDetails" id="details"><span class="glyphicon glyphicon-user"></span>
+                                My details</a>
+
                             @*Load modal popup for adding address details*@
-                            <li><a data-toggle="modal" href="#myAddressDetails" id="details"><span class="glyphicon glyphicon-home"></span>
+                            <li><a data-toggle="modal" href="#myHomeAddressDetails" id="details"><span class="glyphicon glyphicon-home"></span>
                                 My address</a>
+
+                             @*Load modal popup for adding postal address details*@
+                            <li><a data-toggle="modal" href="#myPostalAddressDetails" id="details"><span class="glyphicon glyphicon-envelope"></span>
+                                My postal address</a>
 
                         <div class="checkbox">
                             <label><input type="checkbox"> Remember me</label>
@@ -63,14 +69,14 @@ Lorem ipsum dolor text....
                 </div>
             </div>
 
-            </div>
+
 
             <div class ="col-md-8" style="background-color: indianred">
                 <div class="container">
                 <p>Current auction</p>
                 </div>
             </div>
-
+        </div>
 
     <div class="row" id="row2">
     <div class="col-6 col-md-4" style="background-color: red">
@@ -105,7 +111,7 @@ Lorem ipsum dolor text....
 
 
 
-    <div class="modal fade" id="myAddressDetails" role="dialog">
+    <div class="modal fade" id="myHomeAddressDetails" role="dialog">
         <div class="modal-dialog">
                 <!-- Modal content-->
             <div class="modal-content">
