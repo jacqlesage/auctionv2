@@ -12,7 +12,7 @@ $(document).ready(function() {
     var country = document.getElementById("country");
     var postCode = document.getElementById("postCode");
 
-    $("#myHomeAddressDetails").click(function(){
+    $("#myHomeAddressDetailsClick").click(function(){
 
     var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromDashboard);
     $.ajax({
