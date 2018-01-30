@@ -5,12 +5,12 @@
 
 $(document).ready(function() {
     var emailFromDashboard = document.getElementById("emailFromDashboard").value;
-    var addressLine1 = document.getElementById("address1");
-    var addressLine2 = document.getElementById("address2");
-    var city = document.getElementById("city");
+    var addressLine1 = document.getElementById("address1Postal");
+    var addressLine2 = document.getElementById("address2Postal");
+    var city = document.getElementById("cityPostal");
     var phone = document.getElementById("phone");
-    var country = document.getElementById("country");
-    var postCode = document.getElementById("postCode");
+    var country = document.getElementById("countryPostal");
+    var postCode = document.getElementById("postCodePostal");
 
     $("#myHomeAddressDetailsClick").click(function(){
 
