@@ -21,7 +21,7 @@ import static play.mvc.Results.ok;
 
 @Entity
 @Table(name = "customer")
-@SecondaryTable(name="customer_login")
+//@SecondaryTable(name="customer_login")
 public class Customer extends Model {
 
     @Id
@@ -49,29 +49,6 @@ public class Customer extends Model {
     @Constraints.MaxLength(value = 100, message = "validation.maxLength")
     public String email;
 
-    //    address details - Better to use an address finder as opposed to regex as the pattern would be consistant
-    //eg Address validation using Google Maps API or nz post code finder
-    //@Constraints.Required(message="validation.required")
-    public String address1;
-
-    public String address2;
-
-    //    @Min(3)
-    // @Constraints.Required(message="validation.required")
-    public String suburb;
-
-    //    @Min(3)
-    //@Constraints.Required(message="validation.required")
-    public String city;
-
-    //    @Min(4)
-////  @Max(6) this will also be directed by the address checker.
-    //@Constraints.Required(message="validation.required")
-    public int postcode;
-
-    //can also use a country selector here to clean up entires into the DB.
-    //@Constraints.Required(message="validation.required")
-    public String country;
 
     //@JoinColumn(table="cusotmer_login")
     //@Constraints.Required(message="validation.required")
@@ -85,6 +62,32 @@ public class Customer extends Model {
     //@Constraints.Required(message="validation.required")
     public int active;
 
+    //    address details - Better to use an address finder as opposed to regex as the pattern would be consistant
+    //eg Address validation using Google Maps API or nz post code finder
+    //@Constraints.Required(message="validation.required")
+//    public String address1;
+//
+//    public String address2;
+//
+//    //    @Min(3)
+//    // @Constraints.Required(message="validation.required")
+//    public String suburb;
+//
+//    //    @Min(3)
+//    //@Constraints.Required(message="validation.required")
+//    public String city;
+//
+//    //    @Min(4)
+//////  @Max(6) this will also be directed by the address checker.
+//    //@Constraints.Required(message="validation.required")
+//    public int postcode;
+//
+//    //can also use a country selector here to clean up entires into the DB.
+//    //@Constraints.Required(message="validation.required")
+//    public String country;
+
+
+
 //    @OneToOne(mappedBy = "customer")
 //    @Transient
 //    @JsonIgnore
@@ -95,20 +98,20 @@ public class Customer extends Model {
     public static Finder<Integer, Customer> find = new Finder<Integer, Customer>(Customer.class);
 
 
-    public Customer(int id, String firstName, String lastName, String phoneNumber, String email, String address1, String address2, String suburb, String city, int postcode, String country, int active) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.suburb = suburb;
-        this.city = city;
-        this.postcode = postcode;
-        this.country = country;
-        this.active = active;
-    }
+//    public Customer(int id, String firstName, String lastName, String phoneNumber, String email, String address1, String address2, String suburb, String city, int postcode, String country, int active) {
+//        this.id = id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.phoneNumber = phoneNumber;
+//        this.email = email;
+//        this.address1 = address1;
+//        this.address2 = address2;
+//        this.suburb = suburb;
+//        this.city = city;
+//        this.postcode = postcode;
+//        this.country = country;
+//        this.active = active;
+//    }
 
     public Customer(String firstName, String lastName, String email) {
 
@@ -210,12 +213,12 @@ public class Customer extends Model {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", address1='" + address1 + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", suburb='" + suburb + '\'' +
-                ", city='" + city + '\'' +
-                ", postcode=" + postcode +
-                ", country='" + country + '\'' +
+//                ", address1='" + address1 + '\'' +
+//                ", address2='" + address2 + '\'' +
+//                ", suburb='" + suburb + '\'' +
+//                ", city='" + city + '\'' +
+//                ", postcode=" + postcode +
+//                ", country='" + country + '\'' +
                 ", password='" + password + '\'' +
                 ", active=" + active +
                 '}';
