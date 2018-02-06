@@ -4,12 +4,13 @@ $(document).ready(function() {
   $("#submitBtnFromLogin").click(function(){
 
       var emailFromLogin = document.getElementById("emailFromLogin").value;
+      var emailFromLoginBox = document.getElementById("emailFromLogin");
 
       var passwordFromLogin = document.getElementById("passwordFromLogin").value;
 
       if(passwordFromLogin.length == 0 || emailFromLogin.length == 0) {
             alert("it is empty");
-          //emailFromLogin[0].style.borderColor = "red";
+          emailFromLoginBox.style.borderColor = "red";
           //emailFromLogin.setCustomValidity('Please confirm your email');
 
           //passwordFromLogin.style.borderColor = "red";
