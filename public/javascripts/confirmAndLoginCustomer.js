@@ -4,13 +4,27 @@ $(document).ready(function() {
   $("#submitBtnFromLogin").click(function(){
 
       var emailFromLogin = document.getElementById("emailFromLogin").value;
-      var emailFromLoginBox = document.getElementById("emailFromLogin");
+      var emailFromLoginInputBox = document.getElementById("emailFromLogin");
 
       var passwordFromLogin = document.getElementById("passwordFromLogin").value;
-
+      var passwordFromLoginInputBox = document.getElementById("passwordFromLogin");
+//bit of error checking server side - can put this on the client side also
       if(passwordFromLogin.length == 0 || emailFromLogin.length == 0) {
             alert("it is empty");
-          emailFromLoginBox.style.borderColor = "red";
+            if(passwordFromLogin.length == 0 && emailFromLogin.length == 0) {
+                emailFromLoginInputBox.setCustomValidity('Please confirm your email');
+                // passwordFromLoginInputBox.style.borderColor = "red";
+                // emailFromLoginInputBox.style.borderColor = "red";
+                passwordFromLoginInputBox.setCustomValidity('Please confirm your password');
+
+            }else if(emailFromLogin.length == 0){
+                emailFromLoginInputBox.setCustomValidity('Please confirm your email');
+                emailFromLoginInputBox.style.borderColor = "red";
+
+            }else if(passwordFromLogin.length == 0){
+                passwordFromLoginInputBox.style.borderColor = "red";
+                passwordFromLoginInputBox.setCustomValidity('Please confirm your password');
+            }
           //emailFromLogin.setCustomValidity('Please confirm your email');
 
           //passwordFromLogin.style.borderColor = "red";
