@@ -1,7 +1,16 @@
+var emailOk;
+var passwordOk;
+var btn;
+
 $(function() {
     console.log( "ready!" );
+    btn = document.getElementById("submitBtnFromLogin");
     var x = document.getElementById("emailFromLogin");
+    var passwordFromLoginInputBox = document.getElementById("passwordFromLogin");
+    passwordFromLoginInputBox.addEventListener("blur", myBlurFunction2, true);
     x.addEventListener("blur", myBlurFunction, true);
+    btn.disabled = true;
+
 });
 // function confirmEmailIsInDB(){
 //     var x = document.getElementById("emailFromLogin");
@@ -93,6 +102,7 @@ function myBlurFunction(){
             url: r.url, type: r.type, dataType: "JSON",
             success: (function (data) {
                 emailFromLoginInputBox.style.borderColor = "green";
+                emailOk = true;
                 console.log(data);
                 //
                 // if (data.firstName == null) {
@@ -109,11 +119,71 @@ function myBlurFunction(){
 
             error: (function (data) {
                 emailFromLoginInputBox.value = ("Not a registered email");
-                emailFromLoginInputBox.style.borderColor = "blue";
+                emailFromLoginInputBox.style.borderColor = "red";
 
             })
         })
 
+
+
 }
 
+function myBlurFunction2() {
 
+
+    var passwordFromLogin = document.getElementById("passwordFromLogin").value;
+    var passwordFromLoginInputBox = document.getElementById("passwordFromLogin");
+//bit of error checking server side - can put this on the client side also
+
+
+    var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
+    //var r = jsRoutes.controllers.JsController.login
+    (emailFromLogin);
+    $.ajax({
+        url: r.url, type: r.type, dataType: "JSON",
+        success: (function (data) {
+
+            if(data.password == passwordFromLogin) {
+                passwordFromLoginInputBox.style.borderColor = "green";
+                passwordOk = true;
+                //as we have already tested email, now that password is ok we can enable the btn for submit.
+                var passTest = false;
+
+                passTest = testPasswordAndEmail(passwordOk, emailOk);
+                console.log(data);
+                //
+                // if (data.firstName == null) {
+                //     //Then we know there is no customer found
+                //     emailFromLoginInputBox.setCustomValidity('Please register this email');
+                //     //password.value = "You can change your password here";
+                //
+                // } else {
+                //     //password.value = "You can change your password here";
+                //
+                // }
+            }else{
+                btn.diasbled = true;
+                passwordFromLoginInputBox.style.borderColor = "red";
+            }
+
+        }),
+
+        error: (function (data) {
+            //passwordFromLoginInputBox.value = ("incorrect password");
+            passwordFromLoginInputBox.style.borderColor = "red";
+
+        })
+    })
+
+}
+
+function testPasswordAndEmail(pwd, email){
+
+    if(pwd && email === true) {
+        btn.diasbled = false;
+        return true;
+
+    }
+    btn.diasbled = true;
+    return false;
+}
