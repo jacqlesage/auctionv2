@@ -1,9 +1,12 @@
-
-function confirmEmailIsInDB(){
-    alert("inblur");
+$(function() {
+    console.log( "ready!" );
     var x = document.getElementById("emailFromLogin");
     x.addEventListener("blur", myBlurFunction, true);
-}
+});
+// function confirmEmailIsInDB(){
+//     var x = document.getElementById("emailFromLogin");
+//     x.addEventListener("blur", myBlurFunction, true);
+// }
 
 
 // $(document).ready(function() {
@@ -22,7 +25,7 @@ function confirmEmailIsInDB(){
 //             alert("it is empty");
 //             if(passwordFromLogin.length == 0 && emailFromLogin.length == 0) {
 //                 emailFromLoginInputBox.setCustomValidity('Please confirm your email');
-//                 // passwordFromLoginInputBox.style.borderColor = "red";
+//                 // passwordFromLogihttps://www.google.com/search?ei=REqHWt38Ooe10gS7_K2gAQ&q=whs.nzx&oq=whs.nzx&gs_l=psy-ab.3..0i7i30k1j0j0i30k1.5886.6128.0.6934.3.3.0.0.0.0.299.299.2-1.1.0....0...1c.1.64.psy-ab..2.1.298....0.CaEmYIufeqknInputBox.style.borderColor = "red";
 //                 // emailFromLoginInputBox.style.borderColor = "red";
 //                 passwordFromLoginInputBox.setCustomValidity('Please confirm your password');
 //
@@ -105,11 +108,12 @@ function myBlurFunction(){
             }),
 
             error: (function (data) {
-                emailFromLoginInputBox.setCustomValidity("Please register this email");
+                emailFromLoginInputBox.value = ("Not a registered email");
                 emailFromLoginInputBox.style.borderColor = "blue";
 
             })
         })
 
 }
+
 
