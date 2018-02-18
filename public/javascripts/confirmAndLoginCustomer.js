@@ -128,48 +128,43 @@ function myBlurFunction(){
 
 }
 
+//this does check the password, however, I can see a flaw with a password hacker being able to go through the whole DB with no restrictions.
+//Good enough for the time being.
+
 function myBlurFunction2() {
 
-
+    var emailFromLogin = document.getElementById("emailFromLogin").value;
     var passwordFromLogin = document.getElementById("passwordFromLogin").value;
     var passwordFromLoginInputBox = document.getElementById("passwordFromLogin");
+    var passTest = false;
 //bit of error checking server side - can put this on the client side also
 
 
     var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
-    //var r = jsRoutes.controllers.JsController.login
-    (emailFromLogin);
+
     $.ajax({
         url: r.url, type: r.type, dataType: "JSON",
         success: (function (data) {
 
-            if(data.password == passwordFromLogin) {
+            if(data.password.toString() == passwordFromLogin.toString()) {
                 passwordFromLoginInputBox.style.borderColor = "green";
                 passwordOk = true;
-                //as we have already tested email, now that password is ok we can enable the btn for submit.
-                var passTest = false;
+
 
                 passTest = testPasswordAndEmail(passwordOk, emailOk);
                 console.log(data);
-                //
-                // if (data.firstName == null) {
-                //     //Then we know there is no customer found
-                //     emailFromLoginInputBox.setCustomValidity('Please register this email');
-                //     //password.value = "You can change your password here";
-                //
-                // } else {
-                //     //password.value = "You can change your password here";
-                //
-                // }
+                console.log("pass test " + passTest);
+
+
             }else{
-                btn.diasbled = true;
+                document.getElementById("submitBtnFromLogin").disabled = true;
                 passwordFromLoginInputBox.style.borderColor = "red";
             }
 
         }),
 
         error: (function (data) {
-            //passwordFromLoginInputBox.value = ("incorrect password");
+
             passwordFromLoginInputBox.style.borderColor = "red";
 
         })
@@ -180,10 +175,12 @@ function myBlurFunction2() {
 function testPasswordAndEmail(pwd, email){
 
     if(pwd && email === true) {
-        btn.diasbled = false;
+        alert("in here");
+        document.getElementById("submitBtnFromLogin").disabled = false;
+
         return true;
 
     }
-    btn.diasbled = true;
+    document.getElementById("submitBtnFromLogin").disabled = true;
     return false;
 }
