@@ -154,6 +154,12 @@ function myBlurFunction2() {
                 passTest = testPasswordAndEmail(passwordOk, emailOk);
                 console.log(data);
                 console.log("pass test " + passTest);
+                if(passTest){
+
+
+
+
+                }
 
 
             }else{

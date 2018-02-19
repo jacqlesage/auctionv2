@@ -5,14 +5,12 @@
 
 $(document).ready(function() {
     var emailFromDashboard = document.getElementById("emailFromDashboard").value;
-    var addressLine1 = document.getElementById("address1");
-    var addressLine2 = document.getElementById("address2");
-    var city = document.getElementById("city");
-    var phone = document.getElementById("phone");
-    var country = document.getElementById("country");
-    var postCode = document.getElementById("postCode");
 
-    $("#myHomeAddressDetailsClick").click(function(){
+    var phone = document.getElementById("phone");
+
+    var password = document.getElementById("pwd");
+
+    $("#myPersonalDetailsClick").click(function(){
 
     var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromDashboard);
     $.ajax({
@@ -21,21 +19,14 @@ $(document).ready(function() {
 
             console.log(data);
 
-            if(data.address1 == null) {
-                addressLine1.value = "Please update";
-                addressLine2.value = "Please update";
-                //phone.value = "Please update";
-                city.value = "Please update";
-                country.value = "Please update";
-                postCode.value = "Please update";
+            if(data.phoneNumber == null) {
+                //only need to update phone here as the rest of the details are puled from session...humm....
+                phone.value = "Please update";
+                //password.value = "You can change your password here";
 
             }else{
-                addressLine1.value = data.address1;
-                addressLine2.value = data.address2;
-                city.value = data.city;
-                //phone.value = data.phone;
-                country.value = data.country;
-                postCode.value = data.postCode;
+                //password.value = "You can change your password here";
+
             }
         }),
 

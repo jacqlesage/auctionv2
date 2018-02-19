@@ -4,14 +4,20 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import model.Customer;
+import play.data.FormFactory;
 import play.libs.Json;
 import play.routing.JavaScriptReverseRouter;
 import play.mvc.*;
+
+import javax.inject.Inject;
 
 /**
  * Created by james on 30/12/17.
  */
 public class JsController extends Controller{
+
+    @Inject
+    FormFactory formFactory;
 
     public Result javascriptRoutes() {
 
@@ -44,5 +50,8 @@ public class JsController extends Controller{
             return ok(jsonNode);
         }
     }
+
+
+
 
 }

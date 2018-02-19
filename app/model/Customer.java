@@ -97,21 +97,10 @@ public class Customer extends Model {
     @Transient
     public static Finder<Integer, Customer> find = new Finder<Integer, Customer>(Customer.class);
 
-
-//    public Customer(int id, String firstName, String lastName, String phoneNumber, String email, String address1, String address2, String suburb, String city, int postcode, String country, int active) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.phoneNumber = phoneNumber;
-//        this.email = email;
-//        this.address1 = address1;
-//        this.address2 = address2;
-//        this.suburb = suburb;
-//        this.city = city;
-//        this.postcode = postcode;
-//        this.country = country;
-//        this.active = active;
-//    }
+    public Customer(@Constraints.MaxLength(value = 100, message = "validation.maxLength") String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public Customer(String firstName, String lastName, String email) {
 

@@ -6,11 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
+@Table(name = "customerHomeAddressTable")
 public class HomeAddressDAO extends Model {
-
-    @Entity
-    @Table(name = "customerHomeAddressTable")
-    public class PostalAddressDAO extends Model{
 
         public String address1;
         public String address2;
@@ -23,4 +21,5 @@ public class HomeAddressDAO extends Model {
         @Id
         public int id;
 
-    }
+
+}

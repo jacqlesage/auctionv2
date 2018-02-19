@@ -12,7 +12,8 @@ import javax.inject.Inject;
 /**
  * Created by james on 29/10/17.
  */
-public class LoginController extends Controller {
+public class
+LoginController extends Controller {
 
     @Inject
     FormFactory formFactory;
@@ -23,7 +24,7 @@ public class LoginController extends Controller {
         System.out.print(customer.toString());
 
         customer = Customer.findCustomerByEmail(customer.email);
-        System.out.print(customer.toString());
+        System.out.print(customer.toString() + " ");
         //check the password
 
         session().remove("connected");
@@ -33,7 +34,7 @@ public class LoginController extends Controller {
         session().put("email", customer.email);
         session().put("cusNum", Integer.toString(customer.id));
 
-        return ok(Json.toJson(customer));
+        return ok(views.html.dollarLuxuryDashboard.render());
 
     }
 

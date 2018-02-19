@@ -17,11 +17,12 @@ POST     /facebookLogin/Submit      controllers.FacebookLoginController.collectF
 
 POST     /SignupController/Submit      controllers.SignupController.signup()
 
+
 + nocsrf
 POST     /jsRoutes                   controllers.SignupController.signup
 
 + nocsrf
-POST     /login                   controllers.LoginController.login
+POST     /LoginController/login      controllers.LoginController.login
 
 #load into dashboard controller
 GET      /loadDollarDashboard/:email      controllers.DollarLuxuryHomeController.loadDollarDashboard(email: String)
