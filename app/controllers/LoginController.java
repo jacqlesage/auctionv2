@@ -25,13 +25,12 @@ LoginController extends Controller {
         //System.out.println(userForm.toString() + "@@@!@!@!@!@!@");
         Customer customer = formFactory.form(Customer.class).bindFromRequest().get();
         Map<String, String[]> form_values = request().body().asFormUrlEncoded();
-        System.out.println(customer.email+ " ");
-        System.out.println(customer.password + " ");
+
         System.out.println("!!!!" + form_values.get("emailFromLogin")[0]);
         System.out.println("!!!!" + form_values.get("passwordFromLogin")[0]);
-        System.out.println("!!!!" + form_values.get("test")[2]);
-        customer = Customer.findCustomerByEmail(customer.email);
-        System.out.print(customer.toString() + " ");
+
+        customer = Customer.findCustomerByEmail(form_values.get("emailFromLogin")[0]);
+        System.out.print(customer.toString() + "customer found ");
         //check the password
 
         session().remove("connected");
