@@ -10,12 +10,248 @@
 }
 <div class="container">
 
-    <button type="button" class="btn btn-primary btn-block">Add auction</button>
-    <button type="button" class="btn btn-primary btn-block">Delete auction</button>
-    <button type="button" class="btn btn-primary btn-block">Hide Auction</button>
+    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" href="#addAuction"  >Add auction</button>
+    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" href="#deleteAuction">Delete auction</button>
+    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" href="#hideAuction">Hide Auction</button>
 
 </div>
 
+    @*************************Modal for adding an auction*@
+<div class="container">
+
+        <!-- Modal -->
+    <div class="modal fade" id="addAuction" role="dialog">
+        <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign up</h4>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="modal-body">
+                        <form method="" name="signupForm" id="signupForm">
+                            <div class="form-group">
+                                @CSRF.formField
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                            data-fv-notempty="false">
+
+                            <label for="lname">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName">
+
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                    <!-- Split the one Modal into two seections, this section is for using facebook to login-->
+                <div class="col-md-6">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="fbook">Or, Signup with Facebook:</label>
+                            <br>
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+
+                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">
+                                        Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    @*************************end modal for adding an auction@
+
+    @*************************Modal for deleting an auction*@
+<div class="container">
+
+        <!-- Modal -->
+    <div class="modal fade" id="deleteAuction" role="dialog">
+        <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign up</h4>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="modal-body">
+                        <form method="" name="signupForm" id="signupForm">
+                            <div class="form-group">
+                                @CSRF.formField
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                            data-fv-notempty="false">
+
+                            <label for="lname">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName">
+
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                    <!-- Split the one Modal into two seections, this section is for using facebook to login-->
+                <div class="col-md-6">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="fbook">Or, Signup with Facebook:</label>
+                            <br>
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+
+                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">
+                                        Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    @*************************End Modal for deleting an auction *@
+
+    @*************************Modal for hiding an auction*@
+<div class="container">
+
+        <!-- Modal -->
+    <div class="modal fade" id="hideAuction" role="dialog">
+        <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign up</h4>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="modal-body">
+                        <form method="" name="signupForm" id="signupForm">
+                            <div class="form-group">
+                                @CSRF.formField
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                            data-fv-notempty="false">
+
+                            <label for="lname">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName">
+
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                    <!-- Split the one Modal into two seections, this section is for using facebook to login-->
+                <div class="col-md-6">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="fbook">Or, Signup with Facebook:</label>
+                            <br>
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+
+                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">
+                                        Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    @*************************End Modal for hiding an auction*@
 
 </body>
 </html>
