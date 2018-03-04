@@ -35,24 +35,31 @@
                 <div class="col-md-6">
 
                     <div class="modal-body">
-                        <form method="" name="signupForm" id="signupForm">
+                        <form method="" name="addAuction" id="addAuction">
                             <div class="form-group">
                                 @CSRF.formField
-                            <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName"
+                            <label for="auctionheading">Title goes here:</label>
+                            <input type="text" class="form-control" id="auctionheading" name="auctionheading"
                             data-fv-notempty="false">
 
-                            <label for="lname">Last Name:</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName">
+                            <label for="auctionVideo">Click here for auction video</label>
+                            <input type="text" class="form-control" id="auctionVideo" name="auctionVideo">
 
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <label for="auctionSpecs">Email:</label>
+                            <input type="text" class="form-control" id="auctionSpecs" name="auctionSpecs">
 
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <label for="auctionPicture">Password:</label>
+                            <input type="text" class="form-control" id="auctionPicture" name="auctionPicture">
 
-                            <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                            <label for="auctionLocaltion">auction location will be here</label>
+                            <input type="text" class="form-control" id="auctionLocaltion" name="auctionLocaltion">
+
+                            <label for="auctionReserve">auction location will be here</label>
+                            <input type="text" class="form-control" id="auctionReserve" name="auctionReserve">
+
+                            <label for="auctionCurrentPoolOfFunds">auction location will be here</label>
+                            <input type="text" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds">
+
 
                             </div>
                         </form>
