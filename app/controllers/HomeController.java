@@ -2,6 +2,8 @@ package controllers;
 
 import play.mvc.*;
 
+import java.io.File;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -16,6 +18,24 @@ public class HomeController extends Controller {
      */
     public Result index() {
         return ok(views.html.index.render());
+    }
+
+
+    public Result adminView() { return ok(views.html.dollarLuxuryAdminView.render()); }
+
+    public Result upload() {
+        Http.MultipartFormData<File> body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart<File> picture = body.getFile("picture");
+        if (picture != null) {
+            String fileName = picture.getFilename();
+            String contentType = picture.getContentType();
+            File file = picture.getFile();
+            return ok("File uploaded" + fileName +  " plus " + contentType);
+        } else {
+            System.out.println("failed **(*(*(*(");
+            flash("error", "Missing file");
+            return badRequest();
+        }
     }
 
 }
