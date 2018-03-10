@@ -1,8 +1,12 @@
 package controllers;
 
+import model.UploadFilePathDAO;
 import play.mvc.*;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -36,6 +40,23 @@ public class HomeController extends Controller {
             flash("error", "Missing file");
             return badRequest();
         }
+    }
+
+    public Result uploadFile() throws IOException {
+        Desktop d = Desktop.getDesktop();
+        File f = new File("/home/james/Desktop/");
+        String x ="";
+        UploadFilePathDAO uf = new UploadFilePathDAO();
+        x=uf.openDesktop();
+        if(!x.isEmpty()){
+            d.open(f);
+            String t = "";
+            JFileChooser fileChooser = new JFileChooser();
+            t = fileChooser.getSelectedFile().getAbsolutePath();
+            System.out.println(t + "**********");
+
+        }
+        return ok(x);
     }
 
 }
