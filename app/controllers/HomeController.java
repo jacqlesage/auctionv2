@@ -49,11 +49,14 @@ public class HomeController extends Controller {
         UploadFilePathDAO uf = new UploadFilePathDAO();
         x=uf.openDesktop();
         if(!x.isEmpty()){
-            d.open(f);
+            //d.open(f);
             String t = "";
-            JFileChooser fileChooser = new JFileChooser();
-            t = fileChooser.getSelectedFile().getAbsolutePath();
-            System.out.println(t + "**********");
+            JFileChooser fileChooser = new JFileChooser(f);
+
+            int returnVal = fileChooser.showOpenDialog(fileChooser);
+            String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+
+            System.out.println(fileName + "**********");
 
         }
         return ok(x);
