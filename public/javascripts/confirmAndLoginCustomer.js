@@ -181,7 +181,7 @@ function myBlurFunction2() {
 function testPasswordAndEmail(pwd, email){
 
     if(pwd && email === true) {
-        alert("in here");
+
         document.getElementById("submitBtnFromLogin").disabled = false;
 
         return true;
