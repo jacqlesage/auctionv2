@@ -1,6 +1,7 @@
 package controllers;
 
 import model.UploadFilePathDAO;
+import play.libs.Json;
 import play.mvc.*;
 
 import javax.swing.*;
@@ -43,23 +44,27 @@ public class HomeController extends Controller {
     }
 
     public Result uploadFile() throws IOException {
+
         Desktop d = Desktop.getDesktop();
         File f = new File("/home/james/Desktop/");
         String x ="";
+        String fileName ="";
         UploadFilePathDAO uf = new UploadFilePathDAO();
         x=uf.openDesktop();
+
         if(!x.isEmpty()){
             //d.open(f);
             String t = "";
             JFileChooser fileChooser = new JFileChooser(f);
 
             int returnVal = fileChooser.showOpenDialog(fileChooser);
-            String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+            fileName = fileChooser.getSelectedFile().getAbsolutePath();
 
             System.out.println(fileName + "**********");
 
         }
-        return ok(x);
+
+        return ok(Json.toJson(fileName));
     }
 
 }
