@@ -16,6 +16,10 @@
 
 </div>
 
+<script src="@routes.Assets.versioned("javascripts/openFileWindow.js")"></script>
+
+
+
     @*************************Modal for adding an auction*@
 <div class="container">
 
@@ -35,15 +39,39 @@
                 <div class="col-md-6">
 
                     <div class="modal-body">
-                        <form method="" name="addAuction" id="addAuction">
+                        <form method="post" name="addAuction" id="addAuction"  enctype="multipart/form-data">
                             <div class="form-group">
                                 @CSRF.formField
                             <label for="auctionheading">Title goes here:</label>
                             <input type="text" class="form-control" id="auctionheading" name="auctionheading"
                             data-fv-notempty="false">
-
-                            <label for="auctionVideo">Click here for auction video</label>
+                            <br>
+                            <div class="form-group">
+                            <label for="auctionVideo">Auction video file location</label>
                             <input type="text" class="form-control" id="auctionVideo" name="auctionVideo">
+                                <br>
+                                <div>
+                                    @**** @helper.form(action = routes.HomeController.upload, 'formEncType -> "multipart/formMethod") {   action="dollarLuxuryAdminView/uploadFile" ***@
+
+                                <input type="button" name="addFileBtn1" id="addFileBtn1" value="Browse..">
+
+                                    @** }**@
+
+                                </div>
+                                <br>
+                                <label for="auctionMainPicture">Auction main picture file location</label>
+                                <input type="text" class="form-control" id="auctionMainPicture" name="auctionMainPicture">
+                                <br>
+                                <div>
+                                    @**** @helper.form(action = routes.HomeController.upload, 'formEncType -> "multipart/formMethod") {   action="dollarLuxuryAdminView/uploadFile" ***@
+
+                                <input type="button" name="addFileBtn2" id="addFileBtn2" value="Browse..">
+
+                                    @** }**@
+
+                                </div>
+                                <br>
+                            </div>
 
                             <label for="auctionSpecs">Email:</label>
                             <input type="text" class="form-control" id="auctionSpecs" name="auctionSpecs">
@@ -88,9 +116,9 @@
 
                         <div class="form-group">
 
-                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">
+                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn">
                                         Submit</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
 
                     </div>
