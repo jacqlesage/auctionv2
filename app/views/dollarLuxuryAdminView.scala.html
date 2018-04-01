@@ -33,13 +33,13 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Sign up</h4>
+                    <h4 class="modal-title">Add Auction</h4>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
 
                     <div class="modal-body">
-                        <form method="post" name="addAuction" id="addAuction"  enctype="multipart/form-data">
+                        <form method="post" name="addAuction" id="addAuction"  enctype="multipart/form-data" action="@routes.DollarLuxuryHomeController.dollarAdminAuctionPreview()">
                             <div class="form-group">
                                 @CSRF.formField
                             <label for="auctionheading">Title goes here:</label>
@@ -71,44 +71,32 @@
 
                                 </div>
                                 <br>
+
+
                             </div>
-
-                            <label for="auctionSpecs">Email:</label>
-                            <input type="text" class="form-control" id="auctionSpecs" name="auctionSpecs">
-
-                            <label for="auctionPicture">Password:</label>
-                            <input type="text" class="form-control" id="auctionPicture" name="auctionPicture">
-
-                            <label for="auctionLocaltion">Auction location will be here</label>
+                            <label for="auctionSpecs">Auction additional information</label>
+                            <textarea rows="10" class="form-control" id="auctionSpecs" name="auctionSpecs">
+                            </textarea>
+                            <label for="auctionLocaltion">Auction item location</label>
                             <input type="text" class="form-control" id="auctionLocaltion" name="auctionLocaltion">
 
-                            <label for="auctionReserve">Auction reserve will be here</label>
+                            <label for="auctionReserve">Auction recommended retail price</label>
                             <input type="text" class="form-control" id="auctionReserve" name="auctionReserve">
 
-                            <label for="auctionCurrentPoolOfFunds">Auction pool of funds will be here</label>
+                            <label for="auctionCurrentPoolOfFunds">Auction current pool of funds</label>
                             <input type="text" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds">
 
                             <div class="checkbox">
-                                <label><input type="checkbox" id="auctionActive" name="auctionActive" value="">Tick to make active</label>
+                                <label><input type="checkbox" id="auctionActive" name="auctionActive" value="">Tick to make acution active</label>
                             </div>
 
 
                             </div>
-                        </form>
+
                     </div>
 
                 </div>
-                    <!-- Split the one Modal into two seections, this section is for using facebook to login-->
-                <div class="col-md-6">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="fbook">Or, Signup with Facebook:</label>
-                            <br>
-                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
-                        </div>
-                    </div>
 
-                </div>
 
 
                 <div class="modal-footer">
@@ -116,12 +104,13 @@
 
                         <div class="form-group">
 
-                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn">
+                            <button type="submit" class="btn btn-default" id="submitBtn" name="submitBtn">
                                         Submit</button>
-                            <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
 
                     </div>
+                    </form>
                 </div>
 
             </div>
