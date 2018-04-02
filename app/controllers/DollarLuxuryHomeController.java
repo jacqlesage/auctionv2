@@ -1,5 +1,7 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import model.AuctionDAO;
 import model.Customer;
 import play.data.FormFactory;
 import play.libs.Json;
@@ -7,6 +9,8 @@ import play.mvc.*;
 
 
 import javax.inject.Inject;
+
+import java.util.Map;
 
 import static play.mvc.Results.ok;
 
@@ -46,4 +50,42 @@ public class DollarLuxuryHomeController extends Controller{
         return ok(views.html.dollarLuxuryDashboard.render());
         //return redirect(routes.DollarLuxuryHomeController.dollarDashboard());
     }
+
+    public Result dollarAdminAuctionPreview() {
+
+
+        return ok(views.html.dollarLuxuryAdminPreviewAuction.render());
+    }
+
+    public Result dollarLuxuryAdminPreviewAuction(){
+
+        //preview auction before submitting it
+        System.out.println("testing ()(*&(*&(*&(*&");
+
+        //AuctionDAO auctionDAO = formFactory.form(AuctionDAO.class).bindFromRequest().get();
+
+        AuctionDAO auctionDAO = formFactory.form(AuctionDAO.class).bindFromRequest().get();
+        Map<String, String[]> form_values = request().body().asFormUrlEncoded();
+
+        System.out.println("!!!!" + form_values.get("auctionheading")[0]);
+        System.out.println("!!!!" + form_values.get("auctionVideo")[0]);
+
+
+        AuctionDAO auctionDAO1 = new AuctionDAO();
+
+        auctionDAO1 = auctionDAO;
+
+        System.out.println("auctionDAO1 " + auctionDAO1.current_auction_title);
+
+        System.out.println("auctionDAO " + auctionDAO.current_auction_title);
+
+
+        JsonNode jsonNode = Json.toJson(auctionDAO1);
+
+        session().put("auction",Json.stringify(jsonNode));
+
+        return ok(views.html.dollarLuxuryAdminPreviewAuction.render());
+    }
+
+
 }
