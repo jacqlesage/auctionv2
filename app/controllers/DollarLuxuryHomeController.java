@@ -64,16 +64,24 @@ public class DollarLuxuryHomeController extends Controller{
 
         //AuctionDAO auctionDAO = formFactory.form(AuctionDAO.class).bindFromRequest().get();
 
-        AuctionDAO auctionDAO = formFactory.form(AuctionDAO.class).bindFromRequest().get();
+
         Map<String, String[]> form_values = request().body().asFormUrlEncoded();
 
-        System.out.println("!!!!" + form_values.get("auctionheading")[0]);
+
+        AuctionDAO auctionDAO = new AuctionDAO(form_values.get("auctionheading")[0].toString(),
+                form_values.get("auctionVideo")[0].toString(),
+                form_values.get("auctionSpecs")[0].toString(),
+                form_values.get("auctionMainPicture")[0].toString(),
+                form_values.get("auctionLocaltion")[0].toString(),
+                Integer.getInteger(form_values.get("auctionReserve")[0]),
+                0,
+                1);
+
+
+        System.out.println("!!!!" + form_values.get("auctionReserve")[0].toString());
         System.out.println("!!!!" + form_values.get("auctionVideo")[0]);
 
 
-        AuctionDAO auctionDAO1 = new AuctionDAO();
-
-        auctionDAO1 = auctionDAO;
 
         System.out.println("auctionDAO1 " + auctionDAO1.current_auction_title);
 
