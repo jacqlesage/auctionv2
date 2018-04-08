@@ -41,7 +41,7 @@ function validatePassword(){
                //if the data sent back is not the same as the email going in then, the cusotmer does not have this email with us
                 //highlight the error on the form
                 if(obj.email.toString() != data.toString()){
-
+ </form>
                     document.getElementById("email").style.borderColor = "blue";
                     document.getElementById("email").value = "This email is already registered with us";
                     document.getElementById("email").setCustomValidity("This email is already registered with us, please use 'forgotton password'");

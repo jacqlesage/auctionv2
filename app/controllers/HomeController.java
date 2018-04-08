@@ -62,6 +62,10 @@ public class HomeController extends Controller {
 
             System.out.println(fileName + "**********");
 
+        }else{
+
+            return ok(Json.toJson(fileName));
+
         }
 
         return ok(Json.toJson(fileName));

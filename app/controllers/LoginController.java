@@ -19,7 +19,7 @@ LoginController extends Controller {
     @Inject
     FormFactory formFactory;
     //Post data seems to be needing this sort of form setup to get it ? Map<String, String[]> form_values = request().body().asFormUrlEncoded();
-    //not fully sure why as yet - I suspect that I not yet fully using Play froms in 2.6 to their fullest.
+    //not fully sure why as yet - I suspect that I am not yet fully using Play forms in 2.6 to their fullest.
     public Result login() {
 
         //System.out.println(userForm.toString() + "@@@!@!@!@!@!@");

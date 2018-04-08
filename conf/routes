@@ -8,9 +8,26 @@ GET     /                           controllers.HomeController.index
 #Get the Dollar Luxury Home page
 GET     /dollarLuxuryHome           controllers.DollarLuxuryHomeController.dollarHomePage
 
-#Get the Dollar Luxury main dashboard page
+#Get the dollar luxury Admin auction preview
+GET     /dollarLuxuryAdminPreviewAuction           controllers.DollarLuxuryHomeController.dollarAdminAuctionPreview
 
+#Gets the preview of the auction that will be live.
++ nocsrf
+POST    /dollarLuxuryAdminPreviewAuction            controllers.DollarLuxuryHomeController.dollarLuxuryAdminPreviewAuction
+
+
+
+#Get the Dollar Luxury main dashboard page
 GET     /dollarLuxuryDashboard          controllers.DollarLuxuryHomeController.dollarDashboard
+
+#Get the Dollar Luxury admin page
+GET     /dollarLuxuryAdminView           controllers.HomeController.adminView
+
+POST    /dollarLuxuryAdminView/upload          controllers.HomeController.upload
+
+GET    /dollarLuxuryAdminView/uploadFile       controllers.HomeController.uploadFile
+
+GET    /dollarLuxuryAdminView/uploadFile       model.UploadFilePathDAO.uploadFile
 
 #Go the Facebook controller class
 POST     /facebookLogin/Submit      controllers.FacebookLoginController.collectFacebookData
@@ -21,7 +38,7 @@ POST     /SignupController/Submit      controllers.SignupController.signup()
 + nocsrf
 POST     /jsRoutes                   controllers.SignupController.signup
 
-+ nocsrf
+
 POST     /LoginController/login      controllers.LoginController.login
 
 #load into dashboard controller

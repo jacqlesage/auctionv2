@@ -1,5 +1,5 @@
 @import model.AuctionDAO
-@session()
+@session().get("auction")
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,25 +9,25 @@
 
 }
 
-    public String current_auction_title;
 
 
-    public String current_auction_sales_video;
 
 
-    public String urlfor_current_auction_specs;
 
 
-    public String urlfor_current_auction_image;
 
 
-    public String current_auction_item_location;
 
 
-    public int current_auction_reserve_price;
 
 
-    public int current_auction_total_bids;
+
+
+
+
+
+
+
 
 
     public int active;
@@ -35,11 +35,16 @@
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
-            <div class="panel-heading"><p></p>
+            <div class="panel-heading"><h1>@session.</h1>
                 <p>Auction number: <input type="number" class="form-control" readonly></p>
             </div>
-            <div class="panel-body">Car pic goes in here
-
+            <div class="panel-body">
+                <div>public String current_auction_sales_video;</div>
+                <div>public String urlfor_current_auction_specs;</div>
+                <div>public String urlfor_current_auction_image;</div>
+                <div>public String current_auction_item_location;</div>
+                <div>public int current_auction_reserve_price;</div>
+                <div>public int current_auction_total_bids;</div>
             </div>
             <div class="panel-footer">
                 <input type="number" name="quantity" class="form-control" min="1" max="999">

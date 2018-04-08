@@ -38,8 +38,8 @@
 
                 <div class="col-md-12">
 
-                    <div class="modal-body">
-                        <form method="post" name="addAuction" id="addAuction"  enctype="multipart/form-data" action="@routes.DollarLuxuryHomeController.dollarAdminAuctionPreview()">
+                    <div class="modal-body"> @**enctype="multipart/form-data"**@
+                        <form method="post" name="addAuction" id="addAuction"  action="@routes.DollarLuxuryHomeController.dollarLuxuryAdminPreviewAuction()">
                             <div class="form-group">
                                 @CSRF.formField
                             <label for="auctionheading">Title goes here:</label>

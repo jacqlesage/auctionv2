@@ -1,10 +1,15 @@
 package model;
 
+import io.ebean.Ebean;
 import io.ebean.Finder;
 import io.ebean.Model;
 import io.ebean.annotation.JsonIgnore;
+import play.libs.Json;
+import play.mvc.Result;
 
 import javax.persistence.Id;
+
+import static play.mvc.Results.ok;
 
 /**
  * Created by james on 14/09/17.
@@ -40,6 +45,20 @@ public class AuctionDAO extends Model {
     @JsonIgnore
     public static Finder<Integer, AuctionDAO> find = new Finder<Integer,AuctionDAO>(AuctionDAO.class);
 
+
+    public AuctionDAO(String current_auction_title, String current_auction_sales_video, String urlfor_current_auction_specs, String urlfor_current_auction_image, String current_auction_item_location, int current_auction_reserve_price, int current_auction_total_bids, int active) {
+        this.current_auction_title = current_auction_title;
+        this.current_auction_sales_video = current_auction_sales_video;
+        this.urlfor_current_auction_specs = urlfor_current_auction_specs;
+        this.urlfor_current_auction_image = urlfor_current_auction_image;
+        this.current_auction_item_location = current_auction_item_location;
+        this.current_auction_reserve_price = current_auction_reserve_price;
+        this.current_auction_total_bids = current_auction_total_bids;
+        this.active = active;
+    }
+
+    public AuctionDAO() {
+    }
 
     public int getId() {
         return id;
@@ -102,13 +121,39 @@ public class AuctionDAO extends Model {
         this.current_auction_total_bids = current_auction_total_bids;
     }
 
-    public int getActive() {
-        return active;
+    public Result getActive(AuctionDAO auctionDAO) {
+
+        if (auctionDAO != null) {
+            //then customer is not in DB
+            auctionDAO = AuctionDAO.find.query().fetch("active",Integer.toString(1)).findUnique();
+
+
+
+            return ok(Json.toJson(auctionDAO));
+        }
+
+        return ok(Json.toJson("No auction found"));
+
+
+
     }
 
     public void setActive(int active) {
         this.active = active;
     }
 
-
+    @Override
+    public String toString() {
+        return "AuctionDAO{" +
+                "id=" + id +
+                ", current_auction_title='" + current_auction_title + '\'' +
+                ", current_auction_sales_video='" + current_auction_sales_video + '\'' +
+                ", urlfor_current_auction_specs='" + urlfor_current_auction_specs + '\'' +
+                ", urlfor_current_auction_image='" + urlfor_current_auction_image + '\'' +
+                ", current_auction_item_location='" + current_auction_item_location + '\'' +
+                ", current_auction_reserve_price=" + current_auction_reserve_price +
+                ", current_auction_total_bids=" + current_auction_total_bids +
+                ", active=" + active +
+                '}';
+    }
 }

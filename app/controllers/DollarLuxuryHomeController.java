@@ -78,19 +78,20 @@ public class DollarLuxuryHomeController extends Controller{
                 1);
 
 
-        System.out.println("!!!!" + form_values.get("auctionReserve")[0].toString());
-        System.out.println("!!!!" + form_values.get("auctionVideo")[0]);
+        System.out.println("!!!! auction dao " + auctionDAO.toString());
 
-
-
-        System.out.println("auctionDAO1 " + auctionDAO1.current_auction_title);
-
-        System.out.println("auctionDAO " + auctionDAO.current_auction_title);
-
-
-        JsonNode jsonNode = Json.toJson(auctionDAO1);
-
-        session().put("auction",Json.stringify(jsonNode));
+//        System.out.println("!!!!" + form_values.get("auctionVideo")[0]);
+//
+//
+//
+//        System.out.println("auctionDAO1 " + auctionDAO1.current_auction_title);
+//
+//        System.out.println("auctionDAO " + auctionDAO.current_auction_title);
+//
+//
+//        JsonNode jsonNode = Json.toJson(auctionDAO1);
+//
+//        session().put("auction",Json.stringify(jsonNode));
 
         return ok(views.html.dollarLuxuryAdminPreviewAuction.render());
     }
