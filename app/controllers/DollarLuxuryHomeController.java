@@ -73,7 +73,7 @@ public class DollarLuxuryHomeController extends Controller{
                 form_values.get("auctionSpecs")[0].toString(),
                 form_values.get("auctionMainPicture")[0].toString(),
                 form_values.get("auctionLocaltion")[0].toString(),
-                Integer.getInteger(form_values.get("auctionReserve")[0]),
+                Integer.parseInt(form_values.get("auctionReserve")[0]),
                 0,
                 1);
 
