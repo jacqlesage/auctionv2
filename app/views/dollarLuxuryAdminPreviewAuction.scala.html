@@ -36,8 +36,15 @@
                 <p>Auction number: <input type="number" class="form-control" readonly></p>
             </div>
             <div class="panel-body">
-                <div>public String current_auction_sales_video;</div>
-                <div>public String urlfor_current_auction_specs;</div>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen></iframe>
+                </div>
+                <div class="card">
+                    <div class="card-block text-nowrap">
+                        @session.get("auctionSpecs")
+                    </div>
+                </div>
+               
                 <div>public String urlfor_current_auction_image;</div>
                 <div>public String current_auction_item_location;</div>
                 <div>public int current_auction_reserve_price;</div>
