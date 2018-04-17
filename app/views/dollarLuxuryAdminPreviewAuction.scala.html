@@ -32,28 +32,35 @@
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
-            <div class="panel-heading"><h1>@session.get("auctionheading")</h1>
-                <p>Auction number: <input type="number" class="form-control" readonly></p>
+            <form>
+            <div class="panel-heading"><h1 id="auctionTitle">@session.get("auctionheading")</h1>
+
             </div>
             <div class="panel-body">
+                <label for="auctionId">Auction number: This will be generated once auction is made active</label>
+                <input type="number" name="auctionId" id="auctionId" class="form-control" value="666" readonly>
+
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen id="auctionVid"></iframe>
                 </div>
                 <div class="card">
                     <div class="card-block text-nowrap">
-                        @session.get("auctionSpecs")
+                        Click <a href="@session.get("auctionSpecs")" target="_auction_specs" id="auctionSpecURL">here</a> read about the products specifcations.
                     </div>
                 </div>
-               
-                <div>public String urlfor_current_auction_image;</div>
-                <div>public String current_auction_item_location;</div>
-                <div>public int current_auction_reserve_price;</div>
+                <br>
+
+
+                <div><p>Item location : @session.get("auctionLocation")</p></div>
+                <div><p>Auciton reserve (This will be not shown in the live auction) : @session.get("auctionReserve")</p></div>
                 <div>public int current_auction_total_bids;</div>
             </div>
             <div class="panel-footer">
-                <input type="number" name="quantity" class="form-control" min="1" max="999">
+                <label for="bidAmount">Please enter your bid (Whole dollars only)</label>
+                <input type="number" name="quantity" class="form-control" min="1" max="999" readonly>
                 <br>
                 <input type="submit" value="Bid" button type="button" class="btn btn-primary btn-block"></div>
+            </form>
         </div>
     </div>
 </div>
