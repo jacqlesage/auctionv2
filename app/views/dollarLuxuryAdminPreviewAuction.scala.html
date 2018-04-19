@@ -38,17 +38,18 @@
             </div>
             <div class="panel-body">
                 <label for="auctionId">Auction number: This will be generated once auction is made active</label>
-                <input type="number" name="auctionId" id="auctionId" class="form-control" value="666" readonly>
-
+                <br>
+                <div><p><strong>Watch the video below to find out more about the product you're bidding on</strong></p></div>
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen id="auctionVid"></iframe>
                 </div>
+                <br>
                 <div class="card">
                     <div class="card-block text-nowrap">
-                        Click <a href="@session.get("auctionSpecs")" target="_auction_specs" id="auctionSpecURL">here</a> read about the products specifcations.
+                        <p>Click <a href="@session.get("auctionSpecs")" target="_auction_specs" id="auctionSpecURL">here</a> to read about the products specifcations.</p>
                     </div>
                 </div>
-                <br>
+
 
 
                 <div><p>Item location : @session.get("auctionLocation")</p></div>
@@ -59,7 +60,9 @@
                 <label for="bidAmount">Please enter your bid (Whole dollars only)</label>
                 <input type="number" name="quantity" class="form-control" min="1" max="999" readonly>
                 <br>
-                <input type="submit" value="Bid" button type="button" class="btn btn-primary btn-block"></div>
+                <input type="" value="Example of bid button" button type="button" class="btn btn-primary btn-block">
+                <input type="submit" value="Make auction active (not shown in live auction)" button type="button" class="btn btn-primary btn-block">
+            </div>
             </form>
         </div>
     </div>
