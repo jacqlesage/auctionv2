@@ -47,7 +47,7 @@
                             data-fv-notempty="false">
                             <br>
                             <div class="form-group">
-                            <label for="auctionVideo">Auction video file location</label>
+                            <label for="auctionVideo">Auction video file URL</label>
                             <input type="text" class="form-control" id="auctionVideo" name="auctionVideo">
                                 <br>
                                 <div>
@@ -58,25 +58,12 @@
                                     @** }**@
 
                                 </div>
-                                <br>
-                                <label for="auctionMainPicture">Auction main picture file location</label>
-                                <input type="text" class="form-control" id="auctionMainPicture" name="auctionMainPicture">
-                                <br>
-                                <div>
-                                    @**** @helper.form(action = routes.HomeController.upload, 'formEncType -> "multipart/formMethod") {   action="dollarLuxuryAdminView/uploadFile" ***@
-
-                                <input type="button" name="addFileBtn2" id="addFileBtn2" value="Browse..">
-
-                                    @** }**@
-
-                                </div>
-                                <br>
-
-
                             </div>
-                            <label for="auctionSpecs">Auction additional information</label>
-                            <textarea rows="10" class="form-control" id="auctionSpecs" name="auctionSpecs">
-                            </textarea>
+
+
+                            <label for="auctionSpecs">Auction additional information URL</label>
+                            <input type="text" rows="10" class="form-control" id="auctionSpecs" name="auctionSpecs">
+
                             <label for="auctionLocaltion">Auction item location</label>
                             <input type="text" class="form-control" id="auctionLocaltion" name="auctionLocaltion">
 
@@ -86,12 +73,7 @@
                             <label for="auctionCurrentPoolOfFunds">Auction current pool of funds</label>
                             <input type="text" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds">
 
-                            <div class="checkbox">
-                                <label><input type="checkbox" id="auctionActive" name="auctionActive" value="">Tick to make acution active</label>
-                            </div>
-
-
-                            </div>
+                           </div>
 
                     </div>
 

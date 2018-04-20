@@ -52,9 +52,14 @@
 
 
 
-                <div><p>Item location : @session.get("auctionLocation")</p></div>
-                <div><p>Auciton reserve (This will be not shown in the live auction) : @session.get("auctionReserve")</p></div>
-                <div>public int current_auction_total_bids;</div>
+                <div><label for="auctionLoc">Item location : </label>
+                    <input type="text" rows="" class="form-control" id="auctionLoc" name="auctionLoc" value=" @session.get("auctionLocation")"></div>
+                <div><label for="auctionRes">Auciton reserve : </label>
+                    <input type="text" rows="" class="form-control" id="auctionRes" name="auctionRes" value=" @session.get("auctionReserve")"></div>
+                <div><label for="auctionLive">Auction active : </label>
+                    <input type="text" rows="" class="form-control" id="auctionLive" name="auctionLive" value=" @session.get("auctionActive")">
+                    </div>
+
             </div>
             <div class="panel-footer">
                 <label for="bidAmount">Please enter your bid (Whole dollars only)</label>
