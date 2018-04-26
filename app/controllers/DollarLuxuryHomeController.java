@@ -108,17 +108,30 @@ public class DollarLuxuryHomeController extends Controller{
 
         Map<String, String[]> form_values = request().body().asFormUrlEncoded();
 
+//          Not sure I need to place this in the session from here.
+//        session().put("auctionheading",form_values.get("auctionTitle")[0].toString());
+//        session().put("auctionVideo",form_values.get("auctionVideo")[0].toString());
+//        session().put("auctionSpecs",form_values.get("auctionSpecURL")[0].toString());
+//        //session().put("auctionMainPicture",form_values.get("auctionMainPicture")[0].toString());
+//        session().put("auctionReserve",form_values.get("auctionRes")[0].toString());
+//        session().put("auctionLocation", form_values.get("auctionLoc")[0].toString());
+//        session().put("auctionCurrentPoolOfFunds",form_values.get("auctionCurrentPoolOfFunds")[0].toString());
+//        session().put("auctionActive",form_values.get("auctionLive")[0].toString());
 
-        session().put("auctionheading",form_values.get("auctionTitle")[0].toString());
-        session().put("auctionVideo",form_values.get("auctionVideo")[0].toString());
-        session().put("auctionSpecs",form_values.get("auctionSpecURL")[0].toString());
-        //session().put("auctionMainPicture",form_values.get("auctionMainPicture")[0].toString());
-        session().put("auctionReserve",form_values.get("auctionRes")[0].toString());
-        session().put("auctionLocation", form_values.get("auctionLoc")[0].toString());
-        session().put("auctionCurrentPoolOfFunds",form_values.get("auctionCurrentPoolOfFunds")[0].toString());
-        session().put("auctionActive",form_values.get("auctionLive")[0].toString());
+        //clear the session out
+        session().clear();
 
+        AuctionDAO auctionDAO = new AuctionDAO(form_values.get("auctionTitle")[0].toString(),
+                form_values.get("auctionVideo")[0].toString(),
+                form_values.get("auctionSpecURL")[0].toString(),
+                form_values.get("auctionLocaltion")[0].toString(),
+                Integer.parseInt(form_values.get("auctionRes")[0]),
+                Integer.parseInt(form_values.get("auctionCurrentPoolOfFunds")[0].toString()),
+                1);
+        //save the new auction to the DB.
+        auctionDAO.save();
 
+        //Load up the home page and do the checking via JS/Jquery via "onpage load for the new/active auction.
 
         return ok(views.html.dollarLuxuryHome.render());
     }
