@@ -33,8 +33,9 @@
     <div class="panel-group">
         <div class="panel panel-default">
             <form method="post" action="@routes.DollarLuxuryHomeController.dollarLuxuryLoadAuction()">
-            <div class="panel-heading"><h1 id="auctionTitle">@session.get("auctionheading")</h1>
-                <h2>@session.get("auctionVideo")</h2>
+
+            <div class="panel-heading"><h1>@session.get("auctionheading")</h1>
+
 
             </div>
             <div class="panel-body">
@@ -44,23 +45,27 @@
                     <p>*Be sure to get the embded link or there will be no video showing - copy only the URL i.e https://www.youtube.com/embed/_Bg5QLPkiZ8</p>
                 </div>
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen id="auctionVid"></iframe>
+                    <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen ></iframe>
                 </div>
                 <br>
                 <div class="card">
                     <div class="card-block text-nowrap">
-                        <p>Click <a href="@session.get("auctionSpecs")" target="_auction_specs" id="auctionSpecURL">here</a> to read about the products specifcations.</p>
+                        <p>Click <a href="@session.get("auctionSpecs")" target="_auction_specs">here</a> to read about the products specifcations.</p>
                     </div>
                 </div>
-
-
+                @*** Hidden data to pass into the form - not need to be displayed as this is a preview of the auction **@
+                <div hidden>
+                    <input type="text" rows="" class="form-control" id="auctionTitle" name="auctionTitle" value=" @session.get("auctionheading")">
+                    <input type="text" rows="" class="form-control" name="auctionVid" id="auctionVid" value=" @session.get("auctionVideo")">
+                    <input type="text" rows="" class="form-control" name="auctionSpecURL"id="auctionSpecURL" value=" @session.get("auctionLocation")">
+                </div>
 
                 <div><label for="auctionLoc">Item location : </label>
                     <input type="text" rows="" class="form-control" id="auctionLoc" name="auctionLoc" value=" @session.get("auctionLocation")"></div>
                 <div><label for="auctionRes">Auciton reserve : </label>
                     <input type="text" rows="" class="form-control" id="auctionRes" name="auctionRes" value=" @session.get("auctionReserve")"></div>
                 <div><label for="auctionLive">Auction active : </label>
-                    <input type="text" rows="" class="form-control" id="auctionLive" name="auctionLive" value=" @session.get("auctionActive")">
+                    <input type="text" rows="" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds" value=" @session.get("auctionCurrentPoolOfFunds")">
                     </div>
 
             </div>
