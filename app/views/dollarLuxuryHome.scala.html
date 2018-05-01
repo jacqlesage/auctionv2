@@ -4,41 +4,56 @@
 
 }
 
-<div class="container text-center">
-    <h2>To the auction winner....</h2>
-    <p>Watch this video to find out the features of our current auction</p>
-    <div class="embed-responsive embed-responsive-16by9 center-block">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/HuXbM0kaD7k"></iframe>
-    </div>
-</div>
-
-
-
-
 <div class="container">
-    <div class="page-header text-center">
-        <h1>Dollar Luxury current auction</h1>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <form method="post" action="@routes.DollarLuxuryHomeController.dollarLuxuryLoadAuction()">
+
+                <div class="panel-heading"><h1>@session.get("auctionheading")</h1>
+
+
+                </div>
+                <div class="panel-body">
+                    <label for="auctionId">Auction number: This will be generated once auction is made active</label>
+                    <br>
+                    <div><p><strong>Watch the video below to find out more about the product you're bidding on</strong></p>
+
+                    </div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen ></iframe>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-block text-nowrap">
+                            <p>Click <a href="@session.get("auctionSpecs")" target="_auction_specs">here</a> to read about the products specifcations.</p>
+                        </div>
+                    </div>
+                    @*** Hidden data to pass into the form - not need to be displayed as this is a preview of the auction **@
+                    <div hidden>
+                        <input type="text" rows="" class="form-control" id="auctionTitle" name="auctionTitle" value=" @session.get("auctionheading")">
+                        <input type="text" rows="" class="form-control" name="auctionVid" id="auctionVid" value=" @session.get("auctionVideo")">
+                        <input type="text" rows="" class="form-control" name="auctionSpecURL"id="auctionSpecURL" value=" @session.get("auctionLocation")">
+                    </div>
+
+                    <div><label for="auctionLoc">Item location : </label>
+                        <input type="text" rows="" class="form-control" id="auctionLoc" name="auctionLoc" value=" @session.get("auctionLocation")"></div>
+                    <div>
+
+                    <div><label for="auctionLive">Current money injected into auction : </label>
+                        <input type="text" rows="" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds" value=" @session.get("auctionCurrentPoolOfFunds")">
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <label for="bidAmount">Please enter your bid (Whole dollars only)</label>
+                    <input type="number" name="quantity" class="form-control" min="1" max="999" readonly>
+                    <br>
+                    <input type="" value="Example of bid button" button type="button" class="btn btn-primary btn-block">
+                    <input type="submit" value="Make auction active (not shown in live auction)" button type="button" class="btn btn-primary btn-block">
+                </div>
+            </form>
+        </div>
     </div>
-
-</div>
-
-
-
-    <div class="container">
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading"><p> Car heading</p>
-        <p>Auction number: <input type="number" class="form-control" readonly></p>
-    </div>
-    <div class="panel-body">Car pic goes in here
-
-    </div>
-    <div class="panel-footer">
-        <input type="number" name="quantity" class="form-control" min="1" max="999">
-        <br>
-        <input type="submit" value="Bid" button type="button" class="btn btn-primary btn-block"></div>
-  </div>
-</div>
 </div>
 
 </html>
