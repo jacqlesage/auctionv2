@@ -3,7 +3,9 @@ package controllers;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
+
 import model.Customer;
+import model.AuctionDAO;
 import model.UploadFilePathDAO;
 import play.data.FormFactory;
 import play.libs.Json;
@@ -28,21 +30,12 @@ public class JsController extends Controller {
 
         return ok(JavaScriptReverseRouter.create("jsRoutes",
                 routes.javascript.JsController.findCustomerByEmail(),
-                routes.javascript.HomeController.uploadFile()
-//                routes.javascript.JsController.getAllUsers()
+                routes.javascript.HomeController.uploadFile(),
+                routes.javascript.JsController.findActiveAuction()
+
         ));
     }
 
-
-
-
-//    public Result getAllUsers(){
-//        String jsonNode = null;
-//        Customer customer = new Customer();
-//        jsonNode = customer.getAllCustomers();
-//        return ok(jsonNode);
-//
-//    }
 
     public Result findCustomerByEmail(String email) {
 
@@ -58,6 +51,31 @@ public class JsController extends Controller {
             return ok(jsonNode);
         }
     }
+
+    public Result findActiveAuction(){
+
+        System.out.println("inside finding an active auction!!!!!!");
+        AuctionDAO aDAO = null;
+        JsonNode auctionDAO = null;
+        Result result;
+
+        auctionDAO = aDAO.getActiveAuction();
+
+        System.out.println();
+        System.out.println(auctionDAO.toString() + " inside find active still");
+        System.out.println();
+
+        if (auctionDAO == null) {
+            result = notFound(String.format("There is no active auction"));
+            return result;
+        } else {
+
+            return ok(auctionDAO);
+        }
+
+
+    }
+
 
 
 }
