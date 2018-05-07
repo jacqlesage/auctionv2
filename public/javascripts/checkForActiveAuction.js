@@ -19,7 +19,7 @@ $(function() {
             error: (function (data) {
 
                 console.log(data.toString() + " " + JSON.stringify(data) +" NON success from getActive");
-                alert(JSON.stringify(data));
+
             })
         });
 
