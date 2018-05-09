@@ -1,20 +1,30 @@
+@import model.AuctionDAO;
+
 <!DOCTYPE html>
 <html lang="en">
+
 @headerBar{
 
 }
+
+
+
+    @**Probably best to make this two pages - but for now**@
+
+@if(AuctionDAO.find.query().fetch("active",Integer.toString(1)) != null){
 
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
             <form method="post" action="@routes.DollarLuxuryHomeController.dollarLuxuryLoadAuction()">
 
-                <div class="panel-heading"><h1>@session.get("auctionheading")</h1>
+                <div class="panel-heading"><h1></h1>
 
 
                 </div>
                 <div class="panel-body">
-                    <label for="auctionId">Auction number: This will be generated once auction is made active</label>
+                    <label for="auctionId">Auction number:</label>
+                    <input type="text"  class="form-control" id="auctionId" readonly>
                     <br>
                     <div><p><strong>Watch the video below to find out more about the product you're bidding on</strong></p>
 
@@ -55,5 +65,9 @@
         </div>
     </div>
 </div>
+    @}else{
+
+        }
+    }
 
 </html>
