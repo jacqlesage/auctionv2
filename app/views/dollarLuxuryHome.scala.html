@@ -28,19 +28,14 @@
 
                     <br>
                     <div><p><strong>Watch the video below to find out more about the product you're bidding on</strong></p>
-
-
-
-
-
                     </div>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="@session.get("auctionVideo")" allowfullscreen ></iframe>
+                        <iframe class="embed-responsive-item" src="" id="auctionVid" allowfullscreen ></iframe>
                     </div>
                     <br>
                     <div class="card">
                         <div class="card-block text-nowrap">
-                            <p>Click <a href="@session.get("auctionSpecs")" target="_auction_specs">here</a> to read about the products specifcations.</p>
+                            <p>Click <a id="auctionSpecs" href="" target="_auction_specs">here</a> to read about the products specifcations.</p>
                         </div>
                     </div>
                     @*** Hidden data to pass into the form - not need to be displayed as this is a preview of the auction **@
@@ -51,11 +46,11 @@
                     </div>
 
                     <div><label for="auctionLoc">Item location : </label>
-                        <input type="text" rows="" class="form-control" id="auctionLoc" name="auctionLoc" value=" @session.get("auctionLocation")"></div>
-                    <div>
+                        <input type="text" rows="" class="form-control" id="auctionLoc" name="auctionLoc" value=""></div>
 
-                    <div><label for="auctionLive">Current money injected into auction : </label>
-                        <input type="text" rows="" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds" value=" @session.get("auctionCurrentPoolOfFunds")">
+
+                    <div><label for="auctionLive">Money in auction : </label>
+                        <input type="text" rows="" class="form-control" id="auctionCurrentPoolOfFunds" name="auctionCurrentPoolOfFunds" value=" Place $1 in to see where this auction is and you might win the auction for yourself!">
                     </div>
 
                 </div>
@@ -64,7 +59,7 @@
                     <input type="number" name="quantity" class="form-control" min="1" max="999" readonly>
                     <br>
                     <input type="" value="Example of bid button" button type="button" class="btn btn-primary btn-block">
-                    <input type="submit" value="Make auction active (not shown in live auction)" button type="button" class="btn btn-primary btn-block">
+
                 </div>
             </form>
         </div>
