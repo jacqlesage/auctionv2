@@ -118,7 +118,7 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Sign up</h4>
+                    <h4 class="modal-title">This is for deleting a current auction that has been loaded in error, proceed with caution</h4>
                 </div>
 
                 <div class="col-md-6">
@@ -127,29 +127,24 @@
                         <form method="" name="signupForm" id="signupForm">
                             <div class="form-group">
                                 @CSRF.formField
-                            <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName"
+                            <label for="fname">Get auction number </label>
+                            <input type="text" class="form-control" id="aucNum" name="aucNum"
                             data-fv-notempty="false">
 
-                            <label for="lname">Last Name:</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName">
+                            <label for="lname">Show title:</label>
+                            <input type="text" class="form-control" id="aucTitle" name="aucTitle">
 
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <label for="email">show location</label>
+                            <input type="email" class="form-control" id="auctionLoc" name="auctionLoc">
 
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password">
-
-                            <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-
+                            <input type="checkbox" name="getCurrentAuction" id="getCurrentAuction" value="Get Current auction"> Get current auction?
                             </div>
                         </form>
                     </div>
 
                 </div>
                     <!-- Split the one Modal into two seections, this section is for using facebook to login-->
-                <div class="col-md-6">
+               <!-- <div class="col-md-6">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="fbook">Or, Signup with Facebook:</label>
@@ -159,14 +154,14 @@
                     </div>
 
                 </div>
-
+            -->
 
                 <div class="modal-footer">
                     <div class="col-md-12">
 
                         <div class="form-group">
 
-                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="validatePassword()">
+                            <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="()">
                                         Submit</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
