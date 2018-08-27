@@ -45,6 +45,44 @@ $(document).ready(function() {
     })
 })
 });
+
+
+//load customers address details
+
+$("#updateMyAddressDetails").click(function() {
+
+    alert("update my ADDRESS DETAILS");
+    var emailFromDashboard = document.getElementById("customerEmail").value;
+    var customerNumberFromDashboard = document.getElementById("customerNumber").value;
+    var addressLine1 = document.getElementById("address1").value;
+    var addressLine2 = document.getElementById("address2").value;
+    var city = document.getElementById("city").value;
+    var country = document.getElementById("country").value;
+    var postCode = document.getElementById("postCode").value;
+
+    var text = '{ "addInfo" : [' +
+        '{ "email": emailFromDashboard , "cusNum": customerNumberFromDashboard },' +
+        '{ "firstName":"Anna" , "lastName":"Smith" },' +
+        '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+    $.ajax(jsRoutes.controllers.JsController.findCustomerByEmail(emailFromDashboard))
+            .done(function (data) {
+                alert(data);
+                console.log("this is a console log " + data.toString());
+                console.log("this is a console log " + data);
+                var addressLine1 = document.getElementById("address1");
+                var addressLine2 = document.getElementById("address2");
+                var city = document.getElementById("city");
+                var country = document.getElementById("country");
+                var postCode = document.getElementById("postCode");
+
+
+            }).fail(function (data) {
+            alert("Try again champ!");
+        });
+    });
+
+
 //
 //     $("#details").click(function(){
 //         var emailFromDashboard = document.getElementById("emailFromDashboard").value;

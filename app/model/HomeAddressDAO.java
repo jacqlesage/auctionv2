@@ -22,4 +22,14 @@ public class HomeAddressDAO extends Model {
         public int id;
 
 
+        public HomeAddressDAO(String address1, String address2, String city, String country, String postCode, String cusEmailReference, int cusNumberReference, int id) {
+                this.address1 = address1;
+                this.address2 = address2;
+                this.city = city;
+                this.country = country;
+                this.postCode = postCode;
+                this.cusEmailReference = cusEmailReference;
+                this.cusNumberReference = cusNumberReference;
+                this.id = id;
+        }
 }

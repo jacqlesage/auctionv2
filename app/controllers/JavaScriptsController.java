@@ -9,7 +9,7 @@ public class JavaScriptsController extends Controller{
 
     public Result findActiveAuction(){
         AuctionDAO aDAO = null;
-        JsonNode auctionDAO = null;
+        Result auctionDAO = null;
         Result result;
 
         auctionDAO = aDAO.getActiveAuction();
@@ -19,7 +19,7 @@ public class JavaScriptsController extends Controller{
             return result;
         } else {
 
-            return ok(auctionDAO);
+            return auctionDAO;
         }
 
 

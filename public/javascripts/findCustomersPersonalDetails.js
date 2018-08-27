@@ -6,6 +6,8 @@
 $(document).ready(function() {
     var emailFromDashboard = document.getElementById("emailFromDashboard").value;
 
+    var lname = document.getElementById("lastNameDashboard");
+
     var phone = document.getElementById("phone");
 
     var password = document.getElementById("pwd");
@@ -19,15 +21,21 @@ $(document).ready(function() {
 
             console.log(data);
 
-            if(data.phoneNumber == null) {
+
+
+            if(data.phoneNumber == null ) {
                 //only need to update phone here as the rest of the details are puled from session...humm....
                 phone.value = "Please update";
-                //password.value = "You can change your password here";
 
-            }else{
-                //password.value = "You can change your password here";
 
             }
+
+            if(data.lastName != null){
+                lname.value = data.lastName;
+            }else{
+                lname.value = "Please update";
+            }
+
         }),
 
         error: (function (data) {

@@ -6,6 +6,7 @@ import model.Customer;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
+import play.routing.JavaScriptReverseRouter;
 
 
 import javax.inject.Inject;
@@ -100,7 +101,7 @@ public class DollarLuxuryHomeController extends Controller{
     }
 
 
-    public Result dollarLuxuryLoadAuction() {
+    public Result dollarLoadAuction() {
 
 
         //AuctionDAO auctionDAO = formFactory.form(AuctionDAO.class).bindFromRequest().get();

@@ -31,7 +31,7 @@ public class JsController extends Controller {
         return ok(JavaScriptReverseRouter.create("jsRoutes",
                 routes.javascript.JsController.findCustomerByEmail(),
                 routes.javascript.HomeController.uploadFile(),
-                routes.javascript.JsController.findActiveAuction()
+                routes.javascript.JsController.findCustomerByEmail()
 
         ));
     }
@@ -59,18 +59,18 @@ public class JsController extends Controller {
         JsonNode auctionDAO = null;
         Result result;
 
-        auctionDAO = aDAO.getActiveAuction();
+        result = aDAO.getActiveAuction();
 
         System.out.println();
-        System.out.println(auctionDAO.toString() + " inside find active still");
+        System.out.println(result.toString() + " inside find active still");
         System.out.println();
 
-        if (auctionDAO == null) {
+        if (result == null) {
             result = notFound(String.format("There is no active auction"));
             return result;
         } else {
 
-            return ok(auctionDAO);
+            return result;
         }
 
 

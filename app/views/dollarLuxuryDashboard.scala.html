@@ -13,6 +13,7 @@
 <script src="@routes.Assets.versioned("javascripts/findCustomersAddressDetails.js")"></script>
 <script src="@routes.Assets.versioned("javascripts/findCustomersPostalAddressDetails.js")"></script>
 <script src="@routes.Assets.versioned("javascripts/findCustomersPersonalDetails.js")"></script>
+<script src="@routes.Assets.versioned("javascripts/confirm_password2.js")"></script>
 
 
 
@@ -113,6 +114,10 @@
                             <label for="postCode">Postcode:</label>
                             <input type="text" class="form-control " id="postCode">
 
+                            <input type="hidden" class="form-control " id="customerEmail" value="@session.get("email")">
+
+                            <input type="hidden" class="form-control" id="customerNumber" value="@session.get("customerNumber")">
+
                             </div>
                         </form>
                     </div>
@@ -120,7 +125,7 @@
 
                             <div class="form-group">
 
-                                <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="">
+                                <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="updateMyAddressDetails()">
                                                                 Submit</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
@@ -143,12 +148,12 @@
             </div>
             <div class="modal-body">
 
-                    <label for="firstName">First name:</label>
-                    <input type="text" class="form-control " id="firstName" name="firstName" value="@session.get("firstName")">
+                    <label for="firstNameDashboard">First name:</label>
+                    <input type="text" class="form-control " id="firstNameDashboard" name="firstNameDashboard" value="@session.get("firstName")">
 
 
-                    <label for="lastName">Last name:</label>
-                    <input type="text" class="form-control" id="lastName" value="@session.get("lastName")">
+                    <label for="lastNameDashboard">Last name:</label>
+                    <input type="text" class="form-control" id="lastNameDashboard" name="lastNameDashboard" value="@session.get("lastName")">
 
                     <label for="phone">Phone:</label>
                     <input type="tel" class="form-control" value="" id="phone">
@@ -159,12 +164,15 @@
                     <label for="pwd">Password:</label>
                     <input type="password" class="form-control" id="pwd">
 
+                    <label for="pwdConfirmed">Confirm Password:</label>
+                    <input type="password" class="form-control" id="pwdConfirmed" onblur="confirmPassword()">
+
             </div>
             <div class="modal-footer">
 
                 <div class="form-group">
 
-                    <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="">
+                    <button type="button" class="btn btn-default" id="submitBtnPersonalDetails" name="submitBtnPersonalDetails" onclick="">
                                                                 Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -185,7 +193,7 @@
                 <h4 class="modal-title">Edit my postal address details</h4>
             </div>
             <div class="modal-body">
-                <form method="" name="" id="">
+                <form method="" name="">
                     <div class="form-group">
                         @CSRF.formField
                     <label for="address1">Address line 1:</label>

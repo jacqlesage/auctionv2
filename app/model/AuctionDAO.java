@@ -114,22 +114,18 @@ public class AuctionDAO extends Model {
         this.current_auction_total_bids = current_auction_total_bids;
     }
 
-    public Result getActive(AuctionDAO auctionDAO) {
+    public Result getActiveAuction() {
 
-        if (auctionDAO != null) {
-            //then customer is not in DB
-            auctionDAO = AuctionDAO.find.query().fetch("active",Integer.toString(1)).findUnique();
-
-
+        AuctionDAO auctionDAO = AuctionDAO.find.query().fetch("active",Integer.toString(1)).findUnique();
 
             return ok(Json.toJson(auctionDAO));
         }
 
-        return ok(Json.toJson("No auction found"));
+        //return ok(Json.toJson("No auction found"));
 
 
 
-    }
+
 
     public void setActive(int active) {
         this.active = active;

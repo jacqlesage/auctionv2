@@ -14,6 +14,7 @@ GET     /dollarLuxuryAdminPreviewAuction           controllers.DollarLuxuryHomeC
 #Gets the preview of the auction that will be live.
 + nocsrf
 POST    /dollarLuxuryAdminPreviewAuction            controllers.DollarLuxuryHomeController.dollarLuxuryAdminPreviewAuction
+POST    /dollarLuxuryAdminPreviewAuction            controllers.DollarLuxuryHomeController.dollarLoadAuction
 
 
 
