@@ -1,10 +1,10 @@
 alert("phoneunmber");
+var initialPhoneValue = document.getElementById("phone");
+var initialEmailValue = document.getElementById("emailFromDashboard");
+var intialPasswordValue = document.getElementById("pwd");
 
 $(document).ready(function(){
 
-    var initialPhoneValue = document.getElementById("phone").value;
-    var initialEmailValue = document.getElementById("emailFromDashboard").value;
-    var intialPasswordValue = document.getElementById("pwd").value;
 
         $("#checkBoxPhone").change(function(){
             var checkBox = document.getElementById("checkBoxPhone");
@@ -15,37 +15,46 @@ $(document).ready(function(){
                 document.getElementById("phone").disabled = true;
             }
 
-            $("#checkBoxEmail").change(function(){
-                var checkBox = document.getElementById("checkBoxEmail");
-                if(checkBox.checked == true) {
-                    document.getElementById("emailFromDashboard").disabled = false;
+        });
 
-                }else{
-                    document.getElementById("emailFromDashboard").disabled = true;
+        $("#checkBoxEmail").change(function(){
+             var checkBox = document.getElementById("checkBoxEmail");
+             if(checkBox.checked == true) {
+                 document.getElementById("emailFromDashboard").disabled = false;
+
+             }else{
+                 document.getElementById("emailFromDashboard").disabled = true;
                 }
 
-                $("#checkBoxPwd").change(function(){
-                    var checkBox = document.getElementById("checkBoxPwd");
-                    if(checkBox.checked == true) {
-                        document.getElementById("pwd").disabled = false;
-                        document.getElementById("pwdConfirmed").disabled = false;
-
-
-                    }else{
-                        document.getElementById("pwd").disabled = true;
-                        document.getElementById("pwdConfirmed").disabled = true;
-                    }
-        //run ajax call here.
         });
-    });
+
+        $("#checkBoxPwd").change(function(){
+              var checkBox = document.getElementById("checkBoxPwd");
+              if(checkBox.checked == true) {
+                 document.getElementById("pwd").disabled = false;
+                 document.getElementById("pwdConfirmed").disabled = false;
+
+                }else{
+                  document.getElementById("pwd").disabled = true;
+                  document.getElementById("pwdConfirmed").disabled = true;
+                }
+        //run ajax call here.
         });
 });
 
 
-    function updateUserInfo(){
+    function DashboardUserEntersFields(){
 
         //as this only happens when the user leaves the field we can compare the values in the global vals
+        //on focus to get the values when the user goes in
+        //onblur to get the value when the user finishes
 
+
+         initialPhoneValue = document.getElementById("phone").value;
+         initialEmailValue = document.getElementById("emailFromDashboard").value;
+         intialPasswordValue = document.getElementById("pwd").value;
+
+         alert(initialPhoneValue + " " + initialEmailValue + " " + intialPasswordValue)
     }
     // var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
     // //var r = jsRoutes.controllers.JsController.login
