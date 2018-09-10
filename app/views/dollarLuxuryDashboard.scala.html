@@ -14,6 +14,7 @@
 <script src="@routes.Assets.versioned("javascripts/findCustomersPostalAddressDetails.js")"></script>
 <script src="@routes.Assets.versioned("javascripts/findCustomersPersonalDetails.js")"></script>
 <script src="@routes.Assets.versioned("javascripts/confirm_password2.js")"></script>
+<script src="@routes.Assets.versioned("javascripts/dashboard_update_phoneNumber.js")"></script>
 
 
 
@@ -146,6 +147,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Edit my personal details</h4>
             </div>
+            <form action="#test">
             <div class="modal-body">
 
                     <label for="firstNameDashboard">First name:</label>
@@ -154,33 +156,35 @@
 
                     <label for="lastNameDashboard">Last name:</label>
                     <input type="text" class="form-control" id="lastNameDashboard" name="lastNameDashboard" value="@session.get("lastName")">
+                    <div class="checkbox">
+                    <label for="phone"><input type="checkbox" id="checkBoxPhone">Phone:</label>
+                    <input type="tel" class="form-control" value="" id="phone" name="phone" disabled="true" onblur="DashboardUserEntersFields()">
 
-                    <label for="phone">Phone:</label>
-                    <input type="tel" class="form-control" value="" id="phone">
+                    <label for="email"><input type="checkbox" id="checkBoxEmail" name="checkBoxEmail">Email address:</label>
+                    <input type="email" class="form-control " value="@session.get("email")" id="emailFromDashboard" name="emailFromDashboard" disabled="true">
 
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control " value="@session.get("email")" id="emailFromDashboard">
+                    <label for="pwd"><input type="checkbox" id="checkBoxPwd" name="checkBoxPwd">Change Password:</label>
+                    <input type="password" class="form-control" id="pwd" name="pwd" disabled="true" onblur="DashboardUserEntersFields()">
 
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
-
-                    <label for="pwdConfirmed">Confirm Password:</label>
-                    <input type="password" class="form-control" id="pwdConfirmed" onblur="confirmPassword()">
+                    <label for="pwdConfirmed">Confirm Changed Password:</label>
+                    <input type="password" class="form-control" id="pwdConfirmed" name="pwdConfirmed" disabled="true">
 
             </div>
             <div class="modal-footer">
 
                 <div class="form-group">
 
-                    <button type="button" class="btn btn-default" id="submitBtnPersonalDetails" name="submitBtnPersonalDetails" onclick="">
+                    <button type="submit" class="btn btn-default" id="submitBtnPersonalDetails" name="submitBtnPersonalDetails" onclick="" >
                                                                 Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 
             </div>
+            </form>
         </div>
 
     </div>
+
 </div>
 
     <!-- Modal content- for changing postal details-->

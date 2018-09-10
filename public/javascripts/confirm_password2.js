@@ -1,22 +1,20 @@
-alert("test");
+document.getElementById("submitBtnPersonalDetails").disabled = true;
 
 function confirmPassword() {
 
     var password = document.getElementById("pwd")
         , confirm_password = document.getElementById("pwdConfirmed")
-        , submit = document.getElementById("submitBtn");
+        , submit = document.getElementById("submitBtnPersonalDetails");
 
     console.log(document.getElementById("password").value);
     if (password.value != confirm_password.value) {
 
         confirm_password.style.borderColor = "red";
-        confirm_password.setCustomValidity('Please confirm your password');
-
-        document.getElementById("submitBtnPersonalDetails").disabled = true;
         submit.disabled = true;
 
     }else{
-        submit.disabled = true;
+        confirm_password.style.borderColor = "green";
+        submit.disabled = false;
     }
 
 }

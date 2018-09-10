@@ -10,6 +10,7 @@ $(document).ready(function(){
             var checkBox = document.getElementById("checkBoxPhone");
             if(checkBox.checked == true) {
                 document.getElementById("phone").disabled = false;
+                initialPhoneValue = document.getElementById("phone").value;
 
             }else{
                 document.getElementById("phone").disabled = true;
@@ -21,9 +22,11 @@ $(document).ready(function(){
              var checkBox = document.getElementById("checkBoxEmail");
              if(checkBox.checked == true) {
                  document.getElementById("emailFromDashboard").disabled = false;
+                 initialPhoneValue = document.getElementById("emailFromDashboard").value;
 
              }else{
                  document.getElementById("emailFromDashboard").disabled = true;
+
                 }
 
         });
@@ -32,6 +35,7 @@ $(document).ready(function(){
               var checkBox = document.getElementById("checkBoxPwd");
               if(checkBox.checked == true) {
                  document.getElementById("pwd").disabled = false;
+                  initialPhoneValue = document.getElementById("pwd").value;
                  document.getElementById("pwdConfirmed").disabled = false;
 
                 }else{
@@ -48,13 +52,16 @@ $(document).ready(function(){
         //as this only happens when the user leaves the field we can compare the values in the global vals
         //on focus to get the values when the user goes in
         //onblur to get the value when the user finishes
+         var CompareInitialPhoneValue = document.getElementById("phone").value;
+         var CompareInitialEmailValue = document.getElementById("emailFromDashboard").value;
+         var CompareIntialPasswordValue = document.getElementById("pwd").value;
+
+         if(CompareInitialPhoneValue.toString() == initialPhoneValue.toString()){
+             alert("testPhone");
+         }
 
 
-         initialPhoneValue = document.getElementById("phone").value;
-         initialEmailValue = document.getElementById("emailFromDashboard").value;
-         intialPasswordValue = document.getElementById("pwd").value;
-
-         alert(initialPhoneValue + " " + initialEmailValue + " " + intialPasswordValue)
+         alert(initialPhoneValue + " " + CompareInitialPhoneValue + " " + initialEmailValue + " " + intialPasswordValue)
     }
     // var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
     // //var r = jsRoutes.controllers.JsController.login
