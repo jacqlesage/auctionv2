@@ -22,7 +22,7 @@ $(document).ready(function(){
              var checkBox = document.getElementById("checkBoxEmail");
              if(checkBox.checked == true) {
                  document.getElementById("emailFromDashboard").disabled = false;
-                 initialPhoneValue = document.getElementById("emailFromDashboard").value;
+                 initialEmailValue = document.getElementById("emailFromDashboard").value;
 
              }else{
                  document.getElementById("emailFromDashboard").disabled = true;
@@ -35,7 +35,7 @@ $(document).ready(function(){
               var checkBox = document.getElementById("checkBoxPwd");
               if(checkBox.checked == true) {
                  document.getElementById("pwd").disabled = false;
-                  initialPhoneValue = document.getElementById("pwd").value;
+                  initialPasswordValue = document.getElementById("pwd").value;
                  document.getElementById("pwdConfirmed").disabled = false;
 
                 }else{
@@ -60,9 +60,57 @@ $(document).ready(function(){
              alert("testPhone");
          }
 
+        if(CompareInitialEmailValue.toString() == initialEmailValue.toString()){
+            alert("testEmail");
+        }
+
+        if(CompareIntialPasswordValue.toString() == intialPasswordValue.toString()){
+            alert("testPassowrd");
+        }
+
+
 
          alert(initialPhoneValue + " " + CompareInitialPhoneValue + " " + initialEmailValue + " " + intialPasswordValue)
     }
+
+function ChangeUserPhone(){
+
+    //as this only happens when the user leaves the field we can compare the values in the global vals
+    //on focus to get the values when the user goes in
+    //onblur to get the value when the user finishes
+    var CompareInitialPhoneValue = document.getElementById("phone").value;
+
+    if(CompareInitialPhoneValue.toString() == initialPhoneValue.toString()){
+        alert(initialPhoneValue + " " + CompareInitialPhoneValue);
+        //then it has not changed
+    }else{
+        //it has changed
+        alert(initialPhoneValue + " it has changed " + CompareInitialPhoneValue);
+
+    }
+
+
+}
+
+function ChangeUserEmail(){
+
+    //as this only happens when the user leaves the field we can compare the values in the global vals
+    //on focus to get the values when the user goes in
+    //onblur to get the value when the user finishes
+    var CompareInitialEmailValue = document.getElementById("emailFromDashboard").value;
+
+    if(CompareInitialEmailValue.toString() == initialEmailValue.toString()){
+        alert(initialEmailValue + " " + CompareInitialEmailValue);
+        //then it has not changed
+    }else{
+        //it has changed
+        alert(initialEmailValue + " it has changed " + CompareInitialEmailValue);
+
+    }
+
+
+}
+
     // var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
     // //var r = jsRoutes.controllers.JsController.login
     // (emailFromLogin);
