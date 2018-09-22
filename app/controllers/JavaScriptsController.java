@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.Controller;
 import model.AuctionDAO;
 import play.mvc.Result;
+import model.Customer;
+
 
 public class JavaScriptsController extends Controller{
 
@@ -24,4 +26,11 @@ public class JavaScriptsController extends Controller{
 
 
     }
+
+    public Result changeUserPhoneNumber(){
+
+        return ok();
+    }
+
+
 }

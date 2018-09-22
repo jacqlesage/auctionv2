@@ -11,6 +11,7 @@ import play.mvc.Result;
 
 import javax.persistence.*;
 
+import static play.mvc.Results.TODO;
 import static play.mvc.Results.ok;
 
 //import play.libs.Crypto; // crypt AES
@@ -191,6 +192,13 @@ public class Customer extends Model {
    public void checkPassword(Json customer){
 
 
+
+   }
+
+   public void changeCustomerPhoneNumber(String phNum){
+
+        //take customer number
+        //put it into database
 
    }
 

@@ -87,9 +87,38 @@ function ChangeUserPhone(){
         //it has changed
         alert(initialPhoneValue + " it has changed " + CompareInitialPhoneValue);
 
+        //CALL AJAX WITH ComparedValue
+        var obj = {
+
+            updatedPhoneNumber: CompareInitialPhoneValue,
+            email: initialEmailValue
+
+        };
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: JSON.stringify(obj),
+            contentType: "application/json; charset=utf-8",
+            url: "/customer/update/" + obj.updatedPhoneNumber,
+            success: function (data) {
+                //if the data sent back is not the same as the email going in then, the cusotmer does have this email with us
+
+                if (obj.email.toString() != data.toString()) {
+
+                    //else we want to log the customer in
+                    $.ajax({
+                        type: "POST",
+                        dataType: 'json',
+                        data: JSON.stringify(obj),
+                        contentType: "application/json; charset=utf-8",
+                        url: "/login"
+
+                    });
+
     }
 
-
+        }
 }
 
 function ChangeUserEmail(){
@@ -108,6 +137,26 @@ function ChangeUserEmail(){
 
     }
 
+
+}
+
+function ChangeUserPassword(){
+
+    //as this only happens when the user leaves the field we can compare the values in the global vals
+    //on focus to get the values when the user goes in
+    //onblur to get the value when the user finishes
+    var CompareInitialPwdValue = document.getElementById("pwd").value;
+
+    if(CompareInitialPwdValueValue.toString() == initialPasswordValue.toString()){
+        alert(initialPasswordValue + " " + CompareInitialPwdValueValue);
+        //then it has not changed
+    }else{
+        //it has changed
+        alert(initialPasswordValue + " it has changed " + CompareInitialPwdValueValue);
+
+    }
+        }
+    }
 
 }
 
