@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by james on 30/12/17.
@@ -74,8 +75,24 @@ public class JsController extends Controller {
         }
 
 
+
     }
 
+    public Result changeUserPhoneNumber(String cusDetails){
+        Customer customer = new Customer();
+        Map<String, String[]> form_values = request().body().asFormUrlEncoded();
+
+        System.out.println("!!!!" + form_values.get("emailFromLogin")[0]);
+        System.out.println("!!!!" + form_values.get("passwordFromLogin")[0]);
+
+        customer = Customer.findCustomerByEmail(form_values.get("emailFromLogin")[0]);
+        System.out.print(customer.toString() + "customer found ");
+
+
+
+
+        return ok();
+    }
 
 
 }
