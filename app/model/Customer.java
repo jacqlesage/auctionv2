@@ -195,12 +195,17 @@ public class Customer extends Model {
 
    }
 
-   public void changeCustomerPhoneNumber(String phNum){
+   public void changeCustomerDetails(String cusDetails){
 
-        //take customer number
-        //put it into database
+       System.out.println("Json cus details" + cusDetails.toString());
+            return;
+       //Customer cus = Customer.findCustomerByEmail(cusEmail);
+
+       //insert the new value
 
    }
+
+
 
     @Override
     public String toString() {

@@ -1,7 +1,7 @@
-alert("phoneunmber");
 var initialPhoneValue = document.getElementById("phone");
 var initialEmailValue = document.getElementById("emailFromDashboard");
 var intialPasswordValue = document.getElementById("pwd");
+
 
 $(document).ready(function(){
 
@@ -73,17 +73,17 @@ $(document).ready(function(){
          alert(initialPhoneValue + " " + CompareInitialPhoneValue + " " + initialEmailValue + " " + intialPasswordValue)
     }
 
-function ChangeUserPhone(){
+function ChangeUserPhone() {
 
     //as this only happens when the user leaves the field we can compare the values in the global vals
     //on focus to get the values when the user goes in
     //onblur to get the value when the user finishes
     var CompareInitialPhoneValue = document.getElementById("phone").value;
 
-    if(CompareInitialPhoneValue.toString() == initialPhoneValue.toString()){
+    if (CompareInitialPhoneValue.toString() == initialPhoneValue.toString()) {
         alert(initialPhoneValue + " " + CompareInitialPhoneValue);
         //then it has not changed
-    }else{
+    } else {
         //it has changed
         alert(initialPhoneValue + " it has changed " + CompareInitialPhoneValue);
 
@@ -93,33 +93,33 @@ function ChangeUserPhone(){
             updatedPhoneNumber: CompareInitialPhoneValue,
             email: initialEmailValue
 
-        };
+        }
 
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            data: JSON.stringify(obj),
-            contentType: "application/json; charset=utf-8",
-            url: "/customer/update/" + obj.updatedPhoneNumber,
-            success: function (data) {
-                //if the data sent back is not the same as the email going in then, the cusotmer does have this email with us
-
-                if (obj.email.toString() != data.toString()) {
-
-                    //else we want to log the customer in
-                    $.ajax({
-                        type: "POST",
-                        dataType: 'json',
-                        data: JSON.stringify(obj),
-                        contentType: "application/json; charset=utf-8",
-                        url: "/login"
-
-                    });
+        // $.ajax({
+        //     type: "POST",
+        //     dataType: 'json',
+        //     data: JSON.stringify(obj),
+        //     contentType: "application/json; charset=utf-8",
+        //     url: "/customer/update/" + obj.updatedPhoneNumber,
+        //     success: function (data) {
+        //         //if the data sent back is not the same as the email going in then, the cusotmer does have this email with us
+        //
+        //         if (obj.email.toString() != data.toString()) {
+        //
+        //             //else we want to log the customer in
+        //             // $.ajax({
+        //             //     type: "POST",
+        //             //     dataType: 'json',
+        //             //     data: JSON.stringify(obj),
+        //             //     contentType: "application/json; charset=utf-8",
+        //             //     url: "/login"
+        //             //
+        //             // });
 
     }
 
-        }
-}
+
+};
 
 function ChangeUserEmail(){
 
@@ -156,9 +156,9 @@ function ChangeUserPassword(){
 
     }
         }
-    }
 
-}
+
+
 
     // var r = jsRoutes.controllers.JsController.findCustomerByEmail(emailFromLogin);
     // //var r = jsRoutes.controllers.JsController.login

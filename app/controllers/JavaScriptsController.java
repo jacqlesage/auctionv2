@@ -27,10 +27,7 @@ public class JavaScriptsController extends Controller{
 
     }
 
-    public Result changeUserPhoneNumber(){
 
-        return ok();
-    }
 
 
 }
