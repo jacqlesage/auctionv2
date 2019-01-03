@@ -80,13 +80,14 @@ function submitUpdates(){
              dataType: 'json',
              data: updateObj,
              contentType: "application/json; charset=utf-8",
-             url: "/customer/update/",
+             url: "/customer/update/"+ updateObj,
              success: function (data) {
-
+                 alert("Success in Ajax call " + data.toString());
              },
 
              error: function (data) {
-                 alert("error in Ajax call " + data);
+                 console.log(data);
+                 alert("error in Ajax call " + data.toString());
 
              }
 
@@ -94,8 +95,9 @@ function submitUpdates(){
 
 });
 
-   // alert(detailsToUpdateObject.updatedEmail + " " + detailsToUpdateObject.updatedPhoneNumber +" "+ detailsToUpdateObject.updatedPwd);
+
 }
+
 
 
 // function DashboardUserEntersFields(){
