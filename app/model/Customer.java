@@ -120,6 +120,14 @@ public class Customer extends Model {
 
     }
 
+    public Customer(String phoneNumber, String email, String password, Boolean dummy){
+
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+        dummy = true;
+    }
+
     public Customer() {
 
     }
@@ -195,9 +203,20 @@ public class Customer extends Model {
 
    }
 
-   public void changeCustomerDetails(String cusDetails){
+   public void changeCustomerDetails(JsonNode cusDetails){
 
-       System.out.println("Json cus details" + cusDetails.toString());
+        //get values out of cusDetails
+        String phone = cusDetails.get("updatedPhoneNumber").toString();
+        String email = cusDetails.get("updatedEmail").toString();
+        String pwd = cusDetails.get("updatedPwd").toString();
+
+        //create customer : Dummy is so I can have the constructor needed
+        Customer customer = new Customer(phone,email,pwd,  true);
+
+        //make calls to the DB so I can update details.
+
+       System.out.println("Json cus details" + customer.toString());
+       
             return;
        //Customer cus = Customer.findCustomerByEmail(cusEmail);
 
