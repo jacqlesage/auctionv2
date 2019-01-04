@@ -82,7 +82,10 @@ function submitUpdates(){
              contentType: "application/json; charset=utf-8",
              url: "/customer/update/"+ updateObj,
              success: function (data) {
-                 alert("Success in Ajax call " + data.toString());
+                 var temp = data.updatedPhoneNumber.toString();
+
+                 alert("Success in Ajax call var " + temp);
+
              },
 
              error: function (data) {
