@@ -204,8 +204,11 @@ public class Customer extends Model {
    }
 
    public void changeCustomerDetails(JsonNode cusDetails){
+        Customer updateCustomer;
 
         //get values out of cusDetails
+       //note - need to strip quotes out of string - causes issues in DB. See table
+       //need to also get the ID of the customer. 
         String phone = cusDetails.get("updatedPhoneNumber").toString();
         String email = cusDetails.get("updatedEmail").toString();
         String pwd = cusDetails.get("updatedPwd").toString();
@@ -213,10 +216,20 @@ public class Customer extends Model {
         //create customer : Dummy is so I can have the constructor needed
         Customer customer = new Customer(phone,email,pwd,  true);
 
-        //make calls to the DB so I can update details.
+        System.out.println("Json cus details" + customer.toString());
 
-       System.out.println("Json cus details" + customer.toString());
-       
+        //make calls to the DB so I can update details.
+       SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customer SET email = :email, phone_number = :phone_number, password = :password WHERE id = :id");
+       updateKeyQuery.setParameter("phone_number", phone);
+       updateKeyQuery.setParameter("email", email);
+       updateKeyQuery.setParameter("password", pwd);
+       updateKeyQuery.setParameter("id", 1);
+       updateKeyQuery.execute();
+
+
+
+
+
             return;
        //Customer cus = Customer.findCustomerByEmail(cusEmail);
 
