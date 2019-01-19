@@ -208,10 +208,19 @@ public class Customer extends Model {
 
         //get values out of cusDetails
        //note - need to strip quotes out of string - causes issues in DB. See table
-       //need to also get the ID of the customer. 
+       //need to also get the ID of the customer.
         String phone = cusDetails.get("updatedPhoneNumber").toString();
+        String phoneStripped =  phone.replaceAll("\"","");
+        phone = phoneStripped;
+
+
         String email = cusDetails.get("updatedEmail").toString();
+        String emailStripped =  email.replaceAll("\"","");
+        email = emailStripped;
+
         String pwd = cusDetails.get("updatedPwd").toString();
+        String pwdStripped =  pwd.replaceAll("\"","");
+        pwd = pwdStripped;
 
         //create customer : Dummy is so I can have the constructor needed
         Customer customer = new Customer(phone,email,pwd,  true);
