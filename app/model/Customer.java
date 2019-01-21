@@ -132,6 +132,62 @@ public class Customer extends Model {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
     //I have had to comment this method out as some how it is placing this method into my JS results. Werid stuff.
     //At this stage I do not need an all customers function.
 //    public String getAllCustomers() {
@@ -224,15 +280,21 @@ public class Customer extends Model {
 
         //create customer : Dummy is so I can have the constructor needed
         Customer customer = new Customer(phone,email,pwd,  true);
+        //get customer id
+       Customer temp;
+       System.out.println("printng out email address " + email);
+       System.out.println("printng out email address stripped " + emailStripped);
+       temp = Customer.findCustomerByEmail(email);
+       int customerID = temp.getId();
 
-        System.out.println("Json cus details" + customer.toString());
+        System.out.println("Json cus details" + temp.toString() + "customer ID = " + customerID);
 
         //make calls to the DB so I can update details.
        SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customer SET email = :email, phone_number = :phone_number, password = :password WHERE id = :id");
        updateKeyQuery.setParameter("phone_number", phone);
        updateKeyQuery.setParameter("email", email);
        updateKeyQuery.setParameter("password", pwd);
-       updateKeyQuery.setParameter("id", 1);
+       updateKeyQuery.setParameter("id", customerID);
        updateKeyQuery.execute();
 
 
