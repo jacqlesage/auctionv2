@@ -232,6 +232,8 @@ public class Customer extends Model {
         Customer customer = Customer.find.query().where().eq("email", email).findUnique();
         System.out.println(customer.toString()+ "ookokokokok");
 
+
+
         return customer;
     }
 
@@ -281,10 +283,14 @@ public class Customer extends Model {
         //create customer : Dummy is so I can have the constructor needed
         Customer customer = new Customer(phone,email,pwd,  true);
         //get customer id
-       Customer temp;
+       Customer temp = null;
        System.out.println("printng out email address " + email);
        System.out.println("printng out email address stripped " + emailStripped);
+
        temp = Customer.findCustomerByEmail(email);
+       System.out.println("printing out customer temp " + temp.toString());
+
+
        int customerID = temp.getId();
 
         System.out.println("Json cus details" + temp.toString() + "customer ID = " + customerID);
@@ -296,8 +302,6 @@ public class Customer extends Model {
        updateKeyQuery.setParameter("password", pwd);
        updateKeyQuery.setParameter("id", customerID);
        updateKeyQuery.execute();
-
-
 
 
 
