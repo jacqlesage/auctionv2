@@ -83,7 +83,7 @@ function submitUpdates(){
              url: "/customer/update/"+ updateObj,
              success: function (data) {
                  var temp = data.updatedPhoneNumber.toString();
-
+                 phone.value = temp;
                  alert("Success in Ajax call var " + temp);
 
              },
