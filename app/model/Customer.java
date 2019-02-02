@@ -283,7 +283,7 @@ public class Customer extends Model {
         //create customer : Dummy is so I can have the constructor needed
         Customer customer = new Customer(phone,email,pwd,  true);
         //get customer id
-       Customer temp = null;
+       Customer temp = new Customer("temp","temp");
        System.out.println("printng out email address " + email);
        System.out.println("printng out email address stripped " + emailStripped);
 

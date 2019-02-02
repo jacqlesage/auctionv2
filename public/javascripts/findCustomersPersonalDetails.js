@@ -26,8 +26,8 @@ $(document).ready(function() {
             if(data.phoneNumber == null ) {
                 //only need to update phone here as the rest of the details are puled from session...humm....
                 phone.value = "Please update";
-
-
+            }else{
+                phone.value = data.phoneNumber;
             }
 
             if(data.lastName != null){
