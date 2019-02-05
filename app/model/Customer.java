@@ -5,6 +5,7 @@ import io.ebean.Model;
 import io.ebean.Finder;
 import io.ebean.*;
 import io.ebean.annotation.JsonIgnore;
+import play.api.mvc.Session;
 import play.data.validation.Constraints;
 import play.libs.Json;
 import play.mvc.Result;
@@ -220,18 +221,18 @@ public class Customer extends Model {
 
     public static Customer findCustomerByEmail(String email) {
 
+        Customer customer = null;
+
+        System.out.println("email inside findCustomer " + email);
 
         if (Customer.find.query().where().eq("email", email).findUnique() == null) {
             //then customer is not in DB
+            return customer;
+        }else {
 
-            return null;
+            customer = Customer.find.query().where().eq("email", email).findUnique();
+            System.out.println(customer.toString() + "ookokokokok");
         }
-
-
-
-        Customer customer = Customer.find.query().where().eq("email", email).findUnique();
-        System.out.println(customer.toString()+ "ookokokokok");
-
 
 
         return customer;
@@ -271,10 +272,13 @@ public class Customer extends Model {
         String phoneStripped =  phone.replaceAll("\"","");
         phone = phoneStripped;
 
-
         String email = cusDetails.get("updatedEmail").toString();
         String emailStripped =  email.replaceAll("\"","");
         email = emailStripped;
+
+       String initialEmail = cusDetails.get("initialEmail").toString();
+       String initialEmailStripped =  initialEmail.replaceAll("\"","");
+       initialEmail = initialEmailStripped;
 
         String pwd = cusDetails.get("updatedPwd").toString();
         String pwdStripped =  pwd.replaceAll("\"","");
@@ -287,7 +291,7 @@ public class Customer extends Model {
        System.out.println("printng out email address " + email);
        System.out.println("printng out email address stripped " + emailStripped);
 
-       temp = Customer.findCustomerByEmail(email);
+       temp = Customer.findCustomerByEmail(initialEmailStripped);
        System.out.println("printing out customer temp " + temp.toString());
 
 
