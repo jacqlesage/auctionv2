@@ -19,10 +19,6 @@ $(document).ready(function() {
         url: r.url, type: r.type, dataType: "JSON",
         success: (function (data) {
 
-            console.log(data);
-
-
-
             if(data.phoneNumber == null ) {
                 //only need to update phone here as the rest of the details are puled from session...humm....
                 phone.value = "Please update";

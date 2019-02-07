@@ -6,6 +6,9 @@ var intialPasswordValue = document.getElementById("pwd");
 
 $(document).ready(function(){
 
+    initialEmailValue = document.getElementById("emailFromDashboard").value;
+
+
     $("#checkBoxPhone").change(function(){
         var checkBox = document.getElementById("checkBoxPhone");
         if(checkBox.checked == true) {
@@ -51,10 +54,12 @@ function submitUpdates(){
     var detailsToUpdateObject = {
         updatedPhoneNumber: null,
         updatedEmail: null,
-        updatedPwd: null
+        updatedPwd: null,
+        initialEmail: null
 
-    };
 
+};
+    detailsToUpdateObject.initialEmail = initialEmailValue;
 
     if(document.getElementById("checkBoxPhone")){
         var phone = document.getElementById("phone").value;
