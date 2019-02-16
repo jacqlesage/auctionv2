@@ -8,8 +8,38 @@ var intialPostcodeValue = document.getElementById("postcode");
 
 function updateAddress(){
 
-    initialAddressValue = document.getElementById("address1").value;
-    console.log("the intial address valu eis " +initialAddressValue);
+    var id = event.target.id;
+    //initialAddressValue = document.getElementById("address1").value;
+    console.log("the intial address value is " + id);
+
+    switch (id) {
+        case "address1":
+            initialAddressValue = document.getElementById("address1").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+        case "address2":
+            initialAddressValue = document.getElementById("address1").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+        case 2:
+            initialAddressValue = document.getElementById("city").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+        case 3:
+            initialAddressValue = document.getElementById("country").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+        case 4:
+            initialAddressValue = document.getElementById("postCode").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+        case 5:
+            initialAddressValue = document.getElementById("address1").value;
+            console.log("in address1" + " " + initialAddressValue);
+            break;
+
+    }
+
 }
 
 $(document).ready(function(){
