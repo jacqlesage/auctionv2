@@ -2,7 +2,7 @@ var initialAddressValue = document.getElementById("address1");
 var initialAddress2Value = document.getElementById("address2");
 var intialCityValue = document.getElementById("city");
 var intialCountryValue = document.getElementById("country");
-var intialPostcodeValue = document.getElementById("postcode");
+var intialPostcodeValue = document.getElementById("postCode");
 
 
 
@@ -10,7 +10,7 @@ function updateAddress(){
 
     var id = event.target.id;
     //initialAddressValue = document.getElementById("address1").value;
-    console.log("the intial address value is " + id);
+    console.log("the intial id value is id= " + id);
 
     switch (id) {
         case "address1":
@@ -18,24 +18,24 @@ function updateAddress(){
             console.log("in address1" + " " + initialAddressValue);
             break;
         case "address2":
-            initialAddressValue = document.getElementById("address1").value;
-            console.log("in address1" + " " + initialAddressValue);
+            initialAddress2Value = document.getElementById("address2").value;
+            console.log("in address2" + " " + initialAddress2Value);
             break;
-        case 2:
-            initialAddressValue = document.getElementById("city").value;
-            console.log("in address1" + " " + initialAddressValue);
+        case "city":
+            intialCityValue = document.getElementById("city").value;
+            console.log("in city" + " " + intialCityValue);
             break;
-        case 3:
-            initialAddressValue = document.getElementById("country").value;
-            console.log("in address1" + " " + initialAddressValue);
+        case "country":
+            intialCountryValue = document.getElementById("country").value;
+            console.log("in country" + " " + intialCountryValue);
             break;
-        case 4:
-            initialAddressValue = document.getElementById("postCode").value;
-            console.log("in address1" + " " + initialAddressValue);
+        case "postCode":
+            intialPostcodeValue = document.getElementById("postCode").value;
+            console.log("in postcode" + " " + intialPostcodeValue);
             break;
         case 5:
             initialAddressValue = document.getElementById("address1").value;
-            console.log("in address1" + " " + initialAddressValue);
+            console.log("in address1" + " " + intialPostcodeValue);
             break;
 
     }
@@ -43,8 +43,12 @@ function updateAddress(){
 }
 
 $(document).ready(function(){
-    document.getElementById("address1").addEventListener("focusin", updateAddress);
 
+    document.getElementById("address1").addEventListener("focusin", updateAddress);
+    document.getElementById("address2").addEventListener("focusin", updateAddress);
+    document.getElementById("city").addEventListener("focusin", updateAddress);
+    document.getElementById("country").addEventListener("focusin", updateAddress);
+    document.getElementById("postCode").addEventListener("focusin", updateAddress);
     //initialEmailValue = document.getElementById("emailFromDashboard").value;
 
 
