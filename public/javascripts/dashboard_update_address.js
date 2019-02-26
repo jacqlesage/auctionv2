@@ -33,10 +33,6 @@ function updateAddress(){
             intialPostcodeValue = document.getElementById("postCode").value;
             console.log("in postcode" + " " + intialPostcodeValue);
             break;
-        case 5:
-            initialAddressValue = document.getElementById("address1").value;
-            console.log("in address1" + " " + intialPostcodeValue);
-            break;
 
     }
 
@@ -49,8 +45,10 @@ $(document).ready(function(){
     document.getElementById("city").addEventListener("focusin", updateAddress);
     document.getElementById("country").addEventListener("focusin", updateAddress);
     document.getElementById("postCode").addEventListener("focusin", updateAddress);
-    //initialEmailValue = document.getElementById("emailFromDashboard").value;
-
+    customerEmail = document.getElementById("customerEmail").value;
+    console.log("cusomter email address is " + customerEmail);
+    customerNumber = document.getElementById("customerNumber").value;
+    console.log("cusomter number is " + customerNumber);
 
     $("#checkBoxPhone").change(function(){
         var checkBox = document.getElementById("checkBoxPhone");
