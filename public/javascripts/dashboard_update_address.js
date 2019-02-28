@@ -3,6 +3,8 @@ var initialAddress2Value = document.getElementById("address2");
 var intialCityValue = document.getElementById("city");
 var intialCountryValue = document.getElementById("country");
 var intialPostcodeValue = document.getElementById("postCode");
+var cusEmail;
+var cusNumber;
 
 
 
@@ -40,15 +42,17 @@ function updateAddress(){
 
 $(document).ready(function(){
 
+    cusEmail = document.getElementById("customerEmail").value;
+    console.log("cusomter email address is " + customerEmail);
+    cusNumber = document.getElementById("customerNumber").value;
+    console.log("cusomter number is " + customerNumber);
+
     document.getElementById("address1").addEventListener("focusin", updateAddress);
     document.getElementById("address2").addEventListener("focusin", updateAddress);
     document.getElementById("city").addEventListener("focusin", updateAddress);
     document.getElementById("country").addEventListener("focusin", updateAddress);
     document.getElementById("postCode").addEventListener("focusin", updateAddress);
-    customerEmail = document.getElementById("customerEmail").value;
-    console.log("cusomter email address is " + customerEmail);
-    customerNumber = document.getElementById("customerNumber").value;
-    console.log("cusomter number is " + customerNumber);
+
 
     $("#checkBoxPhone").change(function(){
         var checkBox = document.getElementById("checkBoxPhone");
@@ -93,14 +97,49 @@ $(document).ready(function(){
 function submitUpdates(){
 
     var detailsToUpdateObject = {
-        updatedPhoneNumber: null,
-        updatedEmail: null,
-        updatedPwd: null,
-        initialEmail: null
+        updatedAddress1: null,
+        updatedAddress2: null,
+        updatedCity: null,
+        updatedCountry: null,
+        updatedPostCode: null,
+        email: cusEmail,
+        cusNumber: cusNumber
+    };
+
+    //compare values to intial values
+    address1 = document.getElementById("address1").value;
+    address2 = document.getElementById("address2").value;
+    city = document.getElementById("city").value;
+    country = document.getElementById("country").value;
+    postCode = document.getElementById("postCode").value;
+
+    if (address1 != initialAddressValue){
+
+        detailsToUpdateObject.updatedAddress1 = address1;
 
 
-};
-    detailsToUpdateObject.initialEmail = initialEmailValue;
+        if (address2 != initialAddress2Value){
+
+            detailsToUpdateObject.updatedAddress2 = address2;
+
+        }
+        if (city != intialCityValue){
+
+            detailsToUpdateObject.updatedCity = city;
+
+        }
+        if (country != intialCountryValue){
+
+            detailsToUpdateObject.updatedCountry = country;
+
+        }
+        if (postCode != intialPostcodeValue){
+
+            detailsToUpdateObject.updatedPostCode = postCode;
+
+        }
+
+
 
     if(document.getElementById("checkBoxPhone")){
         var phone = document.getElementById("phone").value;
