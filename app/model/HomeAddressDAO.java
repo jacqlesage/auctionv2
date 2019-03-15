@@ -23,7 +23,7 @@ public class HomeAddressDAO extends Model {
         public int id;
 
 
-        public HomeAddressDAO(String address1, String address2, String city, String country, String postCode, String cusEmailReference, int cusNumberReference, int id) {
+        public HomeAddressDAO(String address1, String address2, String city, String country, String postCode, String cusEmailReference, int cusNumberReference) {
                 this.address1 = address1;
                 this.address2 = address2;
                 this.city = city;
@@ -31,7 +31,11 @@ public class HomeAddressDAO extends Model {
                 this.postCode = postCode;
                 this.cusEmailReference = cusEmailReference;
                 this.cusNumberReference = cusNumberReference;
-                this.id = id;
+
+        }
+
+        public HomeAddressDAO(){
+
         }
 
         public String getAddress1() {
@@ -98,28 +102,42 @@ public class HomeAddressDAO extends Model {
                 this.id = id;
         }
 
+        @Override
+        public String toString() {
+                return "HomeAddressDAO{" +
+                        "address1='" + address1 + '\'' +
+                        ", address2='" + address2 + '\'' +
+                        ", city='" + city + '\'' +
+                        ", country='" + country + '\'' +
+                        ", postCode='" + postCode + '\'' +
+                        ", cusEmailReference='" + cusEmailReference + '\'' +
+                        ", cusNumberReference=" + cusNumberReference +
+                        ", id=" + id +
+                        '}';
+        }
+
         public void changeCustomerAddressDetails(JsonNode cusAddressObject){
 
-                HomeAddressDAO updateCustomer;
+
 
                 String address1 = cusAddressObject.get("updatedAddress1").toString();
                 String address1Stripped =  address1.replaceAll("\"","");
                 address1 = address1Stripped;
 
                 String address2 = cusAddressObject.get("updatedAddress2").toString();
-                String address2Stripped =  address1.replaceAll("\"","");
+                String address2Stripped =  address2.replaceAll("\"","");
                 address2 = address2Stripped;
 
                 String city = cusAddressObject.get("updatedCity").toString();
-                String cityStripped =  address1.replaceAll("\"","");
+                String cityStripped =  city.replaceAll("\"","");
                 city = cityStripped;
-                
+
                 String country = cusAddressObject.get("updatedCountry").toString();
-                String countryStripped =  address1.replaceAll("\"","");
+                String countryStripped =  country.replaceAll("\"","");
                 country = countryStripped;
 
                 String postCode = cusAddressObject.get("updatedPostCode").toString();
-                String postCodeStripped =  address1.replaceAll("\"","");
+                String postCodeStripped =  postCode.replaceAll("\"","");
                 postCode = postCodeStripped;
 
                 String email = cusAddressObject.get("email").toString();
@@ -127,7 +145,19 @@ public class HomeAddressDAO extends Model {
                 email = emailStripped;
 
                 String cusNumber = cusAddressObject.get("cusNumber").toString();
-                String cusNumberStripped =  email.replaceAll("\"","");
-                cusNumber = cusNumberStripped;
+                String cusNumberStripped =  cusNumber.replaceAll("\"","");
+                int cusNumberInt = Integer.parseInt(cusNumberStripped);
+
+                HomeAddressDAO updateCustomerObj = new HomeAddressDAO(address1,address2,city,country,postCode,email,cusNumberInt);
+
+                updateCustomerObj.address1 = address1;
+                updateCustomerObj.address2 = address2;
+                updateCustomerObj.city = city;
+                updateCustomerObj.country =country;
+                updateCustomerObj.postCode = postCode;
+                updateCustomerObj.cusEmailReference = email;
+                updateCustomerObj.cusNumberReference = cusNumberInt;
+
+                System.out.println(updateCustomerObj.toString() + "this is the update object for address");
         }
 }
