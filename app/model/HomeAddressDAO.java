@@ -1,7 +1,9 @@
 package model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import io.ebean.Ebean;
 import io.ebean.Model;
+import io.ebean.SqlUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -150,14 +152,19 @@ public class HomeAddressDAO extends Model {
 
                 HomeAddressDAO updateCustomerObj = new HomeAddressDAO(address1,address2,city,country,postCode,email,cusNumberInt);
 
-                updateCustomerObj.address1 = address1;
-                updateCustomerObj.address2 = address2;
-                updateCustomerObj.city = city;
-                updateCustomerObj.country =country;
-                updateCustomerObj.postCode = postCode;
-                updateCustomerObj.cusEmailReference = email;
-                updateCustomerObj.cusNumberReference = cusNumberInt;
-
                 System.out.println(updateCustomerObj.toString() + "this is the update object for address");
+
+            SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customerhomeaddress SET address1 = :address1, address2 = :address2, city = :city," +
+                    "country = :country, postCode = :postCode, email =:email, WHERE id = :cusNumberInt");
+            updateKeyQuery.setParameter("address1", address1);
+            updateKeyQuery.setParameter("address2", address2);
+            updateKeyQuery.setParameter("city", city);
+            updateKeyQuery.setParameter("country", country);
+            updateKeyQuery.setParameter("postCode", postCode);
+            updateKeyQuery.setParameter("email", postCode);
+            updateKeyQuery.setParameter("id", updateCustomerObj.getCusEmailReference());
+            updateKeyQuery.execute();
+            //for this type of entry there is no "where" that can be used as I am populating the table for the first time.
+            //The plan would be to check for the table with the ref - if none make a table. Need to look into this.
         }
 }
