@@ -1,13 +1,12 @@
 package model;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import io.ebean.Ebean;
-import io.ebean.Model;
-import io.ebean.SqlUpdate;
+import io.ebean.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "customerHomeAddressTable")
@@ -23,6 +22,9 @@ public class HomeAddressDAO extends Model {
 
         @Id
         public int id;
+
+        @Transient
+        public static Finder<Integer, HomeAddressDAO> find = new Finder<Integer, HomeAddressDAO>(HomeAddressDAO.class);
 
 
         public HomeAddressDAO(String address1, String address2, String city, String country, String postCode, String cusEmailReference, int cusNumberReference) {
@@ -120,7 +122,7 @@ public class HomeAddressDAO extends Model {
 
         public void changeCustomerAddressDetails(JsonNode cusAddressObject){
 
-
+                boolean trueOrFalse;
 
                 String address1 = cusAddressObject.get("updatedAddress1").toString();
                 String address1Stripped =  address1.replaceAll("\"","");
@@ -154,17 +156,72 @@ public class HomeAddressDAO extends Model {
 
                 System.out.println(updateCustomerObj.toString() + "this is the update object for address");
 
-            SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customerhomeaddress SET address1 = :address1, address2 = :address2, city = :city," +
-                    "country = :country, postCode = :postCode, email =:email, WHERE id = :cusNumberInt");
-            updateKeyQuery.setParameter("address1", address1);
-            updateKeyQuery.setParameter("address2", address2);
-            updateKeyQuery.setParameter("city", city);
-            updateKeyQuery.setParameter("country", country);
-            updateKeyQuery.setParameter("postCode", postCode);
-            updateKeyQuery.setParameter("email", postCode);
-            updateKeyQuery.setParameter("id", updateCustomerObj.getCusEmailReference());
-            updateKeyQuery.execute();
-            //for this type of entry there is no "where" that can be used as I am populating the table for the first time.
-            //The plan would be to check for the table with the ref - if none make a table. Need to look into this.
+                trueOrFalse = checkIfCusotmerIsInHomeAddressTableAlready(email);
+                System.out.println(trueOrFalse + "****true or false here   ********");
+
+                if(trueOrFalse == true) {
+                        //if customer exsists update otherwise insert SQL
+                        System.out.println(trueOrFalse + "****inside true of t or f    ********");
+                       //SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customerhomeaddresstable SET address1 =:address1, address2 =:address2, city = :city,"
+                           //    + "country = :country, post_code =:1111 WHERE id = :cusNumberInt");
+                        SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("UPDATE customerhomeaddresstable SET address1 =:address1, address2 =:address2, city =:city, country =:country, post_code =:post_code," +
+                             "cus_email_reference =:cus_email_reference, cus_number_reference =:cus_number_reference WHERE id = :id");
+                        updateKeyQuery.setParameter("address1", address1);
+                        updateKeyQuery.setParameter("address2", address2);
+                        updateKeyQuery.setParameter("city", city);
+                        updateKeyQuery.setParameter("country", country);
+                        updateKeyQuery.setParameter("post_code", postCode);
+                        updateKeyQuery.setParameter("cus_email_reference", email);
+                        updateKeyQuery.setParameter("cus_number_reference", cusNumberInt);
+                        updateKeyQuery.setParameter("id", cusNumberInt);
+                        updateKeyQuery.execute();
+
+                        //for this type of entry there is no "where" that can be used as I am populating the table for the first time.
+                        //The plan would be to check for the table with the ref - if none make a table. Need to look into this.
+                }else{
+                        System.out.println("inside the false of ****true or false here   ********");
+
+                        updateCustomerObj.save();
+
+//                        //SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("INSERT into customerhomeaddresstable SET address1 = :address1, address2 = :address2, city =:12," +
+//                             //   "country =:21, post_code =:postCode, cus_email_reference =:email, cus_number_reference =:cusNumberInt");
+//                        String updateKeyQuery = "insert into customerhomeaddresstable (address1, address2, city,country,post_code,cus_email_reference,cus_number_reference) " +
+//                                "values (:1, :2, :3, :4, :5, :6, :7, :8)";
+//                       // (:address1, :address2, :city, :country, :email, :cusNumberInt)
+//                        //SqlUpdate sqlUpdate = DB.sqlUpdate(sql)
+//                        SqlUpdate update = Ebean.createSqlUpdate(updateKeyQuery);
+//
+//                        System.out.println("^^^^^^^^^^  " + country);
+//
+//                        update.setParameter("address1", address1);
+//                        update.setParameter("address2", address2);
+//                        update.setParameter("city", city);
+//                        update.setParameter("country", country);
+//                        update.setParameter("country", country);
+//                        update.setParameter("post_code", postCode);
+//                        update.setParameter("cus_email_reference", email);
+//                        update.setParameter("cus_number_reference", cusNumberInt);
+//                        update.execute();
+
+                }
+        }
+
+        public boolean checkIfCusotmerIsInHomeAddressTableAlready(String email){
+
+                HomeAddressDAO hmAddDAO = new HomeAddressDAO();
+
+                System.out.println("email inside HomeAddressDAO finder  " + email);
+
+                if (HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique() == null) {
+                        //then customer is not in DB
+                        return false; //means insert
+                }else {
+
+                        hmAddDAO = HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique();
+                        System.out.println(hmAddDAO.toString() + "ookokokokok");
+                        return true; //means update
+                }
+
+
         }
 }
