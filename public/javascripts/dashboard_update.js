@@ -49,7 +49,7 @@ $(document).ready(function(){
     });
 });
 
-function submitUpdates(){
+function submitPersonalAndPasswordUpdates(){
 
     var detailsToUpdateObject = {
         updatedPhoneNumber: null,

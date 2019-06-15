@@ -4,6 +4,7 @@ import akka.stream.impl.JsonObjectParser;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import model.Customer;
+import model.HomeAddressDAO;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -39,11 +40,12 @@ public class CustomerDatabaseController extends Controller {
         //put it back into a json format
         JsonNode j = Json.parse(obj);
 
+
+
         //call from the controller to the update method for the customer
-        //Customer customer = new Customer();
+        HomeAddressDAO homeAddressDAO = new HomeAddressDAO();
 
-        //customer.changeCustomerDetails(Json.toJson(j));
-
+        homeAddressDAO.changeCustomerAddressDetails(j);
 //        System.out.println("inside update customer " + obj.toString());
 //        System.out.println("inside update customer json" + Json.toJson(j));
 //        System.out.println("inside update customer json" + j.get("updatedPhoneNumber"));

@@ -183,25 +183,6 @@ public class HomeAddressDAO extends Model {
 
                         updateCustomerObj.save();
 
-//                        //SqlUpdate updateKeyQuery = Ebean.createSqlUpdate("INSERT into customerhomeaddresstable SET address1 = :address1, address2 = :address2, city =:12," +
-//                             //   "country =:21, post_code =:postCode, cus_email_reference =:email, cus_number_reference =:cusNumberInt");
-//                        String updateKeyQuery = "insert into customerhomeaddresstable (address1, address2, city,country,post_code,cus_email_reference,cus_number_reference) " +
-//                                "values (:1, :2, :3, :4, :5, :6, :7, :8)";
-//                       // (:address1, :address2, :city, :country, :email, :cusNumberInt)
-//                        //SqlUpdate sqlUpdate = DB.sqlUpdate(sql)
-//                        SqlUpdate update = Ebean.createSqlUpdate(updateKeyQuery);
-//
-//                        System.out.println("^^^^^^^^^^  " + country);
-//
-//                        update.setParameter("address1", address1);
-//                        update.setParameter("address2", address2);
-//                        update.setParameter("city", city);
-//                        update.setParameter("country", country);
-//                        update.setParameter("country", country);
-//                        update.setParameter("post_code", postCode);
-//                        update.setParameter("cus_email_reference", email);
-//                        update.setParameter("cus_number_reference", cusNumberInt);
-//                        update.execute();
 
                 }
         }

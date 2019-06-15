@@ -54,47 +54,10 @@ $(document).ready(function(){
     document.getElementById("postCode").addEventListener("focusin", updateAddress);
 
 
-    $("#checkBoxPhone").change(function(){
-        var checkBox = document.getElementById("checkBoxPhone");
-        if(checkBox.checked == true) {
-            document.getElementById("phone").disabled = false;
-            initialPhoneValue = document.getElementById("phone").value;
 
-        }else{
-            document.getElementById("phone").disabled = true;
-        }
-
-    });
-
-    $("#checkBoxEmail").change(function(){
-        var checkBox = document.getElementById("checkBoxEmail");
-        if(checkBox.checked == true) {
-            document.getElementById("emailFromDashboard").disabled = false;
-            initialEmailValue = document.getElementById("emailFromDashboard").value;
-
-        }else{
-            document.getElementById("emailFromDashboard").disabled = true;
-
-        }
-
-    });
-
-    $("#checkBoxPwd").change(function(){
-        var checkBox = document.getElementById("checkBoxPwd");
-        if(checkBox.checked == true) {
-            document.getElementById("pwd").disabled = false;
-            initialPasswordValue = document.getElementById("pwd").value;
-            document.getElementById("pwdConfirmed").disabled = false;
-
-        }else{
-            document.getElementById("pwd").disabled = true;
-            document.getElementById("pwdConfirmed").disabled = true;
-        }
-        //run ajax call here.
-    });
 });
 
-function submitUpdates(){
+function submitUpdatesAddress(){
 
     var detailsToUpdateObject = {
         updatedAddress1: null,
@@ -113,78 +76,71 @@ function submitUpdates(){
     country = document.getElementById("country").value;
     postCode = document.getElementById("postCode").value;
 
-    if (address1 != initialAddressValue){
+    if (address1 != initialAddressValue) {
 
         detailsToUpdateObject.updatedAddress1 = address1;
+    }else{
+        detailsToUpdateObject.updatedAddress1 = initialAddressValue
+    }
 
-
-        if (address2 != initialAddress2Value){
+        if (address2 != initialAddress2Value) {
 
             detailsToUpdateObject.updatedAddress2 = address2;
 
+        }else{
+            detailsToUpdateObject.updatedAddress2 = initialAddress2Value;
         }
-        if (city != intialCityValue){
+        if (city != intialCityValue) {
 
             detailsToUpdateObject.updatedCity = city;
 
+        }else{
+            detailsToUpdateObject.updatedCity = intialCityValue;
         }
-        if (country != intialCountryValue){
+        if (country != intialCountryValue) {
 
             detailsToUpdateObject.updatedCountry = country;
 
+        }else{
+            detailsToUpdateObject.updatedCountry = intialCountryValue;
         }
-        if (postCode != intialPostcodeValue){
+        if (postCode != intialPostcodeValue) {
 
             detailsToUpdateObject.updatedPostCode = postCode;
 
+        }else{
+            detailsToUpdateObject.updatedPostCode = intialPostcodeValue;
         }
 
 
+        var updateObj = JSON.stringify(detailsToUpdateObject);
+        console.log(updateObj.toString() + "<- update Object is");
 
-    if(document.getElementById("checkBoxPhone")){
-        var phone = document.getElementById("phone").value;
-        detailsToUpdateObject.updatedPhoneNumber = phone;
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: updateObj,
+            contentType: "application/json; charset=utf-8",
+            url: "/customer/update/address/" + updateObj,
+            success: function (data) {
+
+                console.log("Success in Ajax call var ");
+
+
+
+            },
+
+            error: function (data) {
+                console.log(data);
+                alert("error in Ajax call " + data.toString());
+
+            }
+
+
+        })
 
     }
 
-    if(document.getElementById("checkBoxEmail")){
-        var email = document.getElementById("emailFromDashboard").value;
-        detailsToUpdateObject.updatedEmail = email;
-     }
-
-    if(document.getElementById("checkBoxPwd")){
-        var pwd = document.getElementById("pwdConfirmed").value;
-        detailsToUpdateObject.updatedPwd = pwd;
-    }
-
-   var updateObj = JSON.stringify(detailsToUpdateObject);
-   console.log(updateObj);
-
-    $.ajax({
-             type: "POST",
-             dataType: 'json',
-             data: updateObj,
-             contentType: "application/json; charset=utf-8",
-             url: "/customer/update/"+ updateObj,
-             success: function (data) {
-                 var temp = data.updatedPhoneNumber.toString();
-                 phone.value = temp;
-                 alert("Success in Ajax call var " + temp);
-
-             },
-
-             error: function (data) {
-                 console.log(data);
-                 alert("error in Ajax call " + data.toString());
-
-             }
-
-
-
-});
-
-
-}
 
 
 
