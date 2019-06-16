@@ -205,4 +205,23 @@ public class HomeAddressDAO extends Model {
 
 
         }
+
+        public HomeAddressDAO returnCusotmerHomeAddressTable(String email){
+
+                HomeAddressDAO hmAddDAO = new HomeAddressDAO();
+
+                System.out.println("email inside HomeAddressTable finder  " + email);
+
+                if (HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique() == null) {
+                        //then customer is not in DB
+                        return null; 
+                }else {
+
+                        hmAddDAO = HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique();
+                        System.out.println(hmAddDAO.toString() + "returned cusHomeAddressTable");
+                        return hmAddDAO; //means update
+                }
+
+
+        }
 }

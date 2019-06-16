@@ -242,6 +242,8 @@ public class Customer extends Model {
 
 
 
+
+
    public void addCustomer(Customer customer){
 
 
