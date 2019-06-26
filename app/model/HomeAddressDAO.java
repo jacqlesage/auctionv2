@@ -206,7 +206,7 @@ public class HomeAddressDAO extends Model {
 
         }
 
-        public HomeAddressDAO returnCusotmerHomeAddressTable(String email){
+        public HomeAddressDAO returnCusotmerHomeAddressTable(String email){  //up to here 16.06.2019
 
                 HomeAddressDAO hmAddDAO = new HomeAddressDAO();
 
@@ -214,7 +214,7 @@ public class HomeAddressDAO extends Model {
 
                 if (HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique() == null) {
                         //then customer is not in DB
-                        return null; 
+                        return null;
                 }else {
 
                         hmAddDAO = HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique();

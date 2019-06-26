@@ -7,6 +7,34 @@ var cusEmail;
 var cusNumber;
 
 
+function getAddressDetails(){//need to get the poastal address details to prefill the address info change ajax method.
+
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        data: updateObj,
+        contentType: "application/json; charset=utf-8",
+        url: "/customer/update/address/" + updateObj,
+        success: function (data) {
+
+            console.log("Success in Ajax call var ");
+
+
+
+        },
+
+        error: function (data) {
+            console.log(data);
+            alert("error in Ajax call " + data.toString());
+
+        }
+
+
+    })
+
+
+}
+
 
 function updateAddress(){
 
