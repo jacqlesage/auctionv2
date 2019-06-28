@@ -9,12 +9,16 @@ var cusNumber;
 
 function getAddressDetails(){//need to get the poastal address details to prefill the address info change ajax method.
 
+    var cusEmail = JSON.stringify(cusEmail);
+
+    alert(cusEmail);
+
     $.ajax({
         type: "GET",
         dataType: 'json',
-        data: updateObj,
+        data: cusEmail,
         contentType: "application/json; charset=utf-8",
-        url: "/customer/update/address/" + updateObj,
+        url: "/customer/update/address/physical",
         success: function (data) {
 
             console.log("Success in Ajax call var ");

@@ -54,6 +54,12 @@ public class CustomerDatabaseController extends Controller {
         return ok(Json.toJson(j));
     }
 
+public Result getCustomerAddressPhysical(){
 
+        HomeAddressDAO homeAddressDAO = new HomeAddressDAO();
+
+       homeAddressDAO =  homeAddressDAO.returnCusotmerHomeAddressTable();
+
+}
 
 }
