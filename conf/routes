@@ -62,7 +62,8 @@ GET     /customer/:loginObject                 model.Customer.loginCustomer(logi
 + nocsrf
 POST    /customer/update/:updateObject         controllers.CustomerDatabaseController.updateCustomerPersonalDetails(updateObject: String)
 
-GET     /customer/update/address/physical      controllers.CustomerDatabaseController.getCustomerAddressPhysical(email: String)
+GET     /customer/update/address/physical/:email     controllers.CustomerDatabaseController.getCustomerAddressPhysical(email: String)
+
 + nocsrf
 POST    /customer/update/address/:updateObject  controllers.CustomerDatabaseController.updateCustomerAddressDetails(updateObject: String)
 
