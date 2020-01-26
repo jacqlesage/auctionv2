@@ -127,7 +127,9 @@ function getAddressDetails(){//need to get the poastal address details to prefil
         url: "/customer/update/address/physical/"+cusEmail,
         success: function (data) {
 
-            console.log("Success in Ajax call var ");
+            //populate address table
+            alert(data);
+           // document.getElementById()
 
 
 

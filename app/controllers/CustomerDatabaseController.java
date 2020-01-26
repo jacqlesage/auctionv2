@@ -56,12 +56,17 @@ public class CustomerDatabaseController extends Controller {
 
 public Result getCustomerAddressPhysical(String email){
 
-        System.out.println("%%%%%%% in here");
+        System.out.println("%%%%%%% in here > here is the email address " + email);
 
-      //  HomeAddressDAO homeAddressDAO = new HomeAddressDAO();
+       HomeAddressDAO homeAddressDAO = new HomeAddressDAO();
 
-      // homeAddressDAO =  homeAddressDAO.returnCusotmerHomeAddressTable();
-    return ok(Json.toJson("james"));
+       Json.toJson(homeAddressDAO =  homeAddressDAO.returnCusotmerHomeAddressTable(email));
+
+       if(homeAddressDAO == null) {
+           return ok(Json.toJson("Please update"));
+       }else{
+           return ok(Json.toJson(homeAddressDAO));
+       }
 
 }
 

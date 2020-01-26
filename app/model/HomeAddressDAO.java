@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "customerHomeAddressTable")
+@Table(name = "customerhomeaddresstable")
 public class HomeAddressDAO extends Model {
 
         public String address1;
@@ -214,6 +214,7 @@ public class HomeAddressDAO extends Model {
 
                 if (HomeAddressDAO.find.query().where().eq("cus_email_reference", email).findUnique() == null) {
                         //then customer is not in DB
+                        System.out.println(hmAddDAO.toString() + "LLLLLLLLLL");
                         return null;
                 }else {
 
