@@ -38,6 +38,7 @@ public class CustomerDatabaseController extends Controller {
     public Result updateCustomerAddressDetails(String obj){
         System.out.println("inside update customer address controller *******");
         //put it back into a json format
+        System.out.println(obj.toString());
         JsonNode j = Json.parse(obj);
 
 

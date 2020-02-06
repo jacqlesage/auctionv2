@@ -152,6 +152,8 @@ public class HomeAddressDAO extends Model {
                 String cusNumberStripped =  cusNumber.replaceAll("\"","");
                 int cusNumberInt = Integer.parseInt(cusNumberStripped);
 
+                System.out.println(cusAddressObject.toString() + "this is the update object for address step 1");
+
                 HomeAddressDAO updateCustomerObj = new HomeAddressDAO(address1,address2,city,country,postCode,email,cusNumberInt);
 
                 System.out.println(updateCustomerObj.toString() + "this is the update object for address");

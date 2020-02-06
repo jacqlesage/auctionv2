@@ -108,6 +108,7 @@ function submitUpdatesAddress(){
     country = document.getElementById("country").value;
     postCode = document.getElementById("postCode").value;
 
+
     if (address1 != initialAddressValue) {
 
         detailsToUpdateObject.updatedAddress1 = address1;
