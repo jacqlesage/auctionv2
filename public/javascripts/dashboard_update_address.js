@@ -75,9 +75,9 @@ function updateAddress(){
 $(document).ready(function(){
 
     cusEmail = document.getElementById("customerEmail").value;
-    console.log("cusomter email address is " + customerEmail);
+    console.log("cusomter email address is " + cusEmail);
     cusNumber = document.getElementById("customerNumber").value;
-    console.log("cusomter number is " + customerNumber);
+    console.log("cusomter number is " + cusNumber);
 
     document.getElementById("address1").addEventListener("focusin", updateAddress);
     document.getElementById("address2").addEventListener("focusin", updateAddress);
@@ -88,7 +88,7 @@ $(document).ready(function(){
 
 
 });
-
+//to submit postal address changes to the DB. Need to change to postal
 function submitUpdatesAddress(){
 
     var detailsToUpdateObject = {
