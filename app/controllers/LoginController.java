@@ -40,7 +40,7 @@ LoginController extends Controller {
         session().put("email", customer.email);
         session().put("cusNum", Integer.toString(customer.id));
 
-        return ok(views.html.dollarLuxuryDashboard.render());
+        return ok(views.html.index.render());
 
     }
 

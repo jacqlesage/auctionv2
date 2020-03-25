@@ -7,12 +7,12 @@
 @(content: Html)
 
 @()
-
+@**
 @helper.javascriptRouter("jsRoutes")(
     routes.javascript.SignupController.signup
     //routes.javascript.Users.get
 )
-
+**@
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,8 +29,8 @@
 
 
         <div class="jumbotron text-center">
-            <h1>Welcome to Dollar Luxury Version 1</h1>
-            <h2>The business for the people!</h2>
+            <h1>Welcome to Asset Mate</h1>
+            <h2>Track your asset compliance with us!</h2>
 
 
         </div>
@@ -42,7 +42,7 @@
                         <div class="panel panel-default">
 
                             <div class="panel-heading text-center"><h3>Dollar Luxury</h3></div>
-                            <form action="@routes.DollarLuxuryHomeController.dollarHomePage()">
+                            <form action="">
                             <div class="panel-body"><div class="text-center"><span style="font-size: 55px" class="glyphicon glyphicon-usd gl" ></span></div></div>
                             <div class="panel-footer"> <input type="submit" value="Go to Dollar Luxury" button type="button" class="btn btn-primary btn-block"></div>
                             </form>

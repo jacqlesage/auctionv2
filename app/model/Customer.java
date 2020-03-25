@@ -40,17 +40,6 @@ public class Customer extends Model {
     @Constraints.MaxLength(value = 100, message = "validation.maxLength")
 //    @Column(unique=true, nullable=false, length=100)
     public String lastName;
-    //
-//    @Constraints.MaxLength(value=20,message="validation.maxLength")
-//    @Constraints.Required(message="validation.required")
-    public String phoneNumber;
-
-    //    @Column(unique=true, nullable=false, length=100)
-    //@Constraints.Required(message="validation.required")
-    //@Constraints.Email(message="validation.email")
-    @Constraints.MaxLength(value = 100, message = "validation.maxLength")
-    public String email;
-
 
     //@JoinColumn(table="cusotmer_login")
     //@Constraints.Required(message="validation.required")
@@ -58,11 +47,15 @@ public class Customer extends Model {
     //@JsonIgnore
     public String password;
 
+    public String email;
+
     //this should be auto to 1 once email validation is done.- needs some work on this.
 //    @Constraints.Min(1)
 //    @Constraints.MaxLength(1)
     //@Constraints.Required(message="validation.required")
     public int active;
+
+    public int practiceRefId;
 
     //    address details - Better to use an address finder as opposed to regex as the pattern would be consistant
     //eg Address validation using Google Maps API or nz post code finder
@@ -121,9 +114,8 @@ public class Customer extends Model {
 
     }
 
-    public Customer(String phoneNumber, String email, String password, Boolean dummy){
+    public Customer(String email, String password, Boolean dummy){
 
-        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         dummy = true;
@@ -155,14 +147,6 @@ public class Customer extends Model {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -287,7 +271,7 @@ public class Customer extends Model {
         pwd = pwdStripped;
 
         //create customer : Dummy is so I can have the constructor needed
-        Customer customer = new Customer(phone,email,pwd,  true);
+        Customer customer = new Customer(email,pwd,  true);
         //get customer id
        Customer temp = new Customer("temp","temp");
        System.out.println("printng out email address " + email);
@@ -326,8 +310,7 @@ public class Customer extends Model {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
+                 ", email='" + email + '\'' +
 //                ", address1='" + address1 + '\'' +
 //                ", address2='" + address2 + '\'' +
 //                ", suburb='" + suburb + '\'' +

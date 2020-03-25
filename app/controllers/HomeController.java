@@ -26,7 +26,7 @@ public class HomeController extends Controller {
     }
 
 
-    public Result adminView() { return ok(views.html.dollarLuxuryAdminView.render()); }
+    public Result adminView() { return ok(views.html.index.render()); }
 
     public Result upload() {
         Http.MultipartFormData<File> body = request().body().asMultipartFormData();

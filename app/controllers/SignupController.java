@@ -44,8 +44,5 @@ public class SignupController extends Controller{
         return ok("passed jsRoutes");
     }
 
-    public Result changeView(){
 
-        return redirect(routes.DollarLuxuryHomeController.dollarDashboard());
-    }
 }

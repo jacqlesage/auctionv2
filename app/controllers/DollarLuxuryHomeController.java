@@ -1,18 +1,11 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import model.AuctionDAO;
-import model.Customer;
 import play.data.FormFactory;
-import play.libs.Json;
 import play.mvc.*;
-import play.routing.JavaScriptReverseRouter;
 
 
 import javax.inject.Inject;
 
-import java.io.Console;
-import java.util.HashMap;
 import java.util.Map;
 
 import static play.mvc.Results.ok;
@@ -31,12 +24,12 @@ public class DollarLuxuryHomeController extends Controller{
         //populate dashboard with 1) customer info
 
 
-        return ok(views.html.dollarLuxuryDashboard.render());
+        return ok(views.html.index.render());
     }
 
     public Result dollarHomePage() {
 
-        return ok(views.html.dollarLuxuryHome.render());
+        return ok(views.html.index.render());
     }
 
     public Result dollarDashboard() {
@@ -50,14 +43,14 @@ public class DollarLuxuryHomeController extends Controller{
 //
 //        session().put("customerFull", x);
 
-        return ok(views.html.dollarLuxuryDashboard.render());
+        return ok(views.html.index.render());
         //return redirect(routes.DollarLuxuryHomeController.dollarDashboard());
     }
 
     public Result dollarAdminAuctionPreview() {
 
 
-        return ok(views.html.dollarLuxuryAdminPreviewAuction.render());
+        return ok(views.html.index.render());
     }
 
     public Result dollarLuxuryAdminPreviewAuction(){
@@ -97,7 +90,7 @@ public class DollarLuxuryHomeController extends Controller{
 
 
 
-        return ok(views.html.dollarLuxuryAdminPreviewAuction.render());
+        return ok(views.html.index.render());
     }
 
 
@@ -122,19 +115,19 @@ public class DollarLuxuryHomeController extends Controller{
         //clear the session out
         session().clear();
 
-        AuctionDAO auctionDAO = new AuctionDAO(form_values.get("auctionTitle")[0].toString(),
-                form_values.get("auctionVideo")[0].toString(),
-                form_values.get("auctionSpecURL")[0].toString(),
-                form_values.get("auctionLocaltion")[0].toString(),
-                Integer.parseInt(form_values.get("auctionRes")[0]),
-                Integer.parseInt(form_values.get("auctionCurrentPoolOfFunds")[0].toString()),
-                1);
-        //save the new auction to the DB.
-        auctionDAO.save();
+//        AuctionDAO auctionDAO = new AuctionDAO(form_values.get("auctionTitle")[0].toString(),
+//                form_values.get("auctionVideo")[0].toString(),
+//                form_values.get("auctionSpecURL")[0].toString(),
+//                form_values.get("auctionLocaltion")[0].toString(),
+//                Integer.parseInt(form_values.get("auctionRes")[0]),
+//                Integer.parseInt(form_values.get("auctionCurrentPoolOfFunds")[0].toString()),
+//                1);
+//        //save the new auction to the DB.
+//        auctionDAO.save();
 
         //Load up the home page and do the checking via JS/Jquery via "onpage load for the new/active auction.
 
-        return ok(views.html.dollarLuxuryHome.render());
+        return ok(views.html.index.render());
     }
 
 

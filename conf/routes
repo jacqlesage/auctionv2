@@ -5,67 +5,6 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-#Get the Dollar Luxury Home page
-GET     /dollarLuxuryHome           controllers.DollarLuxuryHomeController.dollarHomePage
-
-#Get the dollar luxury Admin auction preview
-GET     /dollarLuxuryAdminPreviewAuction           controllers.DollarLuxuryHomeController.dollarAdminAuctionPreview
-
-#Gets the preview of the auction that will be live.
-+ nocsrf
-POST    /dollarLuxuryAdminPreviewAuction            controllers.DollarLuxuryHomeController.dollarLuxuryAdminPreviewAuction
-POST    /dollarLuxuryAdminPreviewAuction            controllers.DollarLuxuryHomeController.dollarLoadAuction
-
-
-
-#Get the Dollar Luxury main dashboard page
-GET     /dollarLuxuryDashboard          controllers.DollarLuxuryHomeController.dollarDashboard
-
-#Get the Dollar Luxury admin page
-GET     /dollarLuxuryAdminView           controllers.HomeController.adminView
-
-POST    /dollarLuxuryAdminView/upload          controllers.HomeController.upload
-
-GET    /dollarLuxuryAdminView/uploadFile       controllers.HomeController.uploadFile
-
-GET    /dollarLuxuryAdminView/uploadFile       model.UploadFilePathDAO.uploadFile
-
-#Go the Facebook controller class
-POST     /facebookLogin/Submit      controllers.FacebookLoginController.collectFacebookData
-
-POST     /SignupController/Submit      controllers.SignupController.signup()
-
-
-+ nocsrf
-POST     /jsRoutes                   controllers.SignupController.signup
-
-
-POST     /LoginController/login      controllers.LoginController.login
-
-#load into dashboard controller
-GET      /loadDollarDashboard/:email      controllers.DollarLuxuryHomeController.loadDollarDashboard(email: String)
-
-GET     /javascriptRoutes      controllers.JsController.javascriptRoutes
-GET     /jsCustomer/:email              controllers.JsController.findCustomerByEmail(email: String)
-#GET     /jsCustomer             controllers.JsController.getAllUsers()
-
-#Logout the customer
-GET     /customer/          controllers.LoginController.logout
-
-#find out if a customer is in the DB
-GET     /customer/:email                  model.Customer.findCustomer(email: String)
-
-
-#find out if a customer is in the DB
-GET     /customer/:loginObject                 model.Customer.loginCustomer(loginObject)
-
-+ nocsrf
-POST    /customer/update/:updateObject         controllers.CustomerDatabaseController.updateCustomerPersonalDetails(updateObject: String)
-
-GET     /customer/update/address/physical/:email     controllers.CustomerDatabaseController.getCustomerAddressPhysical(email: String)
-
-+ nocsrf
-POST    /customer/update/address/:updateObject  controllers.CustomerDatabaseController.updateCustomerAddressDetails(updateObject: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
