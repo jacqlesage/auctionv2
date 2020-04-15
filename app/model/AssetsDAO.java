@@ -2,8 +2,8 @@ package model;
 //for assets
 public class AssetsDAO {
 
-    id
-    type
+    int id;
+    //type
     //manufacturer
     // model
     //serialNumber
@@ -11,17 +11,17 @@ public class AssetsDAO {
     //ASNZ3551
     //ORSC1
     //ORSC4
-    C1C4Interval
-    sterilisation
-    steriLogs
-    calibration
-    calibrationInterval
-    qaTest
-    qaInterval
-    unitService
-    service Interval
-    attachments
-    pictures
+    //C1C4Interval
+//    sterilisation
+//    steriLogs
+//    calibration
+//    calibrationInterval
+//    qaTest
+//    qaInterval
+//    unitService
+//    service Interval
+    //attachments
+   // pictures
 
 }
 

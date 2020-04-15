@@ -1,14 +1,19 @@
 package model;
 
+import io.ebean.Model;
+
 import java.text.SimpleDateFormat;
 
-public class ServiceDAO {
+public class ServiceInfoDAO extends Model {
 
     boolean calibrationDone;
     int calibrationInterval;
+    //fk serialNumber
+    //fk manufaturer
+    //fk model
     String qATest;
     String qAInterval;
-    SimpleDateFormat unitService;
+    SimpleDateFormat unitLastService;
     int serviceInterval;
     String attachments;
 

@@ -34,6 +34,12 @@ public class LoginDAO extends Model {
         this.password = password;
     }
 
+    public LoginDAO(String email, String password, int id) {
+        this.email = email;
+        this.password = password;
+        this.id = id;
+    }
+
     public Result findCustomerInLoginTable(String email) {
 
         if (LoginDAO.find.query().where().eq("email", email).findUnique() == null) {
@@ -47,6 +53,7 @@ public class LoginDAO extends Model {
     public boolean findCustomerInLoginTableReturnTorF(String email) {
 
         System.out.println("  inside findCustomerInLoginTableReturnTorF");
+        System.out.println("  inside findCustomerInLoginTableReturnTorF email = " + email);
 
         if (LoginDAO.find.query().where().eq("email", email).findUnique() == null) {
             System.out.println("  inside findCustomerInLoginTableReturnTorF returning false");
@@ -62,6 +69,7 @@ public class LoginDAO extends Model {
 
         loginDAO.save();
         System.out.print("Login object saved");
+
     }
     //for asset idea
     public int returnTableRef(String email){
@@ -105,4 +113,6 @@ public class LoginDAO extends Model {
                 ", id=" + id +
                 '}';
     }
+
+
 }

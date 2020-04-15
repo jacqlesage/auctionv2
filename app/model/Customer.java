@@ -56,6 +56,8 @@ public class Customer extends Model {
     public int active;
 
     public int practiceRefId;
+    public int loginTableRefNum;
+
 
     //    address details - Better to use an address finder as opposed to regex as the pattern would be consistant
     //eg Address validation using Google Maps API or nz post code finder
@@ -105,12 +107,13 @@ public class Customer extends Model {
 
     }
 
-    public Customer(String firstName, String lastName, String email, String password) {
+    public Customer(String firstName, String lastName, String email, String password,int loginTableRefNum) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.loginTableRefNum = loginTableRefNum;
 
     }
 
@@ -119,6 +122,15 @@ public class Customer extends Model {
         this.email = email;
         this.password = password;
         dummy = true;
+    }
+
+    public Customer(String firstName, String lastName, String email, String password ) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+
     }
 
     public Customer() {

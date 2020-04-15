@@ -1,6 +1,8 @@
 package model;
 
-public class WarrantyDAO {
+import io.ebean.Model;
+
+public class WarrantyDAO extends Model {
     int id;
     //fk Manufacturer
     //fk Model
