@@ -68,7 +68,7 @@
                         <div class="col-md-6">
 
                             <div class="modal-body">
-                                <form method="GET" name="signupForm" id="signupForm" action="@routes.LoginController.firstSignUp()">
+                                <form method="" name="signupForm" id="signupForm" action="">
                                     <div class="form-group">
                                  @**       @CSRF.formField **@
                                     <label for="fname">First Name:</label>
@@ -130,7 +130,7 @@
 
                                 <div class="form-group">
 
-                                    <button type="submit" class="btn btn-default" id="submitBtn" name="submitBtn">
+                                    <button type="button" class="btn btn-default" id="submitBtn" name="submitBtn" onclick="assetValidatePasswordv2()">
                                         Submit</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
                                 </div>

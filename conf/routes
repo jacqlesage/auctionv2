@@ -8,7 +8,7 @@ GET     /                           controllers.HomeController.index
 #GET     /views/assetMainPage        controllers.LoginController.loadAssetMainHTMLPage
 # get the assets pages view
 GET     /view/practiceAssetList     controllers.PageViewsController.practiceAssetList
-GET     /login/firstLogin           controllers.LoginController.firstSignUp
+GET     /login/firstLogin/:allInfoObject         controllers.LoginController.firstSignUp(allInfoObject: String)
 
 #Test for ajax login
 GET     /login/loginTable/:loginObject  controllers.LoginController.addLoginTableObject(loginObject: String)

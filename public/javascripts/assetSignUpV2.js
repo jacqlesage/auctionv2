@@ -43,14 +43,27 @@ function assetValidatePasswordv2() {
 
         }
 
+        var allFormInfo ={
+
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            practiceTAName: document.getElementById("practiceTAName").value,
+            practiceLegalName: document.getElementById("practiceLegalName").value,
+            practicePhoneNumber: document.getElementById("practicePhoneNumber").value,
+            practiceURL: document.getElementById("practiceURL").value
+
+        }
+
         //check if customer on file if not add to login object
 
         //console.log("inside assetValidatePassword print password" + loginObject.password.toString())
     }
 
-    callAjaxCheckCustomerOnFileV2(loginObject)
-    signCustomerUpLoginTable(loginObject)
-    alert("fullObjectvar " + fullLoginObject)
+    callAjaxCheckCustomerOnFileV2(loginObject, allFormInfo)
+    //signCustomerUpLoginTable(loginObject)
+    //alert("fullObjectvar " + fullLoginObject)
     //addPracticeObject(practiceObject)
     //addPracticeObject(fullLoginObject, practiceObject)
     //data1 = callAjaxCheckCustomerOnFile()
@@ -61,9 +74,12 @@ function assetValidatePasswordv2() {
 
 }
 
-function callAjaxCheckCustomerOnFileV2(loginObject)
+function callAjaxCheckCustomerOnFileV2(loginObject, allFormInfo)
 {
-    loginObject = JSON.stringify(loginObject)
+
+    loginObject = JSON.stringify(loginObject.email)
+    allFormInfo = JSON.stringify(allFormInfo)
+
 
     $.ajax({
         type: "GET",
@@ -73,14 +89,38 @@ function callAjaxCheckCustomerOnFileV2(loginObject)
         url: "/login/customer/" + loginObject,
         success: function (data) {
             //customer on file
+            alert("1st success via ajax " + data.toString())
             if(data == true) {
                 document.getElementById("email").style.borderColor = "blue";
                 document.getElementById("email").value = "This email is already registered with us";
                 document.getElementById("email").setCustomValidity("This email is already registered with us, please use 'forgotton password'");
                 console.log("This email is already registered with us, please login instead // forgot password")
             }else{
-                //sign up customer - add full login object to global
-                //callAjaxFirstSignUpLoginReturnTableRef(loginObject, customerObject, practiceObject)
+                alert("in the else statment of 1st success via ajax " + data.toString())
+                //location.reload();
+                //$("#myModalSignUp .close").click()
+
+
+                $.ajax({
+                    type: "GET",
+                    dataType: 'json',
+                    //data: allFormInfo,
+                    contentType: "application/json; charset=utf-8",
+                    //processdata: false,
+                    url: "/login/firstLogin/" + allFormInfo,
+                    success: function (data){
+
+                        if(data == true){
+                            alert("data is true = "+ data.toString());
+                           // window.location.href = "/view/practiceAssetList"
+                        }
+
+                    },
+
+                    error: function (data) {
+                        alert("error via ajax " + data.toString())
+                    }
+                });
 
 
             }

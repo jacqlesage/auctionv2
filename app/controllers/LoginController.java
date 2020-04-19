@@ -61,14 +61,14 @@ LoginController extends Controller {
     public Result findCustomerInLoginTable(String email){
         System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable email  = " + email);
 
-       JsonNode x = Json.parse(email);
+       JsonNode jsonNode = Json.parse(email);
 
-       String y = x.get("email").toString();
-//        JsonNode y = x.get(email);
-       System.out.println(" JsonNode = " + y + " or " + x.toString());
+       String emailAddress = String.valueOf(jsonNode);
+        emailAddress = emailAddress.replaceAll("\"","" );
+       System.out.println(" JsonNode = " + emailAddress + " or " + jsonNode.toString());
        boolean result = false;
-       LoginDAO loginDAO = new LoginDAO(y);
-       result = loginDAO.findCustomerInLoginTableReturnTorF(y);
+       LoginDAO loginDAO = new LoginDAO(emailAddress);
+       result = loginDAO.findCustomerInLoginTableReturnTorF(emailAddress);
 //        temp = loginDAO.findCustomerInLoginTable(y);
 //        System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable loginDAO  = " + loginDAO.email);
 //        System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable temp  = " + temp.toString());
@@ -164,21 +164,41 @@ LoginController extends Controller {
 
     }
 
-    public Result firstSignUp(){
+    public Result firstSignUp(String allInfoObj){
+
+        System.out.println(" stirng test " + allInfoObj.toString());
+
+        JsonNode allInfo = Json.parse(allInfoObj);
         //LoginDAO loginDAOForm = formFactory.form(LoginDAO.class).bindFromRequest().get();
-
+        //System.out.println("allInfoObj = " + allInfoObj.toString());
+        //System.out.println("allInfo = " + allInfo.toString());
         //Customer customer = formFactory.form(Customer.class).bindFromRequest().get();
-        DynamicForm requestData = formFactory.form().bindFromRequest();
-
+       DynamicForm requestData = formFactory.form().bindFromRequest();
+        //String email = Json.stringify(jsonNode.get("email"));
         //loginDAo object
-        String email = requestData.get("email");
-        String password = requestData.get("password");
+        String email = String.valueOf(allInfo.get("email"));
+        email = email.replaceAll("\"","" );
+        //System.out.println("replaced email string to look like  = " + email);
+        String password = String.valueOf(allInfo.get("password"));
+        password = password.replaceAll("\"","" );
+        //String password4 = String.valueOf(allInfo.get("password"));
         LoginDAO loginDAO = new LoginDAO(email, password);
+
+        //save customer to DB
+        loginDAO.save();
+        //System.out.println("loging dao saved id is = " + loginDAO.getId());
+        //login object - now full just in case
+        loginDAO = new LoginDAO(email, password, loginDAO.getId());
+
+        System.out.println("loging dao saved is = " + loginDAO.toString());
 
         //customerDAO object
         String firstName = requestData.get("firstName");
         String lastName = requestData.get("lastName");
-        Customer customer = new Customer(firstName, lastName, email, password);
+        Customer customer = new Customer(firstName, lastName, email, password, loginDAO.getId());
+        //save customer with login reg to DB
+       // customer.save();
+
 
         //practice object
         String practiceTAName = requestData.get("practiceTAName");
@@ -187,6 +207,9 @@ LoginController extends Controller {
         String practiceURL = requestData.get("practiceURL");
         PracticeDAO practiceDAO = new PracticeDAO(practiceTAName,practiceLegalName,practicePhoneNumber,practiceURL);
 
+        session().put("firstName", firstName);
+        session().put("email", email);
+        session().put("practiceTAName", practiceTAName);
 
         //PracticeDAO practiceDAOForm = formFactory.form(PracticeDAO.class).bindFromRequest().get();
         //bind all forms at once?
@@ -217,7 +240,7 @@ LoginController extends Controller {
 //
 //        System.out.println(userFormCus.toString());
 
-        return ok();
+        return ok(Json.toJson(true));
     }
 
     public Result addLoginTableObject(String loginObject)
