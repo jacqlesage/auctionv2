@@ -61,19 +61,36 @@ LoginController extends Controller {
     public Result findCustomerInLoginTable(String email){
         System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable email  = " + email);
 
-       JsonNode jsonNode = Json.parse(email);
+       //JsonNode jsonNode = Json.parse(email);
 
-       String emailAddress = String.valueOf(jsonNode);
-        emailAddress = emailAddress.replaceAll("\"","" );
-       System.out.println(" JsonNode = " + emailAddress + " or " + jsonNode.toString());
+       //String emailAddress = String.valueOf(jsonNode.get("email"));
+       //emailAddress = emailAddress.replaceAll("\"","" );
+
+       //System.out.println(" JsonNode = " + emailAddress + " or " + jsonNode.toString());
+
        boolean result = false;
-       LoginDAO loginDAO = new LoginDAO(emailAddress);
-       result = loginDAO.findCustomerInLoginTableReturnTorF(emailAddress);
+       LoginDAO loginDAO = new LoginDAO(email);
+       result = loginDAO.findCustomerInLoginTableReturnTorF(email);
+       Customer customer = new Customer(email,null);
+       PracticeDAO practiceDAO = new PracticeDAO();
+
 //        temp = loginDAO.findCustomerInLoginTable(y);
 //        System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable loginDAO  = " + loginDAO.email);
 //        System.out.println("*&*&*&^%%%%% in findCustomerInLoginTable temp  = " + temp.toString());
         System.out.println("in findCustomerInLoginTable result  = " + result);
+        if(result == true) {
+           // session().put()
 
+            //get customer ref number - use that to get practice name
+            customer = customer.findCustomerByEmailPublic(email);
+            System.out.println("in login controller customer   = " + customer.toString());
+            //get practice name for the header bar change from sign in
+            int cusID = customer.getId();
+
+            String practiceTAName = practiceDAO.getPracticeTradingNameForLoginHeaderBar(cusID);
+            System.out.println("in login controller practiceTAName  = " + practiceTAName);
+            session().put("practiceTAName", practiceTAName);
+        }
         return (Result) ok(String.valueOf(result));
 
     }
@@ -117,7 +134,7 @@ LoginController extends Controller {
         temp = temp.substring(1, temp.length()-1);
         int loginTableRef = Integer.valueOf(temp);
         System.out.println("$$$$$$$$ and return object with ref ID" + loginTableRef);
-        Customer customer = new Customer(firstName, lastName, email, password, loginTableRef);
+        Customer customer = new Customer(firstName, lastName,  password, email, loginTableRef);
         //save customer
         customer.save();
         //and return object with ref ID for practice object
@@ -164,41 +181,21 @@ LoginController extends Controller {
 
     }
 
-    public Result firstSignUp(String allInfoObj){
+    public Result firstSignUp(){
 
-        System.out.println(" stirng test " + allInfoObj.toString());
-
-        JsonNode allInfo = Json.parse(allInfoObj);
-        //LoginDAO loginDAOForm = formFactory.form(LoginDAO.class).bindFromRequest().get();
-        //System.out.println("allInfoObj = " + allInfoObj.toString());
-        //System.out.println("allInfo = " + allInfo.toString());
-        //Customer customer = formFactory.form(Customer.class).bindFromRequest().get();
-       DynamicForm requestData = formFactory.form().bindFromRequest();
-        //String email = Json.stringify(jsonNode.get("email"));
-        //loginDAo object
-        String email = String.valueOf(allInfo.get("email"));
-        email = email.replaceAll("\"","" );
-        //System.out.println("replaced email string to look like  = " + email);
-        String password = String.valueOf(allInfo.get("password"));
-        password = password.replaceAll("\"","" );
-        //String password4 = String.valueOf(allInfo.get("password"));
+         DynamicForm requestData = formFactory.form().bindFromRequest();
+         //loginDAo object
+        String email = requestData.get("email");
+        String password = requestData.get("password");
         LoginDAO loginDAO = new LoginDAO(email, password);
-
         //save customer to DB
         loginDAO.save();
-        //System.out.println("loging dao saved id is = " + loginDAO.getId());
+
+        int loginID = loginDAO.getId();
+        System.out.println(loginID);
         //login object - now full just in case
-        loginDAO = new LoginDAO(email, password, loginDAO.getId());
-
-        System.out.println("loging dao saved is = " + loginDAO.toString());
-
-        //customerDAO object
-        String firstName = requestData.get("firstName");
-        String lastName = requestData.get("lastName");
-        Customer customer = new Customer(firstName, lastName, email, password, loginDAO.getId());
-        //save customer with login reg to DB
-       // customer.save();
-
+        loginDAO = new LoginDAO(email, password, loginID);
+        System.out.println("login object saved is = " + loginDAO.toString());
 
         //practice object
         String practiceTAName = requestData.get("practiceTAName");
@@ -206,7 +203,29 @@ LoginController extends Controller {
         String practicePhoneNumber = requestData.get("practicePhoneNumber");
         String practiceURL = requestData.get("practiceURL");
         PracticeDAO practiceDAO = new PracticeDAO(practiceTAName,practiceLegalName,practicePhoneNumber,practiceURL);
-
+        //save practice object
+        practiceDAO.save();
+        System.out.println("practice DAO saved = " + practiceDAO.toString());
+        //get practice ID
+        System.out.println("pracitce id ref is = " + practiceDAO.getID());
+        int practiceID = practiceDAO.getID();
+        //customerDAO object
+        String firstName = requestData.get("firstName");
+        String lastName = requestData.get("lastName");
+        Customer customer = new Customer(firstName, lastName, password, email, loginID, practiceID);
+        //save customer with login reg to DB
+        customer.save();
+        //check customer object info
+        System.out.println("customer object saved - inside firstSignUp method = " + customer.toString());
+        // Next need to get customer ID into practice object.
+        int customerID = customer.getId();
+        System.out.println("customer id number after it has been saved " + customerID);
+        //then we need to get get the practice table back to add the customer ref into the table
+        PracticeDAO forUpdate = PracticeDAO.find.byId(practiceID);
+        System.out.println("forupdate @@@ " + forUpdate.toString());
+        forUpdate.setCustomerRef(customerID);
+        forUpdate.update();
+        System.out.println("forupdate @@@ " + forUpdate.toString());
         session().put("firstName", firstName);
         session().put("email", email);
         session().put("practiceTAName", practiceTAName);
@@ -217,17 +236,13 @@ LoginController extends Controller {
         //Customer customer1 = formFactory.form(Customer.class).bindFromRequest().get();
         //customer1 = customer.get();
 
-
-
-
-
         //Map<String, String[]> form_values = request().body().asFormUrlEncoded();
         //System.out.println("!!!!cus" + form_values.toString());
 //        System.out.println("!!!!cus1" + customer.toString());
 //        System.out.println("!!!!loginDAOForm" + loginDAOForm.toString());
-        System.out.println("!!!!practiceDAOForm" + practiceTAName + " " + practiceLegalName +" " + practiceURL +
-                practicePhoneNumber +   " " +   email
-        + " " + password + " " + firstName + " " + lastName + " ");
+//        System.out.println("!!!!practiceDAOForm" + practiceTAName + " " + practiceLegalName +" " + practiceURL +
+//                practicePhoneNumber +   " " +   email
+//        + " " + password + " " + firstName + " " + lastName + " ");
        //System.out.println("!!!!" + form_values.get("firstName")[0]);
         //System.out.println("!!!!" + form_values.get("lastName")[0]);
 
@@ -240,7 +255,7 @@ LoginController extends Controller {
 //
 //        System.out.println(userFormCus.toString());
 
-        return ok(Json.toJson(true));
+        return ok(views.html.assetMainPage.render());
     }
 
     public Result addLoginTableObject(String loginObject)
@@ -255,7 +270,7 @@ LoginController extends Controller {
 
         //return ID.
 
-        return ok(Json.toJson("string"));
+        return ok(views.html.assetMainPage.render());
     }
 
 }

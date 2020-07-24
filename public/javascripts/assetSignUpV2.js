@@ -1,4 +1,3 @@
-alert("assetSignUpv2");
 var fullLoginObject;
 function assetValidatePasswordv2() {
 
@@ -77,7 +76,7 @@ function assetValidatePasswordv2() {
 function callAjaxCheckCustomerOnFileV2(loginObject, allFormInfo)
 {
 
-    loginObject = JSON.stringify(loginObject.email)
+    loginObject = JSON.stringify(loginObject)
     allFormInfo = JSON.stringify(allFormInfo)
 
 
@@ -99,28 +98,33 @@ function callAjaxCheckCustomerOnFileV2(loginObject, allFormInfo)
                 alert("in the else statment of 1st success via ajax " + data.toString())
                 //location.reload();
                 //$("#myModalSignUp .close").click()
+                //change buttong type to submit
+                //$("#submitBtn").removeAttr("type").attr("type", "submit");
+                //then click the submit button
+                $( "#signupForm" ).submit()
 
 
-                $.ajax({
-                    type: "GET",
-                    dataType: 'json',
-                    //data: allFormInfo,
-                    contentType: "application/json; charset=utf-8",
-                    //processdata: false,
-                    url: "/login/firstLogin/" + allFormInfo,
-                    success: function (data){
-
-                        if(data == true){
-                            alert("data is true = "+ data.toString());
-                           // window.location.href = "/view/practiceAssetList"
-                        }
-
-                    },
-
-                    error: function (data) {
-                        alert("error via ajax " + data.toString())
-                    }
-                });
+                // $.ajax({
+                //     type: "GET",
+                //     dataType: 'json',
+                //     //data: allFormInfo,
+                //     contentType: "application/json; charset=utf-8",
+                //     //processdata: false,
+                //     url: "/login/firstLogin/" + allFormInfo,
+                //     success: function (data){
+                //
+                //         if(data == true){
+                //             alert("data is true = "+ data.toString());
+                //            //document.location.assign("/view/practiceAssetList");
+                //             //openNewPage()
+                //         }
+                //
+                //     },
+                //
+                //     error: function (data) {
+                //         alert("error via ajax " + data.toString())
+                //     }
+                // });
 
 
             }
@@ -159,4 +163,12 @@ function callBackToPopulateGlobalVar(data){
     fullLoginObject = data.toString()
 
 }
+
+    function openNewPage() {
+    alert("in openNewPage")
+        $.ajax({
+            type: "GET",
+            url: "/view/practiceAssetList"
+        });
+    }
 

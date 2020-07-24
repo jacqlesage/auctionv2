@@ -133,6 +133,15 @@ public class Customer extends Model {
 
     }
 
+    public Customer(@Constraints.MaxLength(value = 100, message = "validation.maxLength") String firstName, @Constraints.MaxLength(value = 100, message = "validation.maxLength") String lastName, String password, String email, int practiceRefId, int loginTableRefNum) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.practiceRefId = practiceRefId;
+        this.loginTableRefNum = loginTableRefNum;
+    }
+
     public Customer() {
 
     }
@@ -234,6 +243,24 @@ public class Customer extends Model {
         return customer;
     }
 
+    public Customer findCustomerByEmailPublic(String email) {
+
+        Customer customer = null;
+
+        System.out.println("email inside findCustomer " + email);
+
+        if (Customer.find.query().where().eq("email", email).findUnique() == null) {
+            //then customer is not in DB
+            return customer;
+        }else {
+
+            customer = Customer.find.query().where().eq("email", email).findUnique();
+            System.out.println(customer.toString() + "ookokokokok");
+        }
+
+
+        return customer;
+    }
 
 
 
